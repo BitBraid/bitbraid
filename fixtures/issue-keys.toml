@@ -1,0 +1,42 @@
+name = "issue-keys"
+description = "Messages that name issues and messages that only seem to: keys alone, with a repository and with nested groups, in any case; and numbers inside words, addresses, entities, code spans and fenced code, merge requests, longer numbers. A branch named for an issue."
+
+[[steps]]
+commit = { message = "Add README", file = "README.md", content = "# issue keys" }
+[[steps]]
+commit = { message = "lexer: handle quotes (fixes #12)", file = "src/lexer.rs", content = "fn lex() {}" }
+[[steps]]
+run = { args = ["commit", "-q", "--allow-empty", "-m", "Close octo/tools#12 and #5"] }
+[[steps]]
+run = { args = ["commit", "-q", "--allow-empty", "-m", "group/sub/project#12: a nested group"] }
+[[steps]]
+run = { args = ["commit", "-q", "--allow-empty", "-m", "C#12 is a language, and abc#12 a word"] }
+[[steps]]
+run = { args = ["commit", "-q", "--allow-empty", "-m", "Read https://example.org/page#12 and www.example.org/#12 first"] }
+[[steps]]
+run = { args = ["commit", "-q", "--allow-empty", "-m", "Merge request !12 is not an issue"] }
+[[steps]]
+run = { args = ["commit", "-q", "--allow-empty", "-m", "Bump to #123, then #1"] }
+[[steps]]
+run = { args = ["commit", "-q", "--allow-empty", "-m", "Quote in code\n\nThe words `see #12` are in code."] }
+[[steps]]
+run = { args = ["commit", "-q", "--allow-empty", "-m", "Fence in code\n\n```\nsee #12\n```"] }
+[[steps]]
+run = { args = ["commit", "-q", "--allow-empty", "-m", "Upper case\n\nRefs: Octo/Tools#5"] }
+[[steps]]
+run = { args = ["commit", "-q", "--allow-empty", "-m", "An entity &#12; and #12abc"] }
+[[steps]]
+branch = { name = "12-handle-quotes", checkout = true }
+[[steps]]
+run = { args = ["commit", "-q", "--allow-empty", "-m", "#12"] }
+[[steps]]
+run = { args = ["commit", "-q", "--allow-empty", "-m", "Done, see other/repo#12."] }
+[[steps]]
+checkout = { target = "main" }
+[[steps]]
+run = { args = ["commit", "-q", "--allow-empty", "-m", "Also [#5](link) and ~~#7~~"] }
+
+[expect]
+commits = 15
+branches = ["12-handle-quotes", "main"]
+tags = []

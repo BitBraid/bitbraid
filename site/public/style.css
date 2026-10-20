@@ -1,0 +1,530 @@
+/* BitBraid's website. One typeface (Outfit, the wordmark's), the brand's
+   three lane colours (brand/), dark or light as the
+   visitor's system prefers. */
+
+@font-face {
+  font-family: "Outfit";
+  src: url("fonts/Outfit-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: dark;
+  --bg: #0d131a;
+  --raised: #141c25;
+  --line: #223040;
+  --text: #eef3f8;
+  --muted: #8f9cad;
+  --sky: #62a8f5;
+  --orchid: #a98bf7;
+  --amber: #ffb83d;
+  --on-sky: #0d131a;
+  --glow: 0.7;
+  --shadow: 0 2.5rem 6rem -1.5rem rgb(0 0 0 / 0.7);
+
+  --page: 76rem;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --measure: 40rem;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+    --bg: #f6f8fb;
+    --raised: #ffffff;
+    --line: #dbe2ea;
+    --text: #1d2733;
+    --muted: #586676;
+    --sky: #2f7bc8;
+    --orchid: #7c5fd6;
+    --amber: #f2a318;
+    --on-sky: #ffffff;
+    --glow: 0.4;
+    --shadow: 0 2rem 5rem -1.5rem rgb(29 39 51 / 0.35);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.125rem;
+  font-weight: 380;
+  line-height: 1.6;
+  font-kerning: normal;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--sky);
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--sky);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 560;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+}
+
+.skip {
+  position: absolute;
+  left: var(--gutter);
+  top: -3rem;
+  padding: 0.5rem 0.9rem;
+  background: var(--raised);
+  border-radius: 6px;
+  z-index: 2;
+}
+
+.skip:focus {
+  top: 1rem;
+}
+
+/* Header ---------------------------------------------------------------- */
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: 1.25rem var(--gutter) 0;
+}
+
+.home img {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.top nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.75rem;
+  font-size: 1rem;
+}
+
+.top nav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.top nav a:hover {
+  color: var(--text);
+}
+
+@media (max-width: 30rem) {
+  .top nav {
+    gap: 0.25rem 1rem;
+  }
+
+  /* The section is at the foot of the page either way. */
+  .top nav .wide-only {
+    display: none;
+  }
+}
+
+/* Hero ------------------------------------------------------------------ */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: clamp(1.5rem, 5vw, 3.5rem) var(--gutter) clamp(2.5rem, 5vw, 3.5rem);
+  text-align: center;
+}
+
+.hero h1 img {
+  width: clamp(15rem, 34vw, 27.5rem);
+}
+
+.lede {
+  max-width: var(--measure);
+  margin-top: 0.25rem;
+  font-size: clamp(1.15rem, 1rem + 0.5vw, 1.4rem);
+  color: var(--muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem 1.75rem;
+  margin-top: 2rem;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.7rem 1.35rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--text);
+  font-weight: 520;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.button:hover {
+  border-color: var(--sky);
+}
+
+.button.primary {
+  background: var(--sky);
+  border-color: var(--sky);
+  color: var(--on-sky);
+}
+
+.button.primary:hover {
+  filter: brightness(1.08);
+}
+
+.quiet {
+  color: var(--text);
+}
+
+/* The screenshot, threaded on the braid ---------------------------------- */
+
+.stage {
+  /* The braid is as wide as the window; nothing scrolls sideways. */
+  overflow-x: clip;
+  padding-bottom: 1rem;
+}
+
+.shot {
+  position: relative;
+  max-width: calc(64rem + 2 * var(--gutter));
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.shot picture {
+  position: relative;
+  z-index: 1;
+}
+
+.shot img {
+  width: 100%;
+  /* Opaque while it loads, so the braid never shows through. */
+  background: var(--raised);
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow);
+}
+
+.braid {
+  position: absolute;
+  top: 24%;
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  translate: 0 -50%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.braid.is-drawn {
+  opacity: 1;
+  transition: opacity 1.4s ease-out;
+}
+
+.braid svg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  display: block;
+  overflow: visible;
+  animation: flow 9s linear infinite;
+}
+
+.braid.is-still svg {
+  animation-play-state: paused;
+}
+
+.braid .glow {
+  opacity: var(--glow);
+}
+
+.braid path {
+  fill: none;
+  stroke-linecap: butt;
+  stroke-linejoin: round;
+}
+
+@keyframes flow {
+  to {
+    transform: translateX(var(--period));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .braid svg {
+    animation: none;
+  }
+
+  .braid.is-drawn {
+    transition: none;
+  }
+}
+
+/* Sections: a heading on the left, the matter on the right -------------- */
+
+.band {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.75rem;
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: clamp(4rem, 10vw, 7rem) var(--gutter) 0;
+}
+
+.band h2 {
+  font-size: clamp(1.9rem, 1.4rem + 1.6vw, 2.5rem);
+  letter-spacing: -0.015em;
+}
+
+@media (min-width: 60rem) {
+  .band {
+    grid-template-columns: 19rem minmax(0, 1fr);
+    gap: 4rem;
+  }
+
+  .band h2 {
+    position: sticky;
+    top: 2rem;
+    align-self: start;
+  }
+}
+
+/* Features, drawn as a commit graph -------------------------------------- */
+
+.graph {
+  --lane-width: 3.75rem; /* 60 units of each row's picture */
+  --node: 0.9rem;
+  --node-at: 1.95rem; /* the middle of a heading's first line */
+  max-width: 44rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.graph li {
+  position: relative;
+  padding: 0.95rem 0 1.4rem var(--lane-width);
+}
+
+.graph .lanes {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--lane-width);
+  height: 100%;
+  overflow: visible;
+}
+
+/* The first lane begins at the first commit, not above it. */
+.graph li:first-child .lanes {
+  top: var(--node-at);
+  height: calc(100% - var(--node-at));
+}
+
+.graph .lanes path {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.l0 {
+  --lane: var(--sky);
+  --x: 14;
+  stroke: var(--sky);
+}
+
+.l1 {
+  --lane: var(--orchid);
+  --x: 30;
+  stroke: var(--orchid);
+}
+
+.l2 {
+  --lane: var(--amber);
+  --x: 46;
+  stroke: var(--amber);
+}
+
+.graph .node {
+  position: absolute;
+  left: calc(var(--lane-width) * var(--x) / 60 - var(--node) / 2);
+  top: calc(var(--node-at) - var(--node) / 2);
+  width: var(--node);
+  height: var(--node);
+  border: 3px solid var(--lane);
+  border-radius: 50%;
+  background: var(--bg);
+}
+
+.graph h3 {
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+
+.graph p {
+  margin-top: 0.25rem;
+  color: var(--muted);
+}
+
+/* Download -------------------------------------------------------------- */
+
+.downloads {
+  max-width: 44rem;
+}
+
+.system {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr) auto;
+  gap: 0.5rem 1.5rem;
+  align-items: baseline;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.system:first-child {
+  border-top: 0;
+  padding-top: 0.4rem;
+}
+
+.system h3 {
+  font-size: 1.3rem;
+}
+
+.system p {
+  color: var(--muted);
+}
+
+.system.yours .button {
+  background: var(--sky);
+  border-color: var(--sky);
+  color: var(--on-sky);
+}
+
+@media (max-width: 40rem) {
+  .system {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .system .button {
+    justify-self: start;
+    margin-top: 0.4rem;
+  }
+}
+
+.source {
+  margin-top: 1.25rem;
+  padding: 1.5rem;
+  background: var(--raised);
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+}
+
+.source h3 {
+  font-size: 1.15rem;
+}
+
+.source p {
+  margin-top: 0.3rem;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.source pre {
+  margin: 1rem 0 0;
+  overflow-x: auto;
+  font-family: ui-monospace, "SF Mono", "Cascadia Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+/* How it was made: a note, smaller than the rest ------------------------ */
+
+.band.note h2 {
+  font-size: 1.3rem;
+  letter-spacing: 0;
+}
+
+.prose {
+  max-width: var(--measure);
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+.prose p + p {
+  margin-top: 0.85rem;
+}
+
+/* Footer ---------------------------------------------------------------- */
+
+.bottom {
+  width: min(var(--page) - 2 * var(--gutter), 100% - 2 * var(--gutter));
+  margin: clamp(4rem, 10vw, 7rem) auto 0;
+  padding: 2rem 0 3rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.bottom p {
+  max-width: 46rem;
+}
+
+.bottom p + p {
+  margin-top: 0.5rem;
+}
+
+.bottom a {
+  color: inherit;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}

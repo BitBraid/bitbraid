@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=BitBraid
+GenericName=Git Client
+Comment=See and shape the history of a git repository
+Exec=bitbraid %f
+Icon=bitbraid
+Terminal=false
+Categories=Development;RevisionControl;
+Keywords=git;commit;branch;merge;rebase;
+StartupNotify=true
+StartupWMClass=bitbraid

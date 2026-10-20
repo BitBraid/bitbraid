@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=BitBraid
+Exec=bitbraid %u
+MimeType=x-scheme-handler/bitbraid;
+NoDisplay=true
+Terminal=false

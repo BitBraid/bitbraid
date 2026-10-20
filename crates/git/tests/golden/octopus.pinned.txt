@@ -1,0 +1,8 @@
+pinned: z, y
+    *  566b88d octopus merge x y z
+ / /|\
+* | | |  a759791 z
+| * | |  d0c82c7 y
+| | | *  5145694 x
+|/ / /
+*  33912c0 root

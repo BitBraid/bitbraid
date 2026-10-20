@@ -1,0 +1,401 @@
+name: release
+
+# A release of BitBraid from a version tag:
+#
+#   git tag v1.0.0 && git push origin v1.0.0
+#
+# builds the packages of the three systems, writes the checksums, the
+# minisign signatures and the update feed, and makes a draft of the GitHub
+# release with them, to be read and published by hand.
+# Started by hand (Actions, release, Run workflow) it builds everything and
+# keeps the files as the run's artifacts, publishing nothing.
+#
+#   Linux    cargo xtask package all, in packaging/linux/Dockerfile (Debian
+#            12): the tarball, the AppImage, the .deb, the .rpm and the
+#            AUR's files; then each installed and started in containers of
+#            Debian, Ubuntu, Fedora and Arch (cargo xtask package-test).
+#            The AUR's files are kept as the run's `aur` artifact, for the
+#            AUR, and not attached to the release.
+#   macOS    cargo xtask bundle --universal --dmg, with a relocatable git
+#            in Contents/Resources/git (packaging/macos/build-git.sh), and
+#            the bundle alone as a tarball, for the updater.
+#   Windows  cargo xtask package zip wxs, with MinGit in git\ beside the
+#            executable, and the installer built from that by WiX.
+#
+# Reproducible: the lock file (--locked), the toolchain and every tool
+# pinned by version and checksum, SOURCE_DATE_EPOCH (the time of the
+# tagged commit) for every date written, the paths of the build remapped
+# (cargo xtask package's build), and archives written without times of
+# their own. The Linux packages come out the same to the byte from the
+# same commit; the disk image and the installer carry their tools'
+# timestamps.
+#
+# Secrets, each optional; a step that needs one is skipped with a note
+# when it is not there:
+#
+#   MINISIGN_SECRET_KEY        the update key: the contents of the
+#                              secret key file of `minisign -G`, whose
+#                              public key file replaces
+#                              packaging/update-key.pub in the same
+#                              commit (the release stops if they differ)
+#   MINISIGN_PASSWORD          its password, if it was made with one
+#   APPLE_CERTIFICATE          a Developer ID Application certificate and
+#                              its key, as a .p12 file in base64
+#   APPLE_CERTIFICATE_PASSWORD the .p12 file's password
+#   APPLE_ID, APPLE_TEAM_ID,   the account notarytool submits with, and an
+#   APPLE_APP_PASSWORD         app-specific password of it
+#   WINDOWS_CERTIFICATE        a code-signing certificate and its key, as a
+#                              .pfx file in base64; one kept on a
+#                              token or by a signing service needs this
+#                              step changed for that service's tool
+#   WINDOWS_CERTIFICATE_PASSWORD the .pfx file's password
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  CARGO_TERM_COLOR: always
+  CARGO_INCREMENTAL: 0
+  RUST_VERSION: 1.99.0
+  # git's release, built for the macOS bundle.
+  GIT_VERSION: 2.56.0
+  GIT_SHA256: 26c56c296b38c0695b26fa95f475f1d01704d2d38e73465ca30b0b2f5dc789d3
+  # MinGit, Git for Windows' build for programs to carry.
+  MINGIT_TAG: v2.56.0.windows.2
+  MINGIT_FILE: MinGit-2.56.0.2-64-bit.zip
+  MINGIT_SHA256: da35e72aa21c005a5a0d298cfbae110bc1609a815730ea0dde84b01a1b3cd3be
+  WIX_VERSION: 5.0.2
+
+jobs:
+  prepare:
+    name: Version and date
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      epoch: ${{ steps.version.outputs.epoch }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - id: version
+        name: The version is the tag's
+        run: |
+          version=$(awk '/^\[workspace.package\]/ { p = 1; next } /^\[/ { p = 0 }
+            p && /^version *=/ { gsub(/^version *= *"|".*$/, ""); print; exit }' Cargo.toml)
+          if [ -z "$version" ]; then
+            echo "::error::Cargo.toml has no [workspace.package] version"
+            exit 1
+          fi
+          if [ "$GITHUB_REF_TYPE" = tag ] && [ "$GITHUB_REF_NAME" != "v$version" ]; then
+            echo "::error::the tag $GITHUB_REF_NAME is not v$version, the version in Cargo.toml"
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "epoch=$(git log -1 --format=%ct)" >> "$GITHUB_OUTPUT"
+      - uses: dtolnay/rust-toolchain@683b588c487a69d01f6c6ddf40f036ff682cc2c8 # master
+        with:
+          toolchain: ${{ env.RUST_VERSION }}
+      # Licences and advisories again: one published since the gate last
+      # ran holds the release back.
+      - uses: taiki-e/install-action@8cca0918f8471c33515202b73f56ab27f2bed283 # v2.87.29
+        with:
+          tool: cargo-deny
+      - run: cargo deny check
+
+  linux:
+    name: Linux packages
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    env:
+      SOURCE_DATE_EPOCH: ${{ needs.prepare.outputs.epoch }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+          df -h /
+      - name: The build environment
+        run: docker build -t bitbraid-linux-build packaging/linux
+      # The workspace at /src and cargo's home at /cargo, as on any machine
+      # that builds a release; the paths are remapped all the same.
+      - name: Build and package
+        run: |
+          docker run --rm -v "$GITHUB_WORKSPACE:/src" \
+            -e SOURCE_DATE_EPOCH -e CARGO_TERM_COLOR -e CARGO_TARGET_DIR=/src/target \
+            bitbraid-linux-build cargo xtask package all
+          sudo chown -R "$(id -u):$(id -g)" target
+          ls -l target/packages
+      - uses: dtolnay/rust-toolchain@683b588c487a69d01f6c6ddf40f036ff682cc2c8 # master
+        with:
+          toolchain: ${{ env.RUST_VERSION }}
+      - name: Installed and started on Debian, Ubuntu, Fedora and Arch
+        run: cargo xtask package-test --dir target/packages
+      # The screen as each system drew it, to be looked at.
+      - name: Pictures of the package test
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: package-test-pictures
+          path: target/package-test/*.png
+          if-no-files-found: ignore
+          retention-days: 7
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: release-linux
+          path: |
+            target/packages/bitbraid*
+            !target/packages/bitbraid-bin-*
+          if-no-files-found: error
+          retention-days: 7
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: aur
+          path: target/packages/bitbraid-bin-*-aur.tar.gz
+          if-no-files-found: error
+          retention-days: 7
+
+  macos:
+    name: macOS disk image
+    needs: prepare
+    runs-on: macos-latest
+    timeout-minutes: 180
+    env:
+      SOURCE_DATE_EPOCH: ${{ needs.prepare.outputs.epoch }}
+      APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
+      APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+      APPLE_ID: ${{ secrets.APPLE_ID }}
+      APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+      APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      # The toolkit compiles its Metal shaders when it is built; Xcode 26
+      # brings the compiler as a component of its own.
+      - name: Metal toolchain
+        run: |
+          xcrun metal --version || xcodebuild -downloadComponent MetalToolchain
+          xcrun metal --version
+      - uses: dtolnay/rust-toolchain@683b588c487a69d01f6c6ddf40f036ff682cc2c8 # master
+        with:
+          toolchain: ${{ env.RUST_VERSION }}
+          targets: aarch64-apple-darwin, x86_64-apple-darwin
+      - name: A relocatable git for the bundle
+        run: |
+          curl -fsSLo "$RUNNER_TEMP/git.tar.xz" \
+            "https://www.kernel.org/pub/software/scm/git/git-$GIT_VERSION.tar.xz"
+          echo "$GIT_SHA256  $RUNNER_TEMP/git.tar.xz" | shasum -a 256 -c -
+          packaging/macos/build-git.sh "$RUNNER_TEMP/git.tar.xz" "$RUNNER_TEMP/git"
+      - name: The signing certificate
+        id: certificate
+        if: env.APPLE_CERTIFICATE != ''
+        run: |
+          keychain="$RUNNER_TEMP/signing.keychain-db"
+          password=$(openssl rand -hex 16)
+          security create-keychain -p "$password" "$keychain"
+          security set-keychain-settings -lut 21600 "$keychain"
+          security unlock-keychain -p "$password" "$keychain"
+          printf '%s' "$APPLE_CERTIFICATE" | base64 --decode > "$RUNNER_TEMP/certificate.p12"
+          security import "$RUNNER_TEMP/certificate.p12" -k "$keychain" \
+            -P "$APPLE_CERTIFICATE_PASSWORD" -T /usr/bin/codesign
+          rm -f "$RUNNER_TEMP/certificate.p12"
+          security set-key-partition-list -S apple-tool:,apple: -s -k "$password" "$keychain"
+          # The keychains the user has, and this one before them; one a word.
+          existing=$(security list-keychains -d user | tr -d '"')
+          # shellcheck disable=SC2086
+          security list-keychains -d user -s "$keychain" $existing
+          identity=$(security find-identity -v -p codesigning "$keychain" \
+            | sed -n 's/.*"\(Developer ID Application: .*\)"$/\1/p' | head -n 1)
+          if [ -z "$identity" ]; then
+            echo "::error::the certificate is not a Developer ID Application one"
+            exit 1
+          fi
+          echo "identity=$identity" >> "$GITHUB_OUTPUT"
+      - name: Unsigned
+        if: env.APPLE_CERTIFICATE == ''
+        run: |
+          echo "::notice::No APPLE_CERTIFICATE, so the disk image is signed ad hoc and not notarised; the README says how past Gatekeeper."
+      - name: Bundle and disk image
+        env:
+          IDENTITY: ${{ steps.certificate.outputs.identity }}
+        run: |
+          cargo xtask bundle --universal --dmg --git "$RUNNER_TEMP/git" --sign "${IDENTITY:--}"
+          ls -l target/bundle
+      - name: Notarised
+        if: steps.certificate.outputs.identity != '' && env.APPLE_ID != ''
+        run: |
+          image=$(ls target/bundle/bitbraid-*-universal.dmg)
+          xcrun notarytool submit "$image" --apple-id "$APPLE_ID" --team-id "$APPLE_TEAM_ID" \
+            --password "$APPLE_APP_PASSWORD" --wait
+          xcrun stapler staple "$image"
+          # The bundle's own ticket, for the updater's copy of it; Gatekeeper
+          # asks Apple instead where it is missing.
+          xcrun stapler staple target/bundle/BitBraid.app \
+            || echo "::warning::the bundle could not be stapled on its own"
+      - name: Not notarised
+        if: steps.certificate.outputs.identity != '' && env.APPLE_ID == ''
+        run: |
+          echo "::notice::No APPLE_ID, so the disk image is signed and not notarised."
+      # The bundle alone, which the updater puts in place of the old one
+      # (`kind: app` in the feed); without it the updater takes the disk
+      # image. No AppleDouble files: the signature is in the bundle.
+      - name: The bundle for the updater
+        env:
+          VERSION: ${{ needs.prepare.outputs.version }}
+        run: |
+          COPYFILE_DISABLE=1 tar --no-mac-metadata -czf \
+            "target/bundle/bitbraid-$VERSION-universal.app.tar.gz" -C target/bundle BitBraid.app
+          ls -l target/bundle
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: release-macos
+          path: |
+            target/bundle/bitbraid-*.dmg
+            target/bundle/bitbraid-*.app.tar.gz
+          if-no-files-found: error
+          retention-days: 7
+
+  windows:
+    name: Windows installer and archive
+    needs: prepare
+    runs-on: windows-latest
+    timeout-minutes: 180
+    env:
+      SOURCE_DATE_EPOCH: ${{ needs.prepare.outputs.epoch }}
+      VERSION: ${{ needs.prepare.outputs.version }}
+      WINDOWS_CERTIFICATE: ${{ secrets.WINDOWS_CERTIFICATE }}
+      WINDOWS_CERTIFICATE_PASSWORD: ${{ secrets.WINDOWS_CERTIFICATE_PASSWORD }}
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: dtolnay/rust-toolchain@683b588c487a69d01f6c6ddf40f036ff682cc2c8 # master
+        with:
+          toolchain: ${{ env.RUST_VERSION }}
+      - name: MinGit
+        run: |
+          $zip = Join-Path $env:RUNNER_TEMP 'mingit.zip'
+          Invoke-WebRequest -Uri "https://github.com/git-for-windows/git/releases/download/$env:MINGIT_TAG/$env:MINGIT_FILE" -OutFile $zip
+          $hash = (Get-FileHash $zip -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($hash -ne $env:MINGIT_SHA256) { throw "MinGit's checksum is $hash" }
+          Expand-Archive -Path $zip -DestinationPath (Join-Path $env:RUNNER_TEMP 'mingit')
+          & (Join-Path $env:RUNNER_TEMP 'mingit\cmd\git.exe') --version
+      - name: Build
+        run: cargo xtask package
+      # Signed where it is, before the archive and the installer take it.
+      - name: Signing tool
+        if: env.WINDOWS_CERTIFICATE != ''
+        run: |
+          $signtool = Get-ChildItem 'C:\Program Files (x86)\Windows Kits\10\bin\*\x64\signtool.exe' |
+            Sort-Object FullName -Descending | Select-Object -First 1
+          if (-not $signtool) { throw 'no signtool' }
+          "SIGNTOOL=$($signtool.FullName)" | Out-File -FilePath $env:GITHUB_ENV -Append
+          $pfx = Join-Path $env:RUNNER_TEMP 'certificate.pfx'
+          [IO.File]::WriteAllBytes($pfx, [Convert]::FromBase64String($env:WINDOWS_CERTIFICATE))
+          "CERTIFICATE_FILE=$pfx" | Out-File -FilePath $env:GITHUB_ENV -Append
+      - name: Sign the executable
+        if: env.WINDOWS_CERTIFICATE != ''
+        run: |
+          & $env:SIGNTOOL sign /f $env:CERTIFICATE_FILE /p $env:WINDOWS_CERTIFICATE_PASSWORD `
+            /fd SHA256 /tr http://timestamp.digicert.com /td SHA256 target\dist\bitbraid.exe
+          if ($LASTEXITCODE -ne 0) { throw 'signtool failed' }
+      - name: Unsigned
+        if: env.WINDOWS_CERTIFICATE == ''
+        run: |
+          echo "::notice::No WINDOWS_CERTIFICATE, so the installer and the executable are not code-signed; the README says how past SmartScreen."
+      - name: Archive and the installer's source
+        run: cargo xtask package --no-build zip wxs --git (Join-Path $env:RUNNER_TEMP 'mingit')
+      - name: The installer
+        run: |
+          dotnet tool install --global wix --version $env:WIX_VERSION
+          wix build -arch x64 -o "target\packages\bitbraid-$env:VERSION-x86_64.msi" target\packages\msi\bitbraid.wxs
+          if ($LASTEXITCODE -ne 0) { throw 'wix build failed' }
+      - name: Sign the installer
+        if: env.WINDOWS_CERTIFICATE != ''
+        run: |
+          & $env:SIGNTOOL sign /f $env:CERTIFICATE_FILE /p $env:WINDOWS_CERTIFICATE_PASSWORD `
+            /fd SHA256 /tr http://timestamp.digicert.com /td SHA256 "target\packages\bitbraid-$env:VERSION-x86_64.msi"
+          if ($LASTEXITCODE -ne 0) { throw 'signtool failed' }
+          Remove-Item $env:CERTIFICATE_FILE
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: release-windows
+          path: |
+            target/packages/bitbraid-*.msi
+            target/packages/bitbraid-*.zip
+          if-no-files-found: error
+          retention-days: 7
+
+  publish:
+    name: The release
+    needs: [prepare, linux, macos, windows]
+    if: github.ref_type == 'tag'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+    env:
+      SOURCE_DATE_EPOCH: ${{ needs.prepare.outputs.epoch }}
+      VERSION: ${{ needs.prepare.outputs.version }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      # The packages only: not the package test's pictures, not the AUR's files.
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          pattern: release-*
+          path: dist
+          merge-multiple: true
+      - uses: dtolnay/rust-toolchain@683b588c487a69d01f6c6ddf40f036ff682cc2c8 # master
+        with:
+          toolchain: ${{ env.RUST_VERSION }}
+      - name: Checksums, signatures and the update feed
+        env:
+          MINISIGN_SECRET_KEY: ${{ secrets.MINISIGN_SECRET_KEY }}
+          MINISIGN_PASSWORD: ${{ secrets.MINISIGN_PASSWORD }}
+        run: |
+          if [ -n "$MINISIGN_SECRET_KEY" ]; then
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq minisign
+            key="$RUNNER_TEMP/minisign.key"
+            trap 'rm -f "$key"' EXIT
+            (umask 077 && printf '%s\n' "$MINISIGN_SECRET_KEY" > "$key")
+            # Every signature checked against the key the application
+            # carries: a secret that is not its pair stops the release.
+            cargo xtask feed dist --version "$VERSION" --key "$key" \
+              --public-key packaging/update-key.pub
+          else
+            echo "::warning::No MINISIGN_SECRET_KEY: nothing is signed and there is no update feed."
+            cargo xtask feed dist --version "$VERSION"
+          fi
+          ls -l dist
+      - name: Draft of the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          notes="$RUNNER_TEMP/notes.md"
+          {
+            echo "BitBraid $VERSION."
+            echo
+            echo "| System | File |"
+            echo "|---|---|"
+            echo "| Linux, any distribution | \`bitbraid-$VERSION-x86_64.AppImage\` |"
+            echo "| Debian, Ubuntu | \`bitbraid_${VERSION}_amd64.deb\` |"
+            echo "| Fedora, openSUSE | \`bitbraid-$VERSION-1.x86_64.rpm\` |"
+            echo "| Linux, unpacked anywhere | \`bitbraid-$VERSION-x86_64-linux.tar.gz\` |"
+            echo "| macOS 11 or later | \`bitbraid-$VERSION-universal.dmg\` |"
+            echo "| Windows 10 or later | \`bitbraid-$VERSION-x86_64.msi\`, or \`bitbraid-$VERSION-x86_64-windows.zip\` to run from a folder |"
+            echo
+            echo "\`SHA256SUMS\` lists every file; each has its minisign signature beside it (\`.minisig\`), and the README says how to check one."
+          } > "$notes"
+          prerelease=""
+          case "$VERSION" in *-*) prerelease="--prerelease" ;; esac
+          gh release create "$GITHUB_REF_NAME" --draft --verify-tag $prerelease \
+            --title "BitBraid $VERSION" --notes-file "$notes" dist/*

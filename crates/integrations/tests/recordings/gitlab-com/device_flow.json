@@ -1,0 +1,45 @@
+{
+  "note": "Recorded from gitlab.com by tests/suite/live_gitlab_com.rs: the test account's public projects",
+  "exchanges": [
+    {
+      "method": "POST",
+      "path_and_query": "/oauth/authorize_device",
+      "request_body": "client_id=e564fd7dd39d984f4ed6a9cc4f6a5ed042fc1c39a726fbce8101352732f60d31&scope=api",
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 18:47:22 GMT",
+        "etag": "W/\"6393654d21c9c3f1e9f09d6f2c0ceb50\"",
+        "ratelimit-limit": "500",
+        "ratelimit-remaining": "499",
+        "ratelimit-reset": "1791917280"
+      },
+      "body": {
+        "device_code": "device-code-1",
+        "expires_in": 300,
+        "interval": 5,
+        "user_code": "user-code-1",
+        "verification_uri": "https://gitlab.com/oauth/device",
+        "verification_uri_complete": "https://gitlab.com/oauth/device?user_code=user-code-1"
+      }
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/oauth/token",
+      "request_body": "client_id=e564fd7dd39d984f4ed6a9cc4f6a5ed042fc1c39a726fbce8101352732f60d31&device_code=device-code-1&grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Adevice_code",
+      "status": 400,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 18:47:27 GMT",
+        "ratelimit-limit": "500",
+        "ratelimit-remaining": "498",
+        "ratelimit-reset": "1791917280",
+        "www-authenticate": "Bearer realm=\"Doorkeeper\", error=\"authorization_pending\", error_description=\"The authorization server encountered an unexpected condition which prevented it from fulfilling the request.\""
+      },
+      "body": {
+        "error": "authorization_pending",
+        "error_description": "The authorization server encountered an unexpected condition which prevented it from fulfilling the request."
+      }
+    }
+  ]
+}

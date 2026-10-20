@@ -1,0 +1,66 @@
+name = "search"
+description = "Things to search for: messages in mixed case and one with a body, an author who is not the committer, a rename, a text added, removed and added again, merges, a branch whose change was taken back before it was merged, an orphan branch, an unmerged branch, two tags."
+
+[[steps]]
+commit = { message = "Add README", file = "README.md", content = "# search\n\nalpha" }
+[[steps]]
+commit = { message = "add parser\n\nThe tokenizer reads Words.", file = "src/parser.rs", content = "fn parse() {}\n// TODO: errors" }
+[[steps]]
+tag = { name = "v0.1" }
+[[steps]]
+branch = { name = "feature/lexer", checkout = true }
+[[steps]]
+commit = { message = "Lexer: split on spaces", file = "src/lexer.rs", content = "fn lex() { needle(); }" }
+[[steps]]
+commit = { message = "lexer: handle quotes (fixes #12)", file = "src/lexer.rs", content = "fn lex() { quotes(); }" }
+[[steps]]
+checkout = { target = "main" }
+[[steps]]
+commit = { message = "FIX parser errors", file = "src/parser.rs", content = "fn parse() {}\n// errors done" }
+[[steps]]
+merge = { branches = ["feature/lexer"], message = "Merge the lexer" }
+[[steps]]
+move = { from = "src/parser.rs", to = "grammar.rs" }
+[[steps]]
+commit = { message = "rename parser to grammar" }
+[[steps]]
+run = { args = ["commit", "-q", "--allow-empty", "--author=Carol Example <carol@example.invalid>", "-m", "Empty commit by a guest"] }
+[[steps]]
+branch = { name = "feature/dates", checkout = true }
+[[steps]]
+commit = { message = "dates: relative ages", file = "src/dates.rs", content = "fn ago(n: u32) {}\nconst DAY: i64 = 86400;" }
+[[steps]]
+checkout = { target = "main" }
+[[steps]]
+commit = { message = "docs: explain needle search", file = "docs/guide.md", content = "Search for a needle.\nUse quotes." }
+[[steps]]
+merge = { branches = ["feature/dates"], message = "Merge dates into main" }
+[[steps]]
+tag = { name = "v0.2", message = "second release" }
+[[steps]]
+orphan = { name = "pages" }
+[[steps]]
+commit = { message = "pages: landing", file = "index.html", content = "<h1>needle</h1>" }
+[[steps]]
+checkout = { target = "main" }
+[[steps]]
+branch = { name = "wip", checkout = true }
+[[steps]]
+commit = { message = "wip: Ada's unfinished idea", file = "src/lexer.rs", content = "fn lex() { quotes(); needle(); }" }
+[[steps]]
+checkout = { target = "main" }
+[[steps]]
+branch = { name = "feature/tried", checkout = true }
+[[steps]]
+commit = { message = "try a cache", file = "src/lexer.rs", content = "fn lex() { quotes(); cache(); }" }
+[[steps]]
+commit = { message = "drop the cache again", file = "src/lexer.rs", content = "fn lex() { quotes(); }" }
+[[steps]]
+checkout = { target = "main" }
+[[steps]]
+merge = { branches = ["feature/tried"], message = "Merge what was tried" }
+
+[expect]
+commits = 16
+branches = ["feature/dates", "feature/lexer", "feature/tried", "main", "pages", "wip"]
+tags = ["v0.1", "v0.2"]

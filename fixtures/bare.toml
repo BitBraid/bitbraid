@@ -1,0 +1,31 @@
+name = "bare"
+description = "A bare repository with three branches, a merge that is not the tip, a lightweight and an annotated tag. It is opened read-only."
+bare = true
+
+[[steps]]
+commit = { message = "b1", file = "a.txt", content = "1" }
+[[steps]]
+commit = { message = "b2", file = "a.txt", content = "2" }
+[[steps]]
+tag = { name = "v1" }
+[[steps]]
+branch = { name = "topic", checkout = true }
+[[steps]]
+commit = { message = "t1", file = "b.txt", content = "topic" }
+[[steps]]
+checkout = { target = "main" }
+[[steps]]
+commit = { message = "b3", file = "a.txt", content = "3" }
+[[steps]]
+merge = { branches = ["topic"], message = "merge topic" }
+[[steps]]
+commit = { message = "b4", file = "a.txt", content = "4" }
+[[steps]]
+tag = { name = "v2", message = "second" }
+[[steps]]
+branch = { name = "next", at = "HEAD~1" }
+
+[expect]
+commits = 6
+branches = ["main", "next", "topic"]
+tags = ["v1", "v2"]

@@ -1,0 +1,43 @@
+[package]
+name = "bitbraid-cli"
+description = "BitBraid command-line surface: every engine command with JSON output"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+publish.workspace = true
+
+[package.metadata.bitbraid]
+layer = 5
+
+[lints]
+workspace = true
+
+[[bin]]
+name = "bitbraid-cli"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = { workspace = true }
+clap = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+bitbraid-git = { workspace = true }
+bitbraid-engine = { workspace = true }
+bitbraid-integrations = { workspace = true }
+directories = { workspace = true }
+# Ctrl-C sets the engine's cancel flag. The one way to hear a signal
+# without `unsafe`; its two dependencies are in the tree already.
+signal-hook = { version = "0.4", default-features = false }
+
+[dev-dependencies]
+bitbraid-core = { workspace = true }
+bitbraid-testkit = { workspace = true }
+# HTTPS in front of an LFS server, with an authority made for the test
+# (tests/suite/tls_front.rs), and the ids of LFS content: all of it in the
+# tree already, for the integrations.
+rustls = { workspace = true }
+rcgen = { version = "0.14", default-features = false, features = ["crypto", "ring"] }
+sha2 = { workspace = true }

@@ -1,0 +1,18 @@
+name = "linear"
+description = "Five commits on main, one file growing. The simplest history."
+
+[[steps]]
+commit = { message = "add readme", file = "README.md", content = "# linear" }
+[[steps]]
+commit = { message = "add a", file = "a.txt", content = "1" }
+[[steps]]
+commit = { message = "update a", file = "a.txt", content = "2" }
+[[steps]]
+commit = { message = "add b", file = "b.txt", content = "b" }
+[[steps]]
+commit = { message = "update b", file = "b.txt", content = "bb" }
+
+[expect]
+commits = 5
+branches = ["main"]
+tags = []

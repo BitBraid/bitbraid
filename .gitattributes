@@ -1,0 +1,5 @@
+# Text files are kept with LF in the working tree on every system, also
+# where git is set to convert them (core.autocrlf, the default of Git for
+# Windows): goldens, stored pictures and fixtures are compared byte for
+# byte.
+* text=auto eol=lf

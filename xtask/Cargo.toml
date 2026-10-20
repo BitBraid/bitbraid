@@ -1,0 +1,28 @@
+[package]
+name = "xtask"
+description = "The gate and the release tools: ci, layers, fixtures, snapshot, bench, corpus, appbench, bundle, package, sbom, feed"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+publish = false
+
+[package.metadata.bitbraid]
+layer = "tool"
+
+[dependencies]
+anyhow = { workspace = true }
+cargo_metadata = { workspace = true }
+serde_json = { workspace = true }
+toml = { workspace = true }
+bitbraid-testkit = { workspace = true }
+# The macOS application's icon, drawn from brand/icon.svg (`bundle`):
+# the toolkit's version, as the Windows binary's icon is drawn.
+resvg = { version = "0.46", default-features = false }
+# The release's packages and their checksums (`package`, `sbom`, `feed`):
+# gzip and deflate, SHA-256, and MD5 where Debian's and rpm's formats ask
+# for it. All three are in the tree already.
+flate2 = "1"
+sha2 = { workspace = true }
+md-5 = "0.10"

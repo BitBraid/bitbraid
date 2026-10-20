@@ -1,0 +1,29 @@
+name = "octopus"
+description = "Three branches merged in one octopus merge commit."
+
+[[steps]]
+commit = { message = "root", file = "README.md", content = "# octopus" }
+[[steps]]
+branch = { name = "x", checkout = true }
+[[steps]]
+commit = { message = "x", file = "x.txt", content = "x" }
+[[steps]]
+checkout = { target = "main" }
+[[steps]]
+branch = { name = "y", checkout = true }
+[[steps]]
+commit = { message = "y", file = "y.txt", content = "y" }
+[[steps]]
+checkout = { target = "main" }
+[[steps]]
+branch = { name = "z", checkout = true }
+[[steps]]
+commit = { message = "z", file = "z.txt", content = "z" }
+[[steps]]
+checkout = { target = "main" }
+[[steps]]
+merge = { branches = ["x", "y", "z"], message = "octopus merge x y z" }
+
+[expect]
+commits = 5
+branches = ["main", "x", "y", "z"]

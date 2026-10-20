@@ -1,0 +1,15 @@
+*  ~ uncommitted work in a worktree on main
+*  566b88d octopus merge x y z
+|\ \ \
+| | | | *  ~ uncommitted work in a worktree on z
+| | | |/
+| | | *  a759791 z
+| | | | *  ~ uncommitted work in a worktree on y
+| | | |/
+| | * |  d0c82c7 y
+| | | | *  ~ uncommitted work in a worktree on x
+| | | |/
+| * | |  5145694 x
+| | | | *  ~ uncommitted work in a worktree detached, at the first commit
+|/ / / /
+*  33912c0 root

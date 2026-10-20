@@ -1,0 +1,20 @@
+*  ~ uncommitted work in a worktree on main
+*  bc65e12 Also [#5](link) and ~~#7~~
+| *  ~ uncommitted work in a worktree on 12-handle-quotes
+| *  57b128f Done, see other/repo#12.
+| *  28539a1 #12
+|/
+*  5771037 An entity &#12; and #12abc
+*  4b88db8 Upper case
+*  e0fe2dc Fence in code
+*  02d4c4a Quote in code
+*  1151ea5 Bump to #123, then #1
+*  2f10847 Merge request !12 is not an issue
+*  a9665ea Read https://example.org/page#12 and www.example.org/#12 first
+*  88c3856 C#12 is a language, and abc#12 a word
+*  45c6be9 group/sub/project#12: a nested group
+*  cafe292 Close octo/tools#12 and #5
+*  b1dd805 lexer: handle quotes (fixes #12)
+| *  ~ uncommitted work in a worktree detached, at the first commit
+|/
+*  25ea137 Add README

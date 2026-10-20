@@ -1,0 +1,549 @@
+{
+  "note": "Recorded from github.com by tests/suite/live_github.rs: the test organisation's public repositories, its machine account and a reviewer",
+  "exchanges": [
+    {
+      "method": "GET",
+      "path_and_query": "/user",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 17:20:51 GMT",
+        "etag": "\"75e3126eec5a4c0527fd65a7b8efee91a9cd9664091e802873522ed1f4e0e95b\"",
+        "last-modified": "Tue, 13 Oct 2026 16:06:26 GMT",
+        "x-oauth-scopes": "admin:public_key, delete_repo, read:org, read:user, repo, user:email, workflow",
+        "x-ratelimit-limit": "5000",
+        "x-ratelimit-remaining": "4955",
+        "x-ratelimit-reset": "1791915595",
+        "x-ratelimit-resource": "core",
+        "x-ratelimit-used": "45"
+      },
+      "body": {
+        "avatar_url": "https://avatars.example.invalid/user-1",
+        "bio": null,
+        "blog": "",
+        "collaborators": 0,
+        "company": null,
+        "created_at": "2000-01-01T00:00:00Z",
+        "disk_usage": 0,
+        "email": null,
+        "events_url": "https://api.github.com/users/user-1/events{/privacy}",
+        "followers": 0,
+        "followers_url": "https://api.github.com/users/user-1/followers",
+        "following": 0,
+        "following_url": "https://api.github.com/users/user-1/following{/other_user}",
+        "gists_url": "https://api.github.com/users/user-1/gists{/gist_id}",
+        "gravatar_id": "",
+        "hireable": null,
+        "html_url": "https://github.com/user-1",
+        "id": 100001,
+        "location": null,
+        "login": "user-1",
+        "name": null,
+        "node_id": "node-1",
+        "notification_email": null,
+        "organizations_url": "https://api.github.com/users/user-1/orgs",
+        "owned_private_repos": 0,
+        "plan": {
+          "collaborators": 0,
+          "name": "free",
+          "private_repos": 10000,
+          "space": 976562499
+        },
+        "private_gists": 0,
+        "public_gists": 0,
+        "public_repos": 0,
+        "received_events_url": "https://api.github.com/users/user-1/received_events",
+        "repos_url": "https://api.github.com/users/user-1/repos",
+        "site_admin": false,
+        "starred_url": "https://api.github.com/users/user-1/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/user-1/subscriptions",
+        "total_private_repos": 0,
+        "twitter_username": null,
+        "two_factor_authentication": false,
+        "type": "User",
+        "updated_at": "2000-01-01T00:00:00Z",
+        "url": "https://api.github.com/users/user-1",
+        "user_view_type": "private"
+      }
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/graphql",
+      "request_body": {
+        "query": "query($search: String!, $first: Int!, $after: String) { search(query: $search, type: ISSUE, first: $first, after: $after) { pageInfo { hasNextPage endCursor } nodes { ... on PullRequest { number title state isDraft url createdAt updatedAt author { login avatarUrl url ... on User { name } } headRefName headRefOid headRepository { nameWithOwner } baseRefName baseRepository { nameWithOwner } labels(first: 20) { nodes { name color description } } assignees(first: 20) { nodes { login name avatarUrl url } } reviewRequests(first: 20) { nodes { requestedReviewer { ... on User { login name avatarUrl url } ... on Team { combinedSlug name avatarUrl url } ... on Bot { login avatarUrl url } ... on Mannequin { login avatarUrl url } } } } latestReviews(first: 20) { nodes { state author { login avatarUrl url ... on User { name } } } } comments { totalCount } commits(last: 1) { nodes { commit { statusCheckRollup { state } } } } } } } }",
+        "variables": {
+          "after": null,
+          "first": 100,
+          "search": "repo:org-1/bitbraid-live is:pr sort:created-desc"
+        }
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 17:20:52 GMT",
+        "x-accepted-oauth-scopes": "repo",
+        "x-oauth-scopes": "admin:public_key, delete_repo, read:org, read:user, repo, user:email, workflow",
+        "x-ratelimit-limit": "5000",
+        "x-ratelimit-remaining": "4652",
+        "x-ratelimit-reset": "1791913482",
+        "x-ratelimit-resource": "graphql",
+        "x-ratelimit-used": "348"
+      },
+      "body": {
+        "data": {
+          "search": {
+            "nodes": [
+              {
+                "assignees": {
+                  "nodes": []
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": null,
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "org-1/bitbraid-live"
+                },
+                "comments": {
+                  "totalCount": 0
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": {
+                          "state": "SUCCESS"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-13T16:50:26Z",
+                "headRefName": "bb-fork-topic",
+                "headRefOid": "6d68129dcea70574dfb5be543928b77ad5b5a940",
+                "headRepository": {
+                  "nameWithOwner": "user-1/bitbraid-live"
+                },
+                "isDraft": false,
+                "labels": {
+                  "nodes": []
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 8,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "OPEN",
+                "title": "From a fork",
+                "updatedAt": "2026-10-13T17:00:58Z",
+                "url": "https://github.com/org-1/bitbraid-live/pull/8"
+              },
+              {
+                "assignees": {
+                  "nodes": []
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": null,
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "org-1/bitbraid-live"
+                },
+                "comments": {
+                  "totalCount": 0
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": null
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-13T16:50:22Z",
+                "headRefName": "bb-closed",
+                "headRefOid": "ab9b9e728acab2d68dbb932fcfae5c022a8c9e90",
+                "headRepository": {
+                  "nameWithOwner": "org-1/bitbraid-live"
+                },
+                "isDraft": false,
+                "labels": {
+                  "nodes": []
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 7,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "CLOSED",
+                "title": "Closed without merging",
+                "updatedAt": "2026-10-13T16:50:23Z",
+                "url": "https://github.com/org-1/bitbraid-live/pull/7"
+              },
+              {
+                "assignees": {
+                  "nodes": []
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": null,
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "org-1/bitbraid-live"
+                },
+                "comments": {
+                  "totalCount": 0
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": null
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-13T16:50:14Z",
+                "headRefName": "bb-merged",
+                "headRefOid": "46bb3bdbfabdb9efe9f0946bf13b4ecb2669158e",
+                "headRepository": {
+                  "nameWithOwner": "org-1/bitbraid-live"
+                },
+                "isDraft": false,
+                "labels": {
+                  "nodes": []
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 6,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "MERGED",
+                "title": "Merged already",
+                "updatedAt": "2026-10-13T16:50:18Z",
+                "url": "https://github.com/org-1/bitbraid-live/pull/6"
+              },
+              {
+                "assignees": {
+                  "nodes": []
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": null,
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "bb-stack-1",
+                "baseRepository": {
+                  "nameWithOwner": "org-1/bitbraid-live"
+                },
+                "comments": {
+                  "totalCount": 0
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": null
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-13T16:50:09Z",
+                "headRefName": "bb-stack-2",
+                "headRefOid": "29d87ba24e0643c98510da6164c00a6a3ba3e473",
+                "headRepository": {
+                  "nameWithOwner": "org-1/bitbraid-live"
+                },
+                "isDraft": false,
+                "labels": {
+                  "nodes": []
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 5,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "OPEN",
+                "title": "Second of a stack",
+                "updatedAt": "2026-10-13T16:50:09Z",
+                "url": "https://github.com/org-1/bitbraid-live/pull/5"
+              },
+              {
+                "assignees": {
+                  "nodes": []
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": null,
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "org-1/bitbraid-live"
+                },
+                "comments": {
+                  "totalCount": 0
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": {
+                          "state": "FAILURE"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-13T16:50:07Z",
+                "headRefName": "bb-stack-1",
+                "headRefOid": "dbf3182aef1c7cd9f17e1bcc5e354887e490e367",
+                "headRepository": {
+                  "nameWithOwner": "org-1/bitbraid-live"
+                },
+                "isDraft": false,
+                "labels": {
+                  "nodes": []
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 4,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "OPEN",
+                "title": "First of a stack",
+                "updatedAt": "2026-10-13T17:07:02Z",
+                "url": "https://github.com/org-1/bitbraid-live/pull/4"
+              },
+              {
+                "assignees": {
+                  "nodes": []
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": null,
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "org-1/bitbraid-live"
+                },
+                "comments": {
+                  "totalCount": 0
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": {
+                          "state": "PENDING"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-13T16:49:55Z",
+                "headRefName": "bb-draft",
+                "headRefOid": "c36f980860cfeaf9d2ae1fc74bd56dc5a3662d23",
+                "headRepository": {
+                  "nameWithOwner": "org-1/bitbraid-live"
+                },
+                "isDraft": true,
+                "labels": {
+                  "nodes": [
+                    {
+                      "color": "0075ca",
+                      "description": "How it looks",
+                      "name": "ui"
+                    }
+                  ]
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 3,
+                "reviewRequests": {
+                  "nodes": [
+                    {
+                      "requestedReviewer": {
+                        "avatarUrl": "https://avatars.example.invalid/user-2",
+                        "login": "user-2",
+                        "name": "User 2",
+                        "url": "https://github.com/user-2"
+                      }
+                    }
+                  ]
+                },
+                "state": "OPEN",
+                "title": "Try another way",
+                "updatedAt": "2026-10-13T17:19:02Z",
+                "url": "https://github.com/org-1/bitbraid-live/pull/3"
+              },
+              {
+                "assignees": {
+                  "nodes": []
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": null,
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "org-1/bitbraid-live"
+                },
+                "comments": {
+                  "totalCount": 0
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": {
+                          "state": "SUCCESS"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-13T16:49:47Z",
+                "headRefName": "bb-changes",
+                "headRefOid": "5d104b6751c298c0b7e17bafe69051f799dd2b1b",
+                "headRepository": {
+                  "nameWithOwner": "org-1/bitbraid-live"
+                },
+                "isDraft": false,
+                "labels": {
+                  "nodes": []
+                },
+                "latestReviews": {
+                  "nodes": [
+                    {
+                      "author": {
+                        "avatarUrl": "https://avatars.example.invalid/user-2",
+                        "login": "user-2",
+                        "name": "User 2",
+                        "url": "https://github.com/user-2"
+                      },
+                      "state": "CHANGES_REQUESTED"
+                    }
+                  ]
+                },
+                "number": 2,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "OPEN",
+                "title": "Change the wording",
+                "updatedAt": "2026-10-13T17:00:54Z",
+                "url": "https://github.com/org-1/bitbraid-live/pull/2"
+              },
+              {
+                "assignees": {
+                  "nodes": [
+                    {
+                      "avatarUrl": "https://avatars.example.invalid/user-1",
+                      "login": "user-1",
+                      "name": null,
+                      "url": "https://github.com/user-1"
+                    }
+                  ]
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": null,
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "org-1/bitbraid-live"
+                },
+                "comments": {
+                  "totalCount": 2
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": {
+                          "state": "FAILURE"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-13T16:49:28Z",
+                "headRefName": "bb-topic",
+                "headRefOid": "5603173c3c75f8702d18046e0deb6d16c776fdb4",
+                "headRepository": {
+                  "nameWithOwner": "org-1/bitbraid-live"
+                },
+                "isDraft": false,
+                "labels": {
+                  "nodes": [
+                    {
+                      "color": "d73a4a",
+                      "description": "Something isn't working",
+                      "name": "bug"
+                    }
+                  ]
+                },
+                "latestReviews": {
+                  "nodes": [
+                    {
+                      "author": {
+                        "avatarUrl": "https://avatars.example.invalid/user-2",
+                        "login": "user-2",
+                        "name": "User 2",
+                        "url": "https://github.com/user-2"
+                      },
+                      "state": "APPROVED"
+                    }
+                  ]
+                },
+                "number": 1,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "OPEN",
+                "title": "Add a file to review",
+                "updatedAt": "2026-10-13T17:18:55Z",
+                "url": "https://github.com/org-1/bitbraid-live/pull/1"
+              }
+            ],
+            "pageInfo": {
+              "endCursor": "Y3Vyc29yOjg=",
+              "hasNextPage": false
+            }
+          }
+        }
+      }
+    }
+  ]
+}

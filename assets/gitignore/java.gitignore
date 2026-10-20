@@ -1,0 +1,9 @@
+# Java: compiled classes and the output of Maven and Gradle.
+*.class
+target/
+build/
+.gradle/
+out/
+hs_err_pid*
+# The Gradle wrapper is meant to be committed.
+!gradle/wrapper/gradle-wrapper.jar

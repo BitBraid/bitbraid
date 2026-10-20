@@ -1,0 +1,43 @@
+name = "nested-tags"
+description = "Tags that point at tags: three annotated tags deep on a commit of main, a lightweight tag that names a tag object, and a nested tag that is the only thing holding a commit no branch has."
+
+[[steps]]
+commit = { message = "n1", file = "a.txt", content = "1" }
+[[steps]]
+commit = { message = "n2", file = "a.txt", content = "2" }
+[[steps]]
+commit = { message = "n3", file = "a.txt", content = "3" }
+# An annotated tag of a commit, a tag of that tag, and a tag of that one.
+[[steps]]
+tag = { name = "inner", message = "the commit", at = "HEAD~1" }
+[[steps]]
+tag = { name = "outer", message = "the tag of the commit", at = "inner" }
+[[steps]]
+tag = { name = "outermost", message = "the tag of the tag", at = "outer" }
+# A reference under refs/tags that holds another tag's object: no tag
+# object of its own, and still not a commit.
+[[steps]]
+tag = { name = "alias", at = "inner" }
+[[steps]]
+tag = { name = "plain", at = "HEAD" }
+# A commit that only a nested tag keeps: made on a branch that is then
+# deleted.
+[[steps]]
+branch = { name = "gone", at = "HEAD~2", checkout = true }
+[[steps]]
+commit = { message = "g1", file = "g.txt", content = "kept by a tag" }
+[[steps]]
+tag = { name = "kept", message = "holds g1" }
+[[steps]]
+tag = { name = "kept-twice", message = "holds the tag that holds g1", at = "kept" }
+[[steps]]
+checkout = { target = "main" }
+[[steps]]
+run = { args = ["branch", "-q", "-D", "gone"] }
+[[steps]]
+run = { args = ["tag", "-d", "kept"] }
+
+[expect]
+commits = 4
+branches = ["main"]
+tags = ["alias", "inner", "kept-twice", "outer", "outermost", "plain"]

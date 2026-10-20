@@ -1,0 +1,7 @@
+# Go: binaries, test binaries and what the tools write.
+/bin/
+*.exe
+*.test
+*.out
+go.work
+go.work.sum

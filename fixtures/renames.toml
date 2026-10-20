@@ -1,0 +1,19 @@
+name = "renames"
+description = "A file renamed then modified, plus a deletion, for rename detection and file history."
+
+[[steps]]
+commit = { message = "add a and keep", files = [{ path = "a.txt", content = "line1\nline2\nline3" }, { path = "keep.txt", content = "keep" }] }
+[[steps]]
+move = { from = "a.txt", to = "b.txt" }
+[[steps]]
+commit = { message = "rename a to b" }
+[[steps]]
+commit = { message = "modify b", file = "b.txt", content = "line1\nline2 changed\nline3" }
+[[steps]]
+remove = { path = "keep.txt" }
+[[steps]]
+commit = { message = "delete keep" }
+
+[expect]
+commits = 4
+branches = ["main"]

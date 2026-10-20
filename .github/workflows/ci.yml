@@ -1,0 +1,93 @@
+name: ci
+
+# The full gate, `cargo xtask ci`, on Linux, Windows and macOS, started by
+# hand (Actions, ci, Run workflow): a run takes hours of runner time, so
+# the gate that keeps main green is the local one.
+
+on:
+  workflow_dispatch:
+
+# One run per branch at a time; a newer one waits for the run going.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  CARGO_TERM_COLOR: always
+  CARGO_INCREMENTAL: 0
+
+jobs:
+  gate:
+    name: xtask ci (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    # A test that hangs ends the job here, not after GitHub's six hours.
+    # Windows builds and starts processes far more slowly: its gate runs
+    # over an hour on the hosted runner.
+    timeout-minutes: ${{ matrix.os == 'windows-latest' && 180 || 90 }}
+    steps:
+      - uses: actions/checkout@v5
+      # The build directory of a full gate is about 11 GB; the Linux
+      # runner's disk holds that only without its preinstalled SDKs.
+      - name: Free disk space
+        if: runner.os == 'Linux'
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+          df -h /
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      # Kept when the tests fail too: building is most of a run's time.
+      - uses: Swatinem/rust-cache@v2
+        with:
+          cache-on-failure: true
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-deny
+      - name: Linux build dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pkg-config libxkbcommon-dev libxkbcommon-x11-dev \
+            libwayland-dev libx11-dev libxcb1-dev libxcb-xkb-dev libvulkan-dev \
+            mesa-vulkan-drivers libfontconfig1-dev libfreetype-dev libssl-dev \
+            libzstd-dev zlib1g-dev
+      # The toolkit compiles its Metal shaders when it is built; Xcode 26
+      # brings the compiler as a component of its own.
+      - name: Metal toolchain
+        if: runner.os == 'macOS'
+        run: |
+          xcrun metal --version || xcodebuild -downloadComponent MetalToolchain
+          xcrun metal --version
+      # The keychain test keeps tokens in the default keychain: one of the
+      # run's own, unlocked, rather than whatever the runner's login one is.
+      - name: Keychain
+        if: runner.os == 'macOS'
+        run: |
+          security create-keychain -p ci bitbraid-ci.keychain
+          security set-keychain-settings bitbraid-ci.keychain
+          security unlock-keychain -p ci bitbraid-ci.keychain
+          security list-keychains -d user -s bitbraid-ci.keychain
+          security default-keychain -d user -s bitbraid-ci.keychain
+      # The tests commit through the engine's git, which takes the name and
+      # email of whoever runs them, as on a developer's machine.
+      - name: Git identity
+        run: |
+          git config --global user.name "BitBraid CI"
+          git config --global user.email "ci@bitbraid.invalid"
+      - run: git --version
+      - run: cargo xtask ci
+      # A picture that differs, as drawn here and beside the stored one.
+      - name: Pictures that differ
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: snapshots-${{ matrix.os }}
+          path: |
+            target/snapshots/*.actual.png
+            target/snapshots/*.difference.png
+          if-no-files-found: ignore
+          retention-days: 7

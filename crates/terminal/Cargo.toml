@@ -1,0 +1,36 @@
+[package]
+name = "bitbraid-terminal"
+description = "The embedded terminal: a shell on a PTY, its screen, keys and mouse to bytes, quoting paths for shells"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+publish.workspace = true
+
+[package.metadata.bitbraid]
+layer = 1
+
+[lints]
+workspace = true
+
+[dependencies]
+# The words it says to a person, from its Fluent files.
+bitbraid-strings = { workspace = true }
+alacritty_terminal = { workspace = true }
+
+[target.'cfg(unix)'.dependencies]
+rustix = { workspace = true, features = ["termios"] }
+
+# The folder a shell is in, on Windows: the system says it only to code
+# the workspace forbids, and `sysinfo` asks for it. With only what it needs
+# for processes, on the `windows` crate the build has already.
+[target.'cfg(windows)'.dependencies]
+sysinfo = { version = "0.37", default-features = false, features = ["system"] }
+
+[dev-dependencies]
+# The catalog's check: every lookup is in it, every message looked up.
+bitbraid-strings = { workspace = true, features = ["check"] }
+# Folders of the tests without the verbatim prefix Windows gives them.
+bitbraid-core = { workspace = true }

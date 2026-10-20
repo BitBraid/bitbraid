@@ -1,0 +1,4 @@
+# Rust: what cargo builds, and what tools leave beside the sources.
+/target/
+**/*.rs.bk
+*.pdb

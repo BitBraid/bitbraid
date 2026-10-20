@@ -1,0 +1,12 @@
+# Node.js: installed packages, build output, logs, local settings.
+node_modules/
+.pnpm-store/
+dist/
+coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.env
+.env.*.local
+*.tsbuildinfo

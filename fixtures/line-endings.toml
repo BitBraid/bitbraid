@@ -1,0 +1,39 @@
+name = "line-endings"
+description = "Files stored with LF, with CRLF and with both, files the eol attribute converts, and commits that change only line endings, change a line of a CRLF file, and add an LF line to one."
+
+# The worktree's text.crlf has CRLF, which the attribute turns into the LF
+# that is stored, so the fixture is clean as git checks it out.
+[[steps]]
+[steps.commit]
+message = "files with every kind of line ending"
+[[steps.commit.files]]
+path = ".gitattributes"
+content = "*.crlf text eol=crlf\n*.lf text eol=lf"
+[[steps.commit.files]]
+path = "lf.txt"
+content = "one\ntwo\nthree"
+[[steps.commit.files]]
+path = "crlf.txt"
+content = "one\r\ntwo\r\nthree\r"
+[[steps.commit.files]]
+path = "mixed.txt"
+content = "a\r\nb\nc\r"
+[[steps.commit.files]]
+path = "text.crlf"
+content = "one\r\ntwo\r\nthree\r"
+[[steps.commit.files]]
+path = "text.lf"
+content = "one\ntwo\nthree"
+
+[[steps]]
+commit = { message = "only the line endings of lf.txt", file = "lf.txt", content = "one\r\ntwo\r\nthree\r" }
+[[steps]]
+commit = { message = "a line of a CRLF file", file = "crlf.txt", content = "one\r\nTWO\r\nthree\r" }
+[[steps]]
+commit = { message = "an LF line in a CRLF file", file = "crlf.txt", content = "one\r\nTWO\r\nthree\r\nfour" }
+[[steps]]
+commit = { message = "mixed.txt to LF and a line of it", file = "mixed.txt", content = "a\nB\nc" }
+
+[expect]
+commits = 5
+branches = ["main"]

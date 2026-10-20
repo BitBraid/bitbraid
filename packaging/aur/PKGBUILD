@@ -1,0 +1,31 @@
+# Maintainer: BitBraid contributors <maintainers@bitbraid.invalid>
+#
+# BitBraid for the AUR, installed from the release's Linux tarball.
+# `cargo xtask package aur` writes this file for a release, with pkgver,
+# _version and the tarball's checksum filled in, and its .SRCINFO beside
+# it, to be published to the AUR by hand. Keep every field on one line:
+# the .SRCINFO is read from them.
+
+pkgname=bitbraid-bin
+pkgver=0.1.0
+_version=0.1.0
+pkgrel=1
+pkgdesc='See and shape the history of a git repository'
+arch=('x86_64')
+url='https://github.com/BitBraid/bitbraid'
+license=('MIT')
+depends=('git' 'glibc' 'gcc-libs' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'zlib' 'vulkan-icd-loader' 'wayland')
+optdepends=('vulkan-driver: a Vulkan driver for the graphics card, to draw the window')
+provides=('bitbraid')
+conflicts=('bitbraid')
+options=('!strip' '!debug')
+source=("https://github.com/BitBraid/bitbraid/releases/download/v${_version}/bitbraid-${_version}-x86_64-linux.tar.gz")
+sha256sums=('SKIP')
+
+package() {
+  cd "bitbraid-${_version}-x86_64-linux"
+  install -d "$pkgdir/usr"
+  cp -r --no-preserve=ownership bin share "$pkgdir/usr/"
+  # The licences where Arch looks for them, under the package's name.
+  ln -s bitbraid "$pkgdir/usr/share/licenses/$pkgname"
+}

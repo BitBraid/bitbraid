@@ -1,0 +1,1954 @@
+{
+  "note": "Recorded from GitLab CE 19.4 on this machine by tests/suite/live_gitlab_ce.rs",
+  "exchanges": [
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/user",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:46 GMT",
+        "etag": "W/\"875f82d5c816a108dcb0674b59bd3ecc\""
+      },
+      "body": {
+        "avatar_url": "https://avatars.example.invalid/user-1",
+        "bio": "",
+        "bot": false,
+        "can_create_group": true,
+        "can_create_project": true,
+        "color_scheme_id": 1,
+        "commit_email": "user-1@example.invalid",
+        "confirmed_at": "2000-01-01T00:00:00Z",
+        "created_at": "2000-01-01T00:00:00Z",
+        "current_sign_in_at": "2000-01-01T00:00:00Z",
+        "discord": "",
+        "email": "user-1@example.invalid",
+        "external": false,
+        "github": "",
+        "id": 100001,
+        "identities": [],
+        "job_title": "",
+        "last_activity_on": "2000-01-01T00:00:00Z",
+        "last_sign_in_at": "2000-01-01T00:00:00Z",
+        "linkedin": "",
+        "local_time": null,
+        "location": "",
+        "locked": false,
+        "name": "User 1",
+        "organization": "",
+        "preferred_language": "en",
+        "private_profile": false,
+        "projects_limit": 100000,
+        "pronouns": null,
+        "public_email": null,
+        "state": "active",
+        "theme_id": 3,
+        "twitter": "",
+        "two_factor_enabled": false,
+        "username": "user-1",
+        "web_url": "http://127.0.0.1:8929/user-1",
+        "website_url": "",
+        "work_information": null
+      }
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/personal_access_tokens/self",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:46 GMT",
+        "etag": "W/\"3d2b12a7fda52785b658f92b5578bb3e\""
+      },
+      "body": {
+        "active": true,
+        "created_at": "2026-10-12T23:42:40.948Z",
+        "description": null,
+        "expires_at": "2026-10-19",
+        "granular": false,
+        "id": 55,
+        "last_used_at": "2026-10-12T23:42:41.922Z",
+        "last_used_ips": [],
+        "name": "Bb-827d464b3a65fec078200064-p9",
+        "revoked": false,
+        "scopes": [
+          "api",
+          "read_user"
+        ],
+        "user_id": 100001
+      }
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/bb-p-group%2Fbb-p-project/issues?state=opened&with_labels_details=true&per_page=100",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:46 GMT",
+        "etag": "W/\"9a6c60bfa4063e5e3825500c8e38ee70\"",
+        "link": "<http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/issues?id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true>; rel=\"first\", <http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/issues?id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true>; rel=\"last\"",
+        "x-page": "1",
+        "x-per-page": "100",
+        "x-total": "1",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "_links": {
+            "award_emoji": "http://127.0.0.1:8929/api/v4/projects/1/issues/1/award_emoji",
+            "closed_as_duplicate_of": null,
+            "notes": "http://127.0.0.1:8929/api/v4/projects/1/issues/1/notes",
+            "project": "http://127.0.0.1:8929/api/v4/projects/1",
+            "self": "http://127.0.0.1:8929/api/v4/projects/1/issues/1"
+          },
+          "assignee": {
+            "avatar_url": "https://avatars.example.invalid/user-2",
+            "id": 100002,
+            "locked": false,
+            "name": "User 2",
+            "public_email": null,
+            "state": "active",
+            "username": "user-2",
+            "web_url": "http://127.0.0.1:8929/user-2"
+          },
+          "assignees": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-2",
+              "id": 100002,
+              "locked": false,
+              "name": "User 2",
+              "public_email": null,
+              "state": "active",
+              "username": "user-2",
+              "web_url": "http://127.0.0.1:8929/user-2"
+            }
+          ],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "closed_at": null,
+          "closed_by": null,
+          "confidential": false,
+          "created_at": "2026-10-12T23:37:57.732Z",
+          "description": "Clicking it does nothing at all.",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "due_date": null,
+          "has_tasks": true,
+          "id": 1,
+          "iid": 1,
+          "imported": false,
+          "imported_from": "none",
+          "issue_type": "issue",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#d9534f",
+              "description": "Something is broken",
+              "description_html": "Something is broken",
+              "id": 4,
+              "name": "bug",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_requests_count": 0,
+          "milestone": {
+            "created_at": "2026-10-12T23:37:33.888Z",
+            "description": null,
+            "due_date": "2026-12-31",
+            "expired": false,
+            "id": 1,
+            "iid": 1,
+            "project_id": 1,
+            "start_date": null,
+            "state": "active",
+            "title": "v1",
+            "updated_at": "2026-10-12T23:37:33.888Z",
+            "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/milestones/1"
+          },
+          "moved_to_id": null,
+          "project_id": 1,
+          "references": {
+            "full": "bb-p-group/bb-p-project#1",
+            "relative": "#1",
+            "short": "#1"
+          },
+          "service_desk_reply_to": null,
+          "severity": "UNKNOWN",
+          "start_date": null,
+          "state": "opened",
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "task_status": "0 of 0 checklist items completed",
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "The button does nothing",
+          "type": "ISSUE",
+          "updated_at": "2026-10-12T23:37:57.732Z",
+          "upvotes": 0,
+          "user_notes_count": 2,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/work_items/1"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/bb-p-group%2Fbb-p-project/issues?state=opened&with_labels_details=true&per_page=100",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:47 GMT",
+        "etag": "W/\"9a6c60bfa4063e5e3825500c8e38ee70\"",
+        "link": "<http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/issues?id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true>; rel=\"first\", <http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/issues?id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true>; rel=\"last\"",
+        "x-page": "1",
+        "x-per-page": "100",
+        "x-total": "1",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "_links": {
+            "award_emoji": "http://127.0.0.1:8929/api/v4/projects/1/issues/1/award_emoji",
+            "closed_as_duplicate_of": null,
+            "notes": "http://127.0.0.1:8929/api/v4/projects/1/issues/1/notes",
+            "project": "http://127.0.0.1:8929/api/v4/projects/1",
+            "self": "http://127.0.0.1:8929/api/v4/projects/1/issues/1"
+          },
+          "assignee": {
+            "avatar_url": "https://avatars.example.invalid/user-2",
+            "id": 100002,
+            "locked": false,
+            "name": "User 2",
+            "public_email": null,
+            "state": "active",
+            "username": "user-2",
+            "web_url": "http://127.0.0.1:8929/user-2"
+          },
+          "assignees": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-2",
+              "id": 100002,
+              "locked": false,
+              "name": "User 2",
+              "public_email": null,
+              "state": "active",
+              "username": "user-2",
+              "web_url": "http://127.0.0.1:8929/user-2"
+            }
+          ],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "closed_at": null,
+          "closed_by": null,
+          "confidential": false,
+          "created_at": "2026-10-12T23:37:57.732Z",
+          "description": "Clicking it does nothing at all.",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "due_date": null,
+          "has_tasks": true,
+          "id": 1,
+          "iid": 1,
+          "imported": false,
+          "imported_from": "none",
+          "issue_type": "issue",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#d9534f",
+              "description": "Something is broken",
+              "description_html": "Something is broken",
+              "id": 4,
+              "name": "bug",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_requests_count": 0,
+          "milestone": {
+            "created_at": "2026-10-12T23:37:33.888Z",
+            "description": null,
+            "due_date": "2026-12-31",
+            "expired": false,
+            "id": 1,
+            "iid": 1,
+            "project_id": 1,
+            "start_date": null,
+            "state": "active",
+            "title": "v1",
+            "updated_at": "2026-10-12T23:37:33.888Z",
+            "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/milestones/1"
+          },
+          "moved_to_id": null,
+          "project_id": 1,
+          "references": {
+            "full": "bb-p-group/bb-p-project#1",
+            "relative": "#1",
+            "short": "#1"
+          },
+          "service_desk_reply_to": null,
+          "severity": "UNKNOWN",
+          "start_date": null,
+          "state": "opened",
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "task_status": "0 of 0 checklist items completed",
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "The button does nothing",
+          "type": "ISSUE",
+          "updated_at": "2026-10-12T23:37:57.732Z",
+          "upvotes": 0,
+          "user_notes_count": 2,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/work_items/1"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/bb-p-group%2Fbb-p-project/issues?state=closed&with_labels_details=true&per_page=100",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:47 GMT",
+        "etag": "W/\"1f10513570ffb42f9c99ee0cd28b3f0d\"",
+        "link": "<http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/issues?id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=closed&with_labels_details=true>; rel=\"first\", <http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/issues?id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=closed&with_labels_details=true>; rel=\"last\"",
+        "x-page": "1",
+        "x-per-page": "100",
+        "x-total": "1",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "_links": {
+            "award_emoji": "http://127.0.0.1:8929/api/v4/projects/1/issues/2/award_emoji",
+            "closed_as_duplicate_of": null,
+            "notes": "http://127.0.0.1:8929/api/v4/projects/1/issues/2/notes",
+            "project": "http://127.0.0.1:8929/api/v4/projects/1",
+            "self": "http://127.0.0.1:8929/api/v4/projects/1/issues/2"
+          },
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-2",
+            "id": 100002,
+            "locked": false,
+            "name": "User 2",
+            "public_email": null,
+            "state": "active",
+            "username": "user-2",
+            "web_url": "http://127.0.0.1:8929/user-2"
+          },
+          "closed_at": "2026-10-12T23:37:59.016Z",
+          "closed_by": {
+            "avatar_url": "https://avatars.example.invalid/user-2",
+            "id": 100002,
+            "locked": false,
+            "name": "User 2",
+            "public_email": null,
+            "state": "active",
+            "username": "user-2",
+            "web_url": "http://127.0.0.1:8929/user-2"
+          },
+          "confidential": false,
+          "created_at": "2026-10-12T23:37:58.799Z",
+          "description": "Too bright.",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "due_date": null,
+          "has_tasks": true,
+          "id": 2,
+          "iid": 2,
+          "imported": false,
+          "imported_from": "none",
+          "issue_type": "issue",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#428bca",
+              "description": "How it looks",
+              "description_html": "How it looks",
+              "id": 5,
+              "name": "ui",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_requests_count": 0,
+          "milestone": null,
+          "moved_to_id": null,
+          "project_id": 1,
+          "references": {
+            "full": "bb-p-group/bb-p-project#2",
+            "relative": "#2",
+            "short": "#2"
+          },
+          "service_desk_reply_to": null,
+          "severity": "UNKNOWN",
+          "start_date": null,
+          "state": "closed",
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "task_status": "0 of 0 checklist items completed",
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Colours are off",
+          "type": "ISSUE",
+          "updated_at": "2026-10-12T23:37:59.129Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/work_items/2"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/bb-p-group%2Fbb-p-project/issues?state=all&with_labels_details=true&per_page=100",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:47 GMT",
+        "etag": "W/\"7648e919d4989650392a06567099f134\"",
+        "link": "<http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/issues?id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=all&with_labels_details=true>; rel=\"first\", <http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/issues?id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=all&with_labels_details=true>; rel=\"last\"",
+        "x-page": "1",
+        "x-per-page": "100",
+        "x-total": "2",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "_links": {
+            "award_emoji": "http://127.0.0.1:8929/api/v4/projects/1/issues/2/award_emoji",
+            "closed_as_duplicate_of": null,
+            "notes": "http://127.0.0.1:8929/api/v4/projects/1/issues/2/notes",
+            "project": "http://127.0.0.1:8929/api/v4/projects/1",
+            "self": "http://127.0.0.1:8929/api/v4/projects/1/issues/2"
+          },
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-2",
+            "id": 100002,
+            "locked": false,
+            "name": "User 2",
+            "public_email": null,
+            "state": "active",
+            "username": "user-2",
+            "web_url": "http://127.0.0.1:8929/user-2"
+          },
+          "closed_at": "2026-10-12T23:37:59.016Z",
+          "closed_by": {
+            "avatar_url": "https://avatars.example.invalid/user-2",
+            "id": 100002,
+            "locked": false,
+            "name": "User 2",
+            "public_email": null,
+            "state": "active",
+            "username": "user-2",
+            "web_url": "http://127.0.0.1:8929/user-2"
+          },
+          "confidential": false,
+          "created_at": "2026-10-12T23:37:58.799Z",
+          "description": "Too bright.",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "due_date": null,
+          "has_tasks": true,
+          "id": 2,
+          "iid": 2,
+          "imported": false,
+          "imported_from": "none",
+          "issue_type": "issue",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#428bca",
+              "description": "How it looks",
+              "description_html": "How it looks",
+              "id": 5,
+              "name": "ui",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_requests_count": 0,
+          "milestone": null,
+          "moved_to_id": null,
+          "project_id": 1,
+          "references": {
+            "full": "bb-p-group/bb-p-project#2",
+            "relative": "#2",
+            "short": "#2"
+          },
+          "service_desk_reply_to": null,
+          "severity": "UNKNOWN",
+          "start_date": null,
+          "state": "closed",
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "task_status": "0 of 0 checklist items completed",
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Colours are off",
+          "type": "ISSUE",
+          "updated_at": "2026-10-12T23:37:59.129Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/work_items/2"
+        },
+        {
+          "_links": {
+            "award_emoji": "http://127.0.0.1:8929/api/v4/projects/1/issues/1/award_emoji",
+            "closed_as_duplicate_of": null,
+            "notes": "http://127.0.0.1:8929/api/v4/projects/1/issues/1/notes",
+            "project": "http://127.0.0.1:8929/api/v4/projects/1",
+            "self": "http://127.0.0.1:8929/api/v4/projects/1/issues/1"
+          },
+          "assignee": {
+            "avatar_url": "https://avatars.example.invalid/user-2",
+            "id": 100002,
+            "locked": false,
+            "name": "User 2",
+            "public_email": null,
+            "state": "active",
+            "username": "user-2",
+            "web_url": "http://127.0.0.1:8929/user-2"
+          },
+          "assignees": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-2",
+              "id": 100002,
+              "locked": false,
+              "name": "User 2",
+              "public_email": null,
+              "state": "active",
+              "username": "user-2",
+              "web_url": "http://127.0.0.1:8929/user-2"
+            }
+          ],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "closed_at": null,
+          "closed_by": null,
+          "confidential": false,
+          "created_at": "2026-10-12T23:37:57.732Z",
+          "description": "Clicking it does nothing at all.",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "due_date": null,
+          "has_tasks": true,
+          "id": 1,
+          "iid": 1,
+          "imported": false,
+          "imported_from": "none",
+          "issue_type": "issue",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#d9534f",
+              "description": "Something is broken",
+              "description_html": "Something is broken",
+              "id": 4,
+              "name": "bug",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_requests_count": 0,
+          "milestone": {
+            "created_at": "2026-10-12T23:37:33.888Z",
+            "description": null,
+            "due_date": "2026-12-31",
+            "expired": false,
+            "id": 1,
+            "iid": 1,
+            "project_id": 1,
+            "start_date": null,
+            "state": "active",
+            "title": "v1",
+            "updated_at": "2026-10-12T23:37:33.888Z",
+            "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/milestones/1"
+          },
+          "moved_to_id": null,
+          "project_id": 1,
+          "references": {
+            "full": "bb-p-group/bb-p-project#1",
+            "relative": "#1",
+            "short": "#1"
+          },
+          "service_desk_reply_to": null,
+          "severity": "UNKNOWN",
+          "start_date": null,
+          "state": "opened",
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "task_status": "0 of 0 checklist items completed",
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "The button does nothing",
+          "type": "ISSUE",
+          "updated_at": "2026-10-12T23:37:57.732Z",
+          "upvotes": 0,
+          "user_notes_count": 2,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/work_items/1"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/bb-p-group%2Fbb-p-project/issues?state=opened&with_labels_details=true&assignee_username=user-1&per_page=100",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:47 GMT",
+        "etag": "W/\"4f53cda18c2baa0c0354bb5f9a3ecbe5\"",
+        "link": "<http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/issues?assignee_username%5B%5D=user-1&id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true>; rel=\"first\", <http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/issues?assignee_username%5B%5D=user-1&id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true>; rel=\"last\"",
+        "x-page": "1",
+        "x-per-page": "100",
+        "x-total": "0",
+        "x-total-pages": "1"
+      },
+      "body": []
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/bb-p-group%2Fbb-p-project/issues?state=opened&with_labels_details=true&author_username=user-1&per_page=100",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:47 GMT",
+        "etag": "W/\"9a6c60bfa4063e5e3825500c8e38ee70\"",
+        "link": "<http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/issues?author_username=user-1&id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true>; rel=\"first\", <http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/issues?author_username=user-1&id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true>; rel=\"last\"",
+        "x-page": "1",
+        "x-per-page": "100",
+        "x-total": "1",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "_links": {
+            "award_emoji": "http://127.0.0.1:8929/api/v4/projects/1/issues/1/award_emoji",
+            "closed_as_duplicate_of": null,
+            "notes": "http://127.0.0.1:8929/api/v4/projects/1/issues/1/notes",
+            "project": "http://127.0.0.1:8929/api/v4/projects/1",
+            "self": "http://127.0.0.1:8929/api/v4/projects/1/issues/1"
+          },
+          "assignee": {
+            "avatar_url": "https://avatars.example.invalid/user-2",
+            "id": 100002,
+            "locked": false,
+            "name": "User 2",
+            "public_email": null,
+            "state": "active",
+            "username": "user-2",
+            "web_url": "http://127.0.0.1:8929/user-2"
+          },
+          "assignees": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-2",
+              "id": 100002,
+              "locked": false,
+              "name": "User 2",
+              "public_email": null,
+              "state": "active",
+              "username": "user-2",
+              "web_url": "http://127.0.0.1:8929/user-2"
+            }
+          ],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "closed_at": null,
+          "closed_by": null,
+          "confidential": false,
+          "created_at": "2026-10-12T23:37:57.732Z",
+          "description": "Clicking it does nothing at all.",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "due_date": null,
+          "has_tasks": true,
+          "id": 1,
+          "iid": 1,
+          "imported": false,
+          "imported_from": "none",
+          "issue_type": "issue",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#d9534f",
+              "description": "Something is broken",
+              "description_html": "Something is broken",
+              "id": 4,
+              "name": "bug",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_requests_count": 0,
+          "milestone": {
+            "created_at": "2026-10-12T23:37:33.888Z",
+            "description": null,
+            "due_date": "2026-12-31",
+            "expired": false,
+            "id": 1,
+            "iid": 1,
+            "project_id": 1,
+            "start_date": null,
+            "state": "active",
+            "title": "v1",
+            "updated_at": "2026-10-12T23:37:33.888Z",
+            "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/milestones/1"
+          },
+          "moved_to_id": null,
+          "project_id": 1,
+          "references": {
+            "full": "bb-p-group/bb-p-project#1",
+            "relative": "#1",
+            "short": "#1"
+          },
+          "service_desk_reply_to": null,
+          "severity": "UNKNOWN",
+          "start_date": null,
+          "state": "opened",
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "task_status": "0 of 0 checklist items completed",
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "The button does nothing",
+          "type": "ISSUE",
+          "updated_at": "2026-10-12T23:37:57.732Z",
+          "upvotes": 0,
+          "user_notes_count": 2,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/work_items/1"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/bb-p-group%2Fbb-p-project",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:47 GMT",
+        "etag": "W/\"edca3ea87135de192efd51fd03af829c\""
+      },
+      "body": {
+        "_links": {
+          "cluster_agents": "http://127.0.0.1:8929/api/v4/projects/1/cluster_agents",
+          "events": "http://127.0.0.1:8929/api/v4/projects/1/events",
+          "issues": "http://127.0.0.1:8929/api/v4/projects/1/issues",
+          "labels": "http://127.0.0.1:8929/api/v4/projects/1/labels",
+          "members": "http://127.0.0.1:8929/api/v4/projects/1/members",
+          "merge_requests": "http://127.0.0.1:8929/api/v4/projects/1/merge_requests",
+          "repo_branches": "http://127.0.0.1:8929/api/v4/projects/1/repository/branches",
+          "self": "http://127.0.0.1:8929/api/v4/projects/1"
+        },
+        "allow_merge_on_skipped_pipeline": null,
+        "analytics_access_level": "enabled",
+        "archived": false,
+        "auto_cancel_pending_pipelines": "enabled",
+        "auto_devops_deploy_strategy": "continuous",
+        "auto_devops_enabled": true,
+        "autoclose_referenced_issues": true,
+        "automatic_rebase_enabled": false,
+        "avatar_url": null,
+        "build_git_strategy": "fetch",
+        "build_timeout": 3600,
+        "builds_access_level": "enabled",
+        "can_create_merge_request_in": true,
+        "ci_allow_fork_pipelines_to_run_in_parent_project": true,
+        "ci_config_path": null,
+        "ci_default_git_depth": 20,
+        "ci_delete_pipelines_in_seconds": null,
+        "ci_display_pipeline_variables": false,
+        "ci_forward_deployment_enabled": true,
+        "ci_forward_deployment_rollback_allowed": true,
+        "ci_id_token_sub_claim_components": [
+          "project_path",
+          "ref_type",
+          "ref"
+        ],
+        "ci_job_token_scope_enabled": false,
+        "ci_pipeline_variables_minimum_override_role": "developer",
+        "ci_push_repository_for_job_token_allowed": false,
+        "ci_separated_caches": true,
+        "ci_skip_branch_pipelines_for_mrs": false,
+        "cicd_catalog_enabled": false,
+        "container_expiration_policy": {
+          "cadence": "1d",
+          "enabled": false,
+          "keep_n": 10,
+          "name_regex": ".*",
+          "name_regex_keep": null,
+          "next_run_at": "2026-10-13T22:45:37.990Z",
+          "older_than": "90d"
+        },
+        "container_registry_access_level": "enabled",
+        "container_registry_enabled": true,
+        "created_at": "2026-10-12T22:45:37.965Z",
+        "creator_id": 1,
+        "default_branch": "main",
+        "description": null,
+        "description_html": "",
+        "emails_disabled": false,
+        "emails_enabled": true,
+        "empty_repo": false,
+        "enforce_auth_checks_on_uploads": true,
+        "environments_access_level": "enabled",
+        "feature_flags_access_level": "enabled",
+        "forking_access_level": "enabled",
+        "forks_count": 1,
+        "group_runners_enabled": true,
+        "http_url_to_repo": "http://127.0.0.1:8929/bb-p-group/bb-p-project.git",
+        "id": 1,
+        "import_error": null,
+        "import_status": "none",
+        "import_type": null,
+        "import_url": null,
+        "infrastructure_access_level": "enabled",
+        "issue_branch_template": null,
+        "issues_access_level": "enabled",
+        "issues_enabled": true,
+        "jobs_enabled": true,
+        "keep_latest_artifact": true,
+        "last_activity_at": "2026-10-12T22:45:37.890Z",
+        "lfs_enabled": true,
+        "marked_for_deletion_at": null,
+        "marked_for_deletion_on": null,
+        "max_artifacts_size": null,
+        "merge_commit_template": null,
+        "merge_method": "merge",
+        "merge_requests_access_level": "enabled",
+        "merge_requests_enabled": true,
+        "model_experiments_access_level": "private",
+        "model_registry_access_level": "private",
+        "monitor_access_level": "enabled",
+        "mr_default_title_template": null,
+        "name": "bb-p-project",
+        "name_with_namespace": "bb-p-group / bb-p-project",
+        "namespace": {
+          "avatar_url": null,
+          "full_path": "bb-p-group",
+          "id": 4,
+          "kind": "group",
+          "name": "bb-p-group",
+          "parent_id": null,
+          "path": "bb-p-group",
+          "web_url": "http://127.0.0.1:8929/groups/bb-p-group"
+        },
+        "only_allow_merge_if_all_discussions_are_resolved": false,
+        "only_allow_merge_if_pipeline_succeeds": false,
+        "open_issues_count": 1,
+        "package_registry_access_level": "enabled",
+        "packages_enabled": true,
+        "pages_access_level": "private",
+        "path": "bb-p-project",
+        "path_with_namespace": "bb-p-group/bb-p-project",
+        "permissions": {
+          "group_access": {
+            "access_level": 40,
+            "notification_level": 3
+          },
+          "project_access": null
+        },
+        "printing_merge_request_link_enabled": true,
+        "protect_merge_request_pipelines": true,
+        "public_jobs": true,
+        "readme_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/blob/main/README.md",
+        "releases_access_level": "enabled",
+        "remove_source_branch_after_merge": true,
+        "repository_access_level": "enabled",
+        "repository_object_format": "sha1",
+        "request_access_enabled": true,
+        "resolve_outdated_diff_discussions": false,
+        "resource_group_default_process_mode": "unordered",
+        "restrict_user_defined_variables": false,
+        "runner_token_expiration_interval": null,
+        "runners_token": "runners-token-6",
+        "security_and_compliance_access_level": "private",
+        "service_desk_address": null,
+        "service_desk_enabled": false,
+        "shared_runners_enabled": true,
+        "shared_with_groups": [],
+        "show_diff_preview_in_email": true,
+        "snippets_access_level": "enabled",
+        "snippets_enabled": true,
+        "squash_commit_template": null,
+        "squash_option": "default_off",
+        "ssh_url_to_repo": "ssh://git@127.0.0.1:2224/bb-p-group/bb-p-project.git",
+        "star_count": 1,
+        "suggestion_commit_message": null,
+        "tag_list": [],
+        "topics": [],
+        "updated_at": "2026-10-12T23:37:42.569Z",
+        "visibility": "private",
+        "warn_about_potentially_unwanted_characters": true,
+        "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project",
+        "wiki_access_level": "enabled",
+        "wiki_enabled": true
+      }
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/todos?project_id=1&type=Issue&state=pending&per_page=100",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:47 GMT",
+        "etag": "W/\"4f53cda18c2baa0c0354bb5f9a3ecbe5\"",
+        "link": "<http://127.0.0.1:8929/api/v4/todos?page=1&per_page=100&project_id=1&state=pending&type=Issue>; rel=\"first\", <http://127.0.0.1:8929/api/v4/todos?page=1&per_page=100&project_id=1&state=pending&type=Issue>; rel=\"last\"",
+        "x-page": "1",
+        "x-per-page": "100",
+        "x-total": "0",
+        "x-total-pages": "1"
+      },
+      "body": []
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/todos?project_id=1&type=Issue&state=done&per_page=100",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:48 GMT",
+        "etag": "W/\"8fb1890d21a57e7354a5e2ce317109a1\"",
+        "link": "<http://127.0.0.1:8929/api/v4/todos?page=1&per_page=100&project_id=1&state=done&type=Issue>; rel=\"first\", <http://127.0.0.1:8929/api/v4/todos?page=1&per_page=100&project_id=1&state=done&type=Issue>; rel=\"last\"",
+        "x-page": "1",
+        "x-per-page": "100",
+        "x-total": "1",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "action_name": "directly_addressed",
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-2",
+            "id": 100002,
+            "locked": false,
+            "name": "User 2",
+            "public_email": null,
+            "state": "active",
+            "username": "user-2",
+            "web_url": "http://127.0.0.1:8929/user-2"
+          },
+          "body": "@user-1 which button do you mean?",
+          "created_at": "2026-10-12T23:37:58.283Z",
+          "id": 9,
+          "project": {
+            "created_at": "2026-10-12T22:45:37.965Z",
+            "description": null,
+            "id": 1,
+            "name": "bb-p-project",
+            "name_with_namespace": "bb-p-group / bb-p-project",
+            "path": "bb-p-project",
+            "path_with_namespace": "bb-p-group/bb-p-project"
+          },
+          "state": "done",
+          "target": {
+            "_links": {
+              "award_emoji": "http://127.0.0.1:8929/api/v4/projects/1/issues/1/award_emoji",
+              "closed_as_duplicate_of": null,
+              "notes": "http://127.0.0.1:8929/api/v4/projects/1/issues/1/notes",
+              "project": "http://127.0.0.1:8929/api/v4/projects/1",
+              "self": "http://127.0.0.1:8929/api/v4/projects/1/issues/1"
+            },
+            "assignee": {
+              "avatar_url": "https://avatars.example.invalid/user-2",
+              "id": 100002,
+              "locked": false,
+              "name": "User 2",
+              "public_email": null,
+              "state": "active",
+              "username": "user-2",
+              "web_url": "http://127.0.0.1:8929/user-2"
+            },
+            "assignees": [
+              {
+                "avatar_url": "https://avatars.example.invalid/user-2",
+                "id": 100002,
+                "locked": false,
+                "name": "User 2",
+                "public_email": null,
+                "state": "active",
+                "username": "user-2",
+                "web_url": "http://127.0.0.1:8929/user-2"
+              }
+            ],
+            "author": {
+              "avatar_url": "https://avatars.example.invalid/user-1",
+              "id": 100001,
+              "locked": false,
+              "name": "User 1",
+              "public_email": null,
+              "state": "active",
+              "username": "user-1",
+              "web_url": "http://127.0.0.1:8929/user-1"
+            },
+            "closed_at": null,
+            "closed_by": null,
+            "confidential": false,
+            "created_at": "2026-10-12T23:37:57.732Z",
+            "description": "Clicking it does nothing at all.",
+            "discussion_locked": null,
+            "downvotes": 0,
+            "due_date": null,
+            "has_tasks": true,
+            "id": 1,
+            "iid": 1,
+            "imported": false,
+            "imported_from": "none",
+            "issue_type": "issue",
+            "labels": [
+              "bug"
+            ],
+            "merge_requests_count": 0,
+            "milestone": {
+              "created_at": "2026-10-12T23:37:33.888Z",
+              "description": null,
+              "due_date": "2026-12-31",
+              "expired": false,
+              "id": 1,
+              "iid": 1,
+              "project_id": 1,
+              "start_date": null,
+              "state": "active",
+              "title": "v1",
+              "updated_at": "2026-10-12T23:37:33.888Z",
+              "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/milestones/1"
+            },
+            "moved_to_id": null,
+            "project_id": 1,
+            "references": {
+              "full": "bb-p-group/bb-p-project#1",
+              "relative": "#1",
+              "short": "#1"
+            },
+            "service_desk_reply_to": null,
+            "severity": "UNKNOWN",
+            "start_date": null,
+            "state": "opened",
+            "task_completion_status": {
+              "completed_count": 0,
+              "count": 0
+            },
+            "task_status": "0 of 0 checklist items completed",
+            "time_stats": {
+              "human_time_estimate": null,
+              "human_total_time_spent": null,
+              "time_estimate": 0,
+              "total_time_spent": 0
+            },
+            "title": "The button does nothing",
+            "type": "ISSUE",
+            "updated_at": "2026-10-12T23:37:57.732Z",
+            "upvotes": 0,
+            "user_notes_count": 2,
+            "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/work_items/1"
+          },
+          "target_type": "Issue",
+          "target_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/work_items/1#note_21",
+          "updated_at": "2026-10-12T23:37:58.533Z"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/bb-p-group%2Fbb-p-project/issues?state=opened&with_labels_details=true&iids[]=1&per_page=100",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:48 GMT",
+        "etag": "W/\"9a6c60bfa4063e5e3825500c8e38ee70\"",
+        "link": "<http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/issues?id=bb-p-group%2Fbb-p-project&iids%5B%5D=1&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true>; rel=\"first\", <http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/issues?id=bb-p-group%2Fbb-p-project&iids%5B%5D=1&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true>; rel=\"last\"",
+        "x-page": "1",
+        "x-per-page": "100",
+        "x-total": "1",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "_links": {
+            "award_emoji": "http://127.0.0.1:8929/api/v4/projects/1/issues/1/award_emoji",
+            "closed_as_duplicate_of": null,
+            "notes": "http://127.0.0.1:8929/api/v4/projects/1/issues/1/notes",
+            "project": "http://127.0.0.1:8929/api/v4/projects/1",
+            "self": "http://127.0.0.1:8929/api/v4/projects/1/issues/1"
+          },
+          "assignee": {
+            "avatar_url": "https://avatars.example.invalid/user-2",
+            "id": 100002,
+            "locked": false,
+            "name": "User 2",
+            "public_email": null,
+            "state": "active",
+            "username": "user-2",
+            "web_url": "http://127.0.0.1:8929/user-2"
+          },
+          "assignees": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-2",
+              "id": 100002,
+              "locked": false,
+              "name": "User 2",
+              "public_email": null,
+              "state": "active",
+              "username": "user-2",
+              "web_url": "http://127.0.0.1:8929/user-2"
+            }
+          ],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "closed_at": null,
+          "closed_by": null,
+          "confidential": false,
+          "created_at": "2026-10-12T23:37:57.732Z",
+          "description": "Clicking it does nothing at all.",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "due_date": null,
+          "has_tasks": true,
+          "id": 1,
+          "iid": 1,
+          "imported": false,
+          "imported_from": "none",
+          "issue_type": "issue",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#d9534f",
+              "description": "Something is broken",
+              "description_html": "Something is broken",
+              "id": 4,
+              "name": "bug",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_requests_count": 0,
+          "milestone": {
+            "created_at": "2026-10-12T23:37:33.888Z",
+            "description": null,
+            "due_date": "2026-12-31",
+            "expired": false,
+            "id": 1,
+            "iid": 1,
+            "project_id": 1,
+            "start_date": null,
+            "state": "active",
+            "title": "v1",
+            "updated_at": "2026-10-12T23:37:33.888Z",
+            "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/milestones/1"
+          },
+          "moved_to_id": null,
+          "project_id": 1,
+          "references": {
+            "full": "bb-p-group/bb-p-project#1",
+            "relative": "#1",
+            "short": "#1"
+          },
+          "service_desk_reply_to": null,
+          "severity": "UNKNOWN",
+          "start_date": null,
+          "state": "opened",
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "task_status": "0 of 0 checklist items completed",
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "The button does nothing",
+          "type": "ISSUE",
+          "updated_at": "2026-10-12T23:37:57.732Z",
+          "upvotes": 0,
+          "user_notes_count": 2,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/work_items/1"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/bb-p-group%2Fbb-p-project/issues?state=opened&with_labels_details=true&labels=bug&per_page=100",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:48 GMT",
+        "etag": "W/\"9a6c60bfa4063e5e3825500c8e38ee70\"",
+        "link": "<http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/issues?id=bb-p-group%2Fbb-p-project&labels%5B%5D=bug&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true>; rel=\"first\", <http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/issues?id=bb-p-group%2Fbb-p-project&labels%5B%5D=bug&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true>; rel=\"last\"",
+        "x-page": "1",
+        "x-per-page": "100",
+        "x-total": "1",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "_links": {
+            "award_emoji": "http://127.0.0.1:8929/api/v4/projects/1/issues/1/award_emoji",
+            "closed_as_duplicate_of": null,
+            "notes": "http://127.0.0.1:8929/api/v4/projects/1/issues/1/notes",
+            "project": "http://127.0.0.1:8929/api/v4/projects/1",
+            "self": "http://127.0.0.1:8929/api/v4/projects/1/issues/1"
+          },
+          "assignee": {
+            "avatar_url": "https://avatars.example.invalid/user-2",
+            "id": 100002,
+            "locked": false,
+            "name": "User 2",
+            "public_email": null,
+            "state": "active",
+            "username": "user-2",
+            "web_url": "http://127.0.0.1:8929/user-2"
+          },
+          "assignees": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-2",
+              "id": 100002,
+              "locked": false,
+              "name": "User 2",
+              "public_email": null,
+              "state": "active",
+              "username": "user-2",
+              "web_url": "http://127.0.0.1:8929/user-2"
+            }
+          ],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "closed_at": null,
+          "closed_by": null,
+          "confidential": false,
+          "created_at": "2026-10-12T23:37:57.732Z",
+          "description": "Clicking it does nothing at all.",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "due_date": null,
+          "has_tasks": true,
+          "id": 1,
+          "iid": 1,
+          "imported": false,
+          "imported_from": "none",
+          "issue_type": "issue",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#d9534f",
+              "description": "Something is broken",
+              "description_html": "Something is broken",
+              "id": 4,
+              "name": "bug",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_requests_count": 0,
+          "milestone": {
+            "created_at": "2026-10-12T23:37:33.888Z",
+            "description": null,
+            "due_date": "2026-12-31",
+            "expired": false,
+            "id": 1,
+            "iid": 1,
+            "project_id": 1,
+            "start_date": null,
+            "state": "active",
+            "title": "v1",
+            "updated_at": "2026-10-12T23:37:33.888Z",
+            "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/milestones/1"
+          },
+          "moved_to_id": null,
+          "project_id": 1,
+          "references": {
+            "full": "bb-p-group/bb-p-project#1",
+            "relative": "#1",
+            "short": "#1"
+          },
+          "service_desk_reply_to": null,
+          "severity": "UNKNOWN",
+          "start_date": null,
+          "state": "opened",
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "task_status": "0 of 0 checklist items completed",
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "The button does nothing",
+          "type": "ISSUE",
+          "updated_at": "2026-10-12T23:37:57.732Z",
+          "upvotes": 0,
+          "user_notes_count": 2,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/work_items/1"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/bb-p-group%2Fbb-p-project/issues?state=opened&with_labels_details=true&assignee_username=user-2&per_page=100",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:48 GMT",
+        "etag": "W/\"9a6c60bfa4063e5e3825500c8e38ee70\"",
+        "link": "<http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/issues?assignee_username%5B%5D=user-2&id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true>; rel=\"first\", <http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/issues?assignee_username%5B%5D=user-2&id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true>; rel=\"last\"",
+        "x-page": "1",
+        "x-per-page": "100",
+        "x-total": "1",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "_links": {
+            "award_emoji": "http://127.0.0.1:8929/api/v4/projects/1/issues/1/award_emoji",
+            "closed_as_duplicate_of": null,
+            "notes": "http://127.0.0.1:8929/api/v4/projects/1/issues/1/notes",
+            "project": "http://127.0.0.1:8929/api/v4/projects/1",
+            "self": "http://127.0.0.1:8929/api/v4/projects/1/issues/1"
+          },
+          "assignee": {
+            "avatar_url": "https://avatars.example.invalid/user-2",
+            "id": 100002,
+            "locked": false,
+            "name": "User 2",
+            "public_email": null,
+            "state": "active",
+            "username": "user-2",
+            "web_url": "http://127.0.0.1:8929/user-2"
+          },
+          "assignees": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-2",
+              "id": 100002,
+              "locked": false,
+              "name": "User 2",
+              "public_email": null,
+              "state": "active",
+              "username": "user-2",
+              "web_url": "http://127.0.0.1:8929/user-2"
+            }
+          ],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "closed_at": null,
+          "closed_by": null,
+          "confidential": false,
+          "created_at": "2026-10-12T23:37:57.732Z",
+          "description": "Clicking it does nothing at all.",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "due_date": null,
+          "has_tasks": true,
+          "id": 1,
+          "iid": 1,
+          "imported": false,
+          "imported_from": "none",
+          "issue_type": "issue",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#d9534f",
+              "description": "Something is broken",
+              "description_html": "Something is broken",
+              "id": 4,
+              "name": "bug",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_requests_count": 0,
+          "milestone": {
+            "created_at": "2026-10-12T23:37:33.888Z",
+            "description": null,
+            "due_date": "2026-12-31",
+            "expired": false,
+            "id": 1,
+            "iid": 1,
+            "project_id": 1,
+            "start_date": null,
+            "state": "active",
+            "title": "v1",
+            "updated_at": "2026-10-12T23:37:33.888Z",
+            "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/milestones/1"
+          },
+          "moved_to_id": null,
+          "project_id": 1,
+          "references": {
+            "full": "bb-p-group/bb-p-project#1",
+            "relative": "#1",
+            "short": "#1"
+          },
+          "service_desk_reply_to": null,
+          "severity": "UNKNOWN",
+          "start_date": null,
+          "state": "opened",
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "task_status": "0 of 0 checklist items completed",
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "The button does nothing",
+          "type": "ISSUE",
+          "updated_at": "2026-10-12T23:37:57.732Z",
+          "upvotes": 0,
+          "user_notes_count": 2,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/work_items/1"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/bb-p-group%2Fbb-p-project/issues?state=opened&with_labels_details=true&milestone=v1&search=button&per_page=100",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:48 GMT",
+        "etag": "W/\"9a6c60bfa4063e5e3825500c8e38ee70\"",
+        "link": "<http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/issues?id=bb-p-group%2Fbb-p-project&milestone=v1&order_by=created_at&page=1&per_page=100&search=button&sort=desc&state=opened&with_labels_details=true>; rel=\"first\", <http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/issues?id=bb-p-group%2Fbb-p-project&milestone=v1&order_by=created_at&page=1&per_page=100&search=button&sort=desc&state=opened&with_labels_details=true>; rel=\"last\"",
+        "x-page": "1",
+        "x-per-page": "100",
+        "x-total": "1",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "_links": {
+            "award_emoji": "http://127.0.0.1:8929/api/v4/projects/1/issues/1/award_emoji",
+            "closed_as_duplicate_of": null,
+            "notes": "http://127.0.0.1:8929/api/v4/projects/1/issues/1/notes",
+            "project": "http://127.0.0.1:8929/api/v4/projects/1",
+            "self": "http://127.0.0.1:8929/api/v4/projects/1/issues/1"
+          },
+          "assignee": {
+            "avatar_url": "https://avatars.example.invalid/user-2",
+            "id": 100002,
+            "locked": false,
+            "name": "User 2",
+            "public_email": null,
+            "state": "active",
+            "username": "user-2",
+            "web_url": "http://127.0.0.1:8929/user-2"
+          },
+          "assignees": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-2",
+              "id": 100002,
+              "locked": false,
+              "name": "User 2",
+              "public_email": null,
+              "state": "active",
+              "username": "user-2",
+              "web_url": "http://127.0.0.1:8929/user-2"
+            }
+          ],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "closed_at": null,
+          "closed_by": null,
+          "confidential": false,
+          "created_at": "2026-10-12T23:37:57.732Z",
+          "description": "Clicking it does nothing at all.",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "due_date": null,
+          "has_tasks": true,
+          "id": 1,
+          "iid": 1,
+          "imported": false,
+          "imported_from": "none",
+          "issue_type": "issue",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#d9534f",
+              "description": "Something is broken",
+              "description_html": "Something is broken",
+              "id": 4,
+              "name": "bug",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_requests_count": 0,
+          "milestone": {
+            "created_at": "2026-10-12T23:37:33.888Z",
+            "description": null,
+            "due_date": "2026-12-31",
+            "expired": false,
+            "id": 1,
+            "iid": 1,
+            "project_id": 1,
+            "start_date": null,
+            "state": "active",
+            "title": "v1",
+            "updated_at": "2026-10-12T23:37:33.888Z",
+            "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/milestones/1"
+          },
+          "moved_to_id": null,
+          "project_id": 1,
+          "references": {
+            "full": "bb-p-group/bb-p-project#1",
+            "relative": "#1",
+            "short": "#1"
+          },
+          "service_desk_reply_to": null,
+          "severity": "UNKNOWN",
+          "start_date": null,
+          "state": "opened",
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "task_status": "0 of 0 checklist items completed",
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "The button does nothing",
+          "type": "ISSUE",
+          "updated_at": "2026-10-12T23:37:57.732Z",
+          "upvotes": 0,
+          "user_notes_count": 2,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/work_items/1"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/bb-p-group%2Fbb-p-project/issues?state=all&with_labels_details=true&not[labels]=bug&per_page=100",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:48 GMT",
+        "etag": "W/\"1f10513570ffb42f9c99ee0cd28b3f0d\"",
+        "link": "<http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/issues?id=bb-p-group%2Fbb-p-project&not%5Blabels%5D%5B%5D=bug&order_by=created_at&page=1&per_page=100&sort=desc&state=all&with_labels_details=true>; rel=\"first\", <http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/issues?id=bb-p-group%2Fbb-p-project&not%5Blabels%5D%5B%5D=bug&order_by=created_at&page=1&per_page=100&sort=desc&state=all&with_labels_details=true>; rel=\"last\"",
+        "x-page": "1",
+        "x-per-page": "100",
+        "x-total": "1",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "_links": {
+            "award_emoji": "http://127.0.0.1:8929/api/v4/projects/1/issues/2/award_emoji",
+            "closed_as_duplicate_of": null,
+            "notes": "http://127.0.0.1:8929/api/v4/projects/1/issues/2/notes",
+            "project": "http://127.0.0.1:8929/api/v4/projects/1",
+            "self": "http://127.0.0.1:8929/api/v4/projects/1/issues/2"
+          },
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-2",
+            "id": 100002,
+            "locked": false,
+            "name": "User 2",
+            "public_email": null,
+            "state": "active",
+            "username": "user-2",
+            "web_url": "http://127.0.0.1:8929/user-2"
+          },
+          "closed_at": "2026-10-12T23:37:59.016Z",
+          "closed_by": {
+            "avatar_url": "https://avatars.example.invalid/user-2",
+            "id": 100002,
+            "locked": false,
+            "name": "User 2",
+            "public_email": null,
+            "state": "active",
+            "username": "user-2",
+            "web_url": "http://127.0.0.1:8929/user-2"
+          },
+          "confidential": false,
+          "created_at": "2026-10-12T23:37:58.799Z",
+          "description": "Too bright.",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "due_date": null,
+          "has_tasks": true,
+          "id": 2,
+          "iid": 2,
+          "imported": false,
+          "imported_from": "none",
+          "issue_type": "issue",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#428bca",
+              "description": "How it looks",
+              "description_html": "How it looks",
+              "id": 5,
+              "name": "ui",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_requests_count": 0,
+          "milestone": null,
+          "moved_to_id": null,
+          "project_id": 1,
+          "references": {
+            "full": "bb-p-group/bb-p-project#2",
+            "relative": "#2",
+            "short": "#2"
+          },
+          "service_desk_reply_to": null,
+          "severity": "UNKNOWN",
+          "start_date": null,
+          "state": "closed",
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "task_status": "0 of 0 checklist items completed",
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Colours are off",
+          "type": "ISSUE",
+          "updated_at": "2026-10-12T23:37:59.129Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/work_items/2"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/bb-p-group%2Fbb-p-project/issues/1",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:48 GMT",
+        "etag": "W/\"dd91866841c46406c270847d8d991df6\""
+      },
+      "body": {
+        "_links": {
+          "award_emoji": "http://127.0.0.1:8929/api/v4/projects/1/issues/1/award_emoji",
+          "closed_as_duplicate_of": null,
+          "notes": "http://127.0.0.1:8929/api/v4/projects/1/issues/1/notes",
+          "project": "http://127.0.0.1:8929/api/v4/projects/1",
+          "self": "http://127.0.0.1:8929/api/v4/projects/1/issues/1"
+        },
+        "assignee": {
+          "avatar_url": "https://avatars.example.invalid/user-2",
+          "id": 100002,
+          "locked": false,
+          "name": "User 2",
+          "public_email": null,
+          "state": "active",
+          "username": "user-2",
+          "web_url": "http://127.0.0.1:8929/user-2"
+        },
+        "assignees": [
+          {
+            "avatar_url": "https://avatars.example.invalid/user-2",
+            "id": 100002,
+            "locked": false,
+            "name": "User 2",
+            "public_email": null,
+            "state": "active",
+            "username": "user-2",
+            "web_url": "http://127.0.0.1:8929/user-2"
+          }
+        ],
+        "author": {
+          "avatar_url": "https://avatars.example.invalid/user-1",
+          "id": 100001,
+          "locked": false,
+          "name": "User 1",
+          "public_email": null,
+          "state": "active",
+          "username": "user-1",
+          "web_url": "http://127.0.0.1:8929/user-1"
+        },
+        "closed_at": null,
+        "closed_by": null,
+        "confidential": false,
+        "created_at": "2026-10-12T23:37:57.732Z",
+        "description": "Clicking it does nothing at all.",
+        "discussion_locked": null,
+        "downvotes": 0,
+        "due_date": null,
+        "has_tasks": true,
+        "id": 1,
+        "iid": 1,
+        "imported": false,
+        "imported_from": "none",
+        "issue_type": "issue",
+        "labels": [
+          "bug"
+        ],
+        "merge_requests_count": 0,
+        "milestone": {
+          "created_at": "2026-10-12T23:37:33.888Z",
+          "description": null,
+          "due_date": "2026-12-31",
+          "expired": false,
+          "id": 1,
+          "iid": 1,
+          "project_id": 1,
+          "start_date": null,
+          "state": "active",
+          "title": "v1",
+          "updated_at": "2026-10-12T23:37:33.888Z",
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/milestones/1"
+        },
+        "moved_to_id": null,
+        "project_id": 1,
+        "references": {
+          "full": "bb-p-group/bb-p-project#1",
+          "relative": "#1",
+          "short": "#1"
+        },
+        "service_desk_reply_to": null,
+        "severity": "UNKNOWN",
+        "start_date": null,
+        "state": "opened",
+        "subscribed": true,
+        "task_completion_status": {
+          "completed_count": 0,
+          "count": 0
+        },
+        "task_status": "0 of 0 checklist items completed",
+        "time_stats": {
+          "human_time_estimate": null,
+          "human_total_time_spent": null,
+          "time_estimate": 0,
+          "total_time_spent": 0
+        },
+        "title": "The button does nothing",
+        "type": "ISSUE",
+        "updated_at": "2026-10-12T23:37:57.732Z",
+        "upvotes": 0,
+        "user_notes_count": 2,
+        "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/work_items/1"
+      }
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/bb-p-group%2Fbb-p-project/issues/1/notes?sort=asc&order_by=created_at&per_page=100",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:48 GMT",
+        "etag": "W/\"a8b6bc765f53cdcaafc86dfcb05ddfe7\"",
+        "link": "<http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/issues/1/notes?activity_filter=all_notes&id=bb-p-group%2Fbb-p-project&noteable_id=1&order_by=created_at&page=1&per_page=100&sort=asc>; rel=\"first\", <http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/issues/1/notes?activity_filter=all_notes&id=bb-p-group%2Fbb-p-project&noteable_id=1&order_by=created_at&page=1&per_page=100&sort=asc>; rel=\"last\"",
+        "x-page": "1",
+        "x-per-page": "100",
+        "x-total": "3",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "body": "assigned to @user-2",
+          "commands_changes": {},
+          "confidential": false,
+          "created_at": "2026-10-12T23:37:57.877Z",
+          "id": 20,
+          "imported": false,
+          "imported_from": "none",
+          "internal": false,
+          "noteable_id": 1,
+          "noteable_iid": 1,
+          "noteable_type": "Issue",
+          "project_id": 1,
+          "resolvable": false,
+          "system": true,
+          "type": null,
+          "updated_at": "2026-10-12T23:37:57.878Z"
+        },
+        {
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-2",
+            "id": 100002,
+            "locked": false,
+            "name": "User 2",
+            "public_email": null,
+            "state": "active",
+            "username": "user-2",
+            "web_url": "http://127.0.0.1:8929/user-2"
+          },
+          "body": "@user-1 which button do you mean?",
+          "commands_changes": {},
+          "confidential": false,
+          "created_at": "2026-10-12T23:37:58.196Z",
+          "id": 21,
+          "imported": false,
+          "imported_from": "none",
+          "internal": false,
+          "noteable_id": 1,
+          "noteable_iid": 1,
+          "noteable_type": "Issue",
+          "project_id": 1,
+          "resolvable": false,
+          "system": false,
+          "type": null,
+          "updated_at": "2026-10-12T23:37:58.196Z"
+        },
+        {
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "body": "The one at the top.",
+          "commands_changes": {},
+          "confidential": false,
+          "created_at": "2026-10-12T23:37:58.496Z",
+          "id": 22,
+          "imported": false,
+          "imported_from": "none",
+          "internal": false,
+          "noteable_id": 1,
+          "noteable_iid": 1,
+          "noteable_type": "Issue",
+          "project_id": 1,
+          "resolvable": false,
+          "system": false,
+          "type": null,
+          "updated_at": "2026-10-12T23:37:58.496Z"
+        }
+      ]
+    }
+  ]
+}

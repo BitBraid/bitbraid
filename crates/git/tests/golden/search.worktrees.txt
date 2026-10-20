@@ -1,0 +1,33 @@
+*  ~ uncommitted work in a worktree on main
+*  07bf8cc Merge what was tried
+|\
+| | *  ~ uncommitted work in a worktree on feature/tried
+| |/
+| *  4a9342f drop the cache again
+| *  ba3e58a try a cache
+| | *  ~ uncommitted work in a worktree on wip
+| | *  4703a86 wip: Ada's unfinished idea
+| | | *  ~ uncommitted work in a worktree on pages
+| | | *  f822663 pages: landing
+|/ /
+*  fb29207 Merge dates into main
+|\
+* |  8ff0eb4 docs: explain needle search
+| | *  ~ uncommitted work in a worktree on feature/dates
+| |/
+| *  5a2d134 dates: relative ages
+|/
+*  c1cb217 Empty commit by a guest
+*  91d36cc rename parser to grammar
+*  4296ec4 Merge the lexer
+|\
+* |  8ef99f1 FIX parser errors
+| | *  ~ uncommitted work in a worktree on feature/lexer
+| |/
+| *  0dc9163 lexer: handle quotes (fixes #12)
+| *  85ad9df Lexer: split on spaces
+|/
+*  0721e8f add parser
+| *  ~ uncommitted work in a worktree detached, at the first commit
+|/
+*  bbaf21a Add README

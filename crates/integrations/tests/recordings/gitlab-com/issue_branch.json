@@ -1,0 +1,195 @@
+{
+  "note": "Recorded from gitlab.com by tests/suite/live_gitlab_com.rs: the test account's public projects",
+  "exchanges": [
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/user",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Tue, 13 Oct 2026 18:43:38 GMT",
+        "etag": "W/\"dc7b6a016c64342d9f0200b64bfe1d24\"",
+        "ratelimit-limit": "2000",
+        "ratelimit-remaining": "1985",
+        "ratelimit-reset": "1791917040"
+      },
+      "body": {
+        "avatar_url": "https://avatars.example.invalid/user-1",
+        "bio": "",
+        "bot": false,
+        "can_create_group": true,
+        "can_create_project": true,
+        "color_scheme_id": 1,
+        "commit_email": "user-1@example.invalid",
+        "confirmed_at": "2000-01-01T00:00:00Z",
+        "created_at": "2000-01-01T00:00:00Z",
+        "current_sign_in_at": "2000-01-01T00:00:00Z",
+        "discord": "",
+        "email": "user-1@example.invalid",
+        "external": false,
+        "extra_shared_runners_minutes_limit": null,
+        "github": "",
+        "id": 100001,
+        "identities": [],
+        "job_title": "",
+        "last_activity_on": "2000-01-01T00:00:00Z",
+        "last_sign_in_at": "2000-01-01T00:00:00Z",
+        "linkedin": "",
+        "local_time": null,
+        "location": "",
+        "locked": false,
+        "name": "User 1",
+        "organization": "",
+        "preferred_language": "en",
+        "private_profile": false,
+        "projects_limit": 100000,
+        "pronouns": null,
+        "public_email": null,
+        "scim_identities": [],
+        "shared_runners_minutes_limit": null,
+        "state": "active",
+        "theme_id": 3,
+        "twitter": "",
+        "two_factor_enabled": false,
+        "username": "user-1",
+        "web_url": "https://gitlab.com/user-1",
+        "website_url": "",
+        "work_information": null
+      }
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/personal_access_tokens/self",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Tue, 13 Oct 2026 18:43:38 GMT",
+        "etag": "W/\"3c1092c3a6f9dabb11fad4280ffff6c3\"",
+        "ratelimit-limit": "2000",
+        "ratelimit-remaining": "1984",
+        "ratelimit-reset": "1791917040"
+      },
+      "body": {
+        "active": true,
+        "created_at": "2026-10-13T18:14:53.420Z",
+        "description": "",
+        "expires_at": "2026-11-12",
+        "granular": false,
+        "id": 300122,
+        "last_used_at": "2026-10-13T18:38:17.089Z",
+        "last_used_ips": [],
+        "name": "BitBraid test",
+        "revoked": false,
+        "scopes": [
+          "api",
+          "read_user"
+        ],
+        "user_id": 100001
+      }
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/user-1%2Fbitbraid-live/issues/3",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Tue, 13 Oct 2026 18:43:41 GMT",
+        "etag": "W/\"3859d6377ac723e34e1f792cbb1e1040\"",
+        "ratelimit-limit": "2000",
+        "ratelimit-remaining": "1983",
+        "ratelimit-reset": "1791917040"
+      },
+      "body": {
+        "_links": {
+          "award_emoji": "https://gitlab.com/api/v4/projects/300124/issues/3/award_emoji",
+          "closed_as_duplicate_of": null,
+          "notes": "https://gitlab.com/api/v4/projects/300124/issues/3/notes",
+          "project": "https://gitlab.com/api/v4/projects/300124",
+          "self": "https://gitlab.com/api/v4/projects/300124/issues/3"
+        },
+        "assignee": null,
+        "assignees": [],
+        "author": {
+          "avatar_url": "https://avatars.example.invalid/user-1",
+          "id": 100001,
+          "locked": false,
+          "name": "User 1",
+          "public_email": null,
+          "state": "active",
+          "username": "user-1",
+          "web_url": "https://gitlab.com/user-1"
+        },
+        "blocking_issues_count": 0,
+        "closed_at": null,
+        "closed_by": null,
+        "confidential": false,
+        "created_at": "2026-10-13T18:32:40.268Z",
+        "description": "A line under it would do.",
+        "discussion_locked": null,
+        "downvotes": 0,
+        "due_date": null,
+        "has_tasks": true,
+        "id": 300144,
+        "iid": 3,
+        "imported": false,
+        "imported_from": "none",
+        "issue_type": "issue",
+        "labels": [],
+        "merge_requests_count": 0,
+        "milestone": null,
+        "moved_to_id": null,
+        "project_id": 300124,
+        "references": {
+          "full": "user-1/bitbraid-live#3",
+          "relative": "#3",
+          "short": "#3"
+        },
+        "service_desk_reply_to": null,
+        "severity": "UNKNOWN",
+        "start_date": null,
+        "state": "opened",
+        "subscribed": true,
+        "task_completion_status": {
+          "completed_count": 0,
+          "count": 0
+        },
+        "task_status": "0 of 0 checklist items completed",
+        "time_stats": {
+          "human_time_estimate": null,
+          "human_total_time_spent": null,
+          "time_estimate": 0,
+          "total_time_spent": 0
+        },
+        "title": "Say what the menu is for",
+        "type": "ISSUE",
+        "updated_at": "2026-10-13T18:32:40.268Z",
+        "upvotes": 0,
+        "user_notes_count": 0,
+        "web_url": "https://gitlab.com/user-1/bitbraid-live/-/work_items/3"
+      }
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/user-1%2Fbitbraid-live/issues/3/notes?sort=asc&order_by=created_at&per_page=100",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Tue, 13 Oct 2026 18:43:42 GMT",
+        "etag": "W/\"4f53cda18c2baa0c0354bb5f9a3ecbe5\"",
+        "link": "<https://gitlab.com/api/v4/projects/user-1%2Fbitbraid-live/issues/3/notes?activity_filter=all_notes&id=user-1%2Fbitbraid-live&noteable_id=3&order_by=created_at&page=1&per_page=100&sort=asc>; rel=\"first\", <https://gitlab.com/api/v4/projects/user-1%2Fbitbraid-live/issues/3/notes?activity_filter=all_notes&id=user-1%2Fbitbraid-live&noteable_id=3&order_by=created_at&page=1&per_page=100&sort=asc>; rel=\"last\"",
+        "ratelimit-limit": "2000",
+        "ratelimit-remaining": "1982",
+        "ratelimit-reset": "1791917040",
+        "x-page": "1",
+        "x-per-page": "100",
+        "x-total": "0",
+        "x-total-pages": "1"
+      },
+      "body": []
+    }
+  ]
+}

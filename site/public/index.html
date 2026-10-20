@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BitBraid, a git client for Linux, macOS and Windows</title>
+  <meta name="description" content="BitBraid is a native git client for Linux, macOS and Windows, written in Rust.">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0d131a" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f6f8fb" media="(prefers-color-scheme: light)">
+  <link rel="canonical" href="https://bitbraid.app/">
+  <link rel="icon" href="brand/icon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="BitBraid">
+  <meta property="og:description" content="A native git client for Linux, macOS and Windows, written in Rust.">
+  <meta property="og:url" content="https://bitbraid.app/">
+  <meta property="og:image" content="https://bitbraid.app/images/social.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="fonts/Outfit-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="top">
+    <a class="home" href="./" aria-label="BitBraid, home">
+      <picture>
+        <source srcset="brand/mark-on-light.svg" media="(prefers-color-scheme: light)">
+        <img src="brand/mark.svg" alt="" width="36" height="36">
+      </picture>
+    </a>
+    <nav aria-label="Sections">
+      <a href="#features">Features</a>
+      <a href="#download">Download</a>
+      <a class="wide-only" href="#provenance">How it was made</a>
+      <a href="https://github.com/BitBraid/bitbraid">Source</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <h1 id="hero-title">
+        <picture>
+          <source srcset="brand/logo-on-light.svg" media="(prefers-color-scheme: light)">
+          <img src="brand/logo.svg" alt="BitBraid" width="440" height="190">
+        </picture>
+      </h1>
+      <p class="lede">A native git client for Linux, macOS and Windows, written in Rust.</p>
+      <div class="actions">
+        <a class="button primary" id="hero-download" href="#download">Download</a>
+        <a class="quiet" id="hero-others" href="#download">All systems</a>
+      </div>
+    </section>
+
+    <div class="stage">
+      <figure class="shot">
+        <div class="braid" aria-hidden="true"></div>
+        <picture>
+          <source type="image/webp" media="(prefers-color-scheme: light)"
+            srcset="images/app-light-1440.webp 1440w, images/app-light.webp 2880w"
+            sizes="(min-width: 70rem) 64rem, 92vw">
+          <img src="images/app-dark.webp"
+            srcset="images/app-dark-1440.webp 1440w, images/app-dark.webp 2880w"
+            sizes="(min-width: 70rem) 64rem, 92vw"
+            width="2880" height="1800" fetchpriority="high" decoding="async"
+            alt="BitBraid with a small project open: the commit graph in the middle with branches, tags and a stash on coloured lanes, the branch list on the left, and uncommitted changes waiting to be staged on the right.">
+        </picture>
+      </figure>
+    </div>
+
+    <section class="band" id="features" aria-labelledby="features-title">
+      <h2 id="features-title">Features</h2>
+
+      <ul class="graph">
+        <li>
+          <svg class="lanes" viewBox="0 0 60 100" preserveAspectRatio="none" aria-hidden="true">
+            <path class="l0" d="M14 0V100"/>
+            <path class="l1" d="M14 52C14 80 30 72 30 100"/>
+          </svg>
+          <span class="node l0"></span>
+          <h3>Commit graph</h3>
+          <p>Branches, tags, stashes and uncommitted changes in one graph. Drag a branch onto another to merge or rebase. Search by message, author, path or content.</p>
+        </li>
+        <li>
+          <svg class="lanes" viewBox="0 0 60 100" preserveAspectRatio="none" aria-hidden="true">
+            <path class="l0" d="M14 0V100"/>
+            <path class="l1" d="M30 0V100"/>
+          </svg>
+          <span class="node l1"></span>
+          <h3>Diffs and staging</h3>
+          <p>Inline or side-by-side diffs with syntax highlighting and word-level changes. Stage files, hunks or single lines.</p>
+        </li>
+        <li>
+          <svg class="lanes" viewBox="0 0 60 100" preserveAspectRatio="none" aria-hidden="true">
+            <path class="l0" d="M14 0V100"/>
+            <path class="l1" d="M30 0V100"/>
+            <path class="l2" d="M30 52C30 80 46 72 46 100"/>
+          </svg>
+          <span class="node l0"></span>
+          <h3>Merge, rebase, conflicts</h3>
+          <p>Three-way merge tool, interactive rebase with drag to reorder, cherry-pick, revert, reset. Conflict warnings before a merge or pull.</p>
+        </li>
+        <li>
+          <svg class="lanes" viewBox="0 0 60 100" preserveAspectRatio="none" aria-hidden="true">
+            <path class="l0" d="M14 0V100"/>
+            <path class="l1" d="M30 0V100"/>
+            <path class="l2" d="M46 0V100"/>
+          </svg>
+          <span class="node l2"></span>
+          <h3>Undo</h3>
+          <p>Undo and redo checkouts, commits, merges, rebases, resets and branch deletions.</p>
+        </li>
+        <li>
+          <svg class="lanes" viewBox="0 0 60 100" preserveAspectRatio="none" aria-hidden="true">
+            <path class="l0" d="M14 0V100"/>
+            <path class="l1" d="M30 0V100"/>
+            <path class="l2" d="M46 0V100"/>
+          </svg>
+          <span class="node l1"></span>
+          <h3>GitHub and GitLab</h3>
+          <p>Pull requests (create, review, merge, stacks), issues and CI status. Tokens in the system keychain.</p>
+        </li>
+        <li>
+          <svg class="lanes" viewBox="0 0 60 100" preserveAspectRatio="none" aria-hidden="true">
+            <path class="l0" d="M14 0V100"/>
+            <path class="l1" d="M30 0V100"/>
+            <path class="l2" d="M46 0V40C46 72 30 70 30 100"/>
+          </svg>
+          <span class="node l2"></span>
+          <h3>Worktrees, submodules, LFS</h3>
+          <p>Hooks, sparse checkout, partial clone, GPG, SSH and X.509 signing, workspaces of many repositories.</p>
+        </li>
+        <li>
+          <svg class="lanes" viewBox="0 0 60 100" preserveAspectRatio="none" aria-hidden="true">
+            <path class="l0" d="M14 0V100"/>
+            <path class="l1" d="M30 0V40C30 72 14 70 14 100"/>
+          </svg>
+          <span class="node l1"></span>
+          <h3>Palette and terminal</h3>
+          <p>Every action in a command palette, with rebindable shortcuts. A built-in terminal with git completion.</p>
+        </li>
+        <li>
+          <svg class="lanes" viewBox="0 0 60 100" preserveAspectRatio="none" aria-hidden="true">
+            <path class="l0" d="M14 0V28"/>
+          </svg>
+          <span class="node l0"></span>
+          <h3>No telemetry</h3>
+          <p>No analytics, update checks or crash reports. The network is used for fetch, pull, push, clone and connected accounts only.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="band" id="download" aria-labelledby="download-title">
+      <h2 id="download-title">Download</h2>
+
+      <div class="downloads">
+        <!-- Each link names its file of the release (data-file, {v} the
+             version); site/build.sh points it there, given the version of
+             the latest release, and at the release page otherwise. -->
+        <div class="system" data-system="linux">
+          <h3>Linux</h3>
+          <p>Wayland or X11, Vulkan, and git. An AppImage for any distribution;
+            also <a href="https://github.com/BitBraid/bitbraid/releases/latest" data-file="bitbraid_{v}_amd64.deb">.deb</a>,
+            <a href="https://github.com/BitBraid/bitbraid/releases/latest" data-file="bitbraid-{v}-1.x86_64.rpm">.rpm</a> and
+            <a href="https://github.com/BitBraid/bitbraid/releases/latest" data-file="bitbraid-{v}-x86_64-linux.tar.gz">.tar.gz</a>.</p>
+          <a class="button" href="https://github.com/BitBraid/bitbraid/releases/latest" data-file="bitbraid-{v}-x86_64.AppImage">Download for Linux</a>
+        </div>
+        <div class="system" data-system="macos">
+          <h3>macOS</h3>
+          <p>macOS 11 or later, Apple silicon or Intel. Not notarised: allow it once under System Settings, Privacy &amp; Security.</p>
+          <a class="button" href="https://github.com/BitBraid/bitbraid/releases/latest" data-file="bitbraid-{v}-universal.dmg">Download for macOS</a>
+        </div>
+        <div class="system" data-system="windows">
+          <h3>Windows</h3>
+          <p>Windows 10 or later. It brings its own git for a system without one;
+            also as a <a href="https://github.com/BitBraid/bitbraid/releases/latest" data-file="bitbraid-{v}-x86_64-windows.zip">.zip</a> to run from a folder.</p>
+          <a class="button" href="https://github.com/BitBraid/bitbraid/releases/latest" data-file="bitbraid-{v}-x86_64.msi">Download for Windows</a>
+        </div>
+
+        <div class="source">
+          <h3>From source</h3>
+          <p>Rust 1.99 or later and git; the README lists what each system needs.</p>
+          <pre><code>git clone https://github.com/BitBraid/bitbraid.git
+cd bitbraid
+cargo build --profile dist -p bitbraid</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="band note" id="provenance" aria-labelledby="provenance-title">
+      <h2 id="provenance-title">How it was made</h2>
+
+      <div class="prose">
+        <p>
+          BitBraid is an independent project, not affiliated with or endorsed
+          by the maker of any other git client. Parts of its behaviour and
+          layout are modelled on other git clients, studied only through what
+          is publicly available: documentation, help pages, screenshots,
+          videos, and how those programs behave in use.
+        </p>
+        <p>
+          No commercial program was decompiled, disassembled or otherwise
+          reverse engineered, none of their source code was obtained, and none
+          of their files were inspected or copied. BitBraid’s code, icons and
+          artwork are its own or used under open licences.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bottom">
+    <p>
+      Under the <a href="https://github.com/BitBraid/bitbraid/blob/main/LICENSE">MIT licence</a>,
+      which does not cover the BitBraid name and logo. Provided as is,
+      without warranty of any kind.
+    </p>
+    <p>
+      Git and the Git logo are trademarks of Software Freedom Conservancy,
+      Inc.; BitBraid is not affiliated with or endorsed by the Git Project.
+      Other names are the trademarks of their owners.
+    </p>
+    <p>Set in Outfit (SIL Open Font License). No cookies, nothing loaded from other sites.</p>
+  </footer>
+</body>
+</html>

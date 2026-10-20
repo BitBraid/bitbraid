@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- AppStream metadata of BitBraid, installed as
+     /usr/share/metainfo/bitbraid.metainfo.xml by every Linux package;
+     `cargo xtask package` fills in the version and the date. The id is the
+     desktop entry's, `bitbraid`. -->
+<component type="desktop-application">
+  <id>bitbraid</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <name>BitBraid</name>
+  <summary>See and shape the history of a git repository</summary>
+  <description>
+    <p>
+      BitBraid is a native git client written in Rust. It draws a
+      repository's history as a graph of lanes on the GPU, and works on it
+      from there.
+    </p>
+    <ul>
+      <li>Staging down to single lines, commits and amends, and undo of what changes the repository</li>
+      <li>Branches, tags and stashes; fetch, pull and push; merge, rebase and interactive rebase, with conflicts resolved file by file</li>
+      <li>Worktrees, submodules, Git LFS, and signing with gpg, ssh and X.509</li>
+      <li>A terminal for each repository, inside the window</li>
+      <li>GitHub and GitLab: cloning, pull requests, issues and checks</li>
+    </ul>
+    <p>
+      It runs the git installed on the system, and sends nothing anywhere
+      unasked.
+    </p>
+  </description>
+  <launchable type="desktop-id">bitbraid.desktop</launchable>
+  <url type="homepage">https://github.com/BitBraid/bitbraid</url>
+  <url type="bugtracker">https://github.com/BitBraid/bitbraid/issues</url>
+  <developer_name>BitBraid contributors</developer_name>
+  <provides>
+    <binary>bitbraid</binary>
+  </provides>
+  <categories>
+    <category>Development</category>
+    <category>RevisionControl</category>
+  </categories>
+  <keywords>
+    <keyword>git</keyword>
+    <keyword>commit</keyword>
+    <keyword>branch</keyword>
+    <keyword>merge</keyword>
+    <keyword>rebase</keyword>
+  </keywords>
+  <recommends>
+    <control>keyboard</control>
+    <control>pointing</control>
+  </recommends>
+  <content_rating type="oars-1.1" />
+  <releases>
+    <release version="@VERSION@" date="@DATE@" />
+  </releases>
+</component>

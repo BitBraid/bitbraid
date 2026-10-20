@@ -1,0 +1,7 @@
+*  ~ uncommitted work in a worktree on main
+*  afd30ab delete keep
+*  9195593 modify b
+*  9bb2988 rename a to b
+| *  ~ uncommitted work in a worktree detached, at the first commit
+|/
+*  a65e332 add a and keep

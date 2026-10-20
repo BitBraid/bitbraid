@@ -1,0 +1,175 @@
+{
+  "note": "Recorded from GitLab CE 19.4 on this machine by tests/suite/live_gitlab_ce.rs",
+  "exchanges": [
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/user",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 22:51:21 GMT",
+        "etag": "W/\"a891320f4696659987a8fd5451096913\""
+      },
+      "body": {
+        "avatar_url": "https://avatars.example.invalid/user-1",
+        "bio": "",
+        "bot": false,
+        "can_create_group": true,
+        "can_create_project": true,
+        "color_scheme_id": 1,
+        "commit_email": "user-1@example.invalid",
+        "confirmed_at": "2000-01-01T00:00:00Z",
+        "created_at": "2000-01-01T00:00:00Z",
+        "current_sign_in_at": null,
+        "discord": "",
+        "email": "user-1@example.invalid",
+        "external": false,
+        "github": "",
+        "id": 100001,
+        "identities": [],
+        "job_title": "",
+        "last_activity_on": "2000-01-01T00:00:00Z",
+        "last_sign_in_at": null,
+        "linkedin": "",
+        "local_time": null,
+        "location": "",
+        "locked": false,
+        "name": "User 1",
+        "organization": "",
+        "preferred_language": "en",
+        "private_profile": false,
+        "projects_limit": 100000,
+        "pronouns": null,
+        "public_email": null,
+        "state": "active",
+        "theme_id": 3,
+        "twitter": "",
+        "two_factor_enabled": false,
+        "username": "user-1",
+        "web_url": "http://127.0.0.1:8929/user-1",
+        "website_url": "",
+        "work_information": null
+      }
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/personal_access_tokens/self",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 22:51:21 GMT",
+        "etag": "W/\"733a3372e945d47682e3d2c51c74c46e\""
+      },
+      "body": {
+        "active": true,
+        "created_at": "2026-10-12T22:51:20.491Z",
+        "description": null,
+        "expires_at": "2026-10-19",
+        "granular": false,
+        "id": 18,
+        "last_used_at": "2026-10-12T22:51:21.216Z",
+        "last_used_ips": [],
+        "name": "Bb-cf5fc80dd60527accb67d6bb-p9",
+        "revoked": false,
+        "scopes": [
+          "api",
+          "read_user"
+        ],
+        "user_id": 100001
+      }
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?state=all&with_labels_details=true&per_page=100",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 22:51:21 GMT",
+        "etag": "W/\"501397bef31f69f61d747d565fe00e5a\"",
+        "link": "<http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=all&with_labels_details=true&with_merge_status_recheck=false>; rel=\"first\", <http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=all&with_labels_details=true&with_merge_status_recheck=false>; rel=\"last\"",
+        "x-page": "1",
+        "x-per-page": "100",
+        "x-total": "1",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-12T22:48:19.610Z",
+          "description": "Made by the live test.",
+          "detailed_merge_status": "mergeable",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 2,
+          "iid": 2,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-12T22:48:20.267Z",
+          "project_id": 1,
+          "reference": "!2",
+          "references": {
+            "full": "bb-p-group/bb-p-project!2",
+            "relative": "!2",
+            "short": "!2"
+          },
+          "reviewers": [],
+          "sha": "91342a24f52d21ef96b01fff4ab4015c95acc7af",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-topic",
+          "source_project_id": 1,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Add a file to review",
+          "updated_at": "2026-10-12T22:48:20.279Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/2",
+          "work_in_progress": false
+        }
+      ]
+    }
+  ]
+}

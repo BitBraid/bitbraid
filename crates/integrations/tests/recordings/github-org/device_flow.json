@@ -1,0 +1,39 @@
+{
+  "note": "Recorded from github.com by tests/suite/live_github.rs: the test organisation's public repositories, its machine account and a reviewer",
+  "exchanges": [
+    {
+      "method": "POST",
+      "path_and_query": "/login/device/code",
+      "request_body": "client_id=Ov23liPgVA7Yjwt3STdA&scope=repo%20read%3Aorg%20admin%3Apublic_key%20read%3Auser%20user%3Aemail%20workflow",
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 17:23:39 GMT",
+        "etag": "W/\"b85c1de75ac5e85e08dc20cd23f3ccc6\""
+      },
+      "body": {
+        "device_code": "device-code-1",
+        "expires_in": 899,
+        "interval": 5,
+        "user_code": "user-code-1",
+        "verification_uri": "https://github.com/login/device"
+      }
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/login/oauth/access_token",
+      "request_body": "client_id=Ov23liPgVA7Yjwt3STdA&device_code=device-code-1&grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Adevice_code",
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 17:23:44 GMT",
+        "etag": "W/\"aa162dbe96f688511175ccc1f2170df4\""
+      },
+      "body": {
+        "error": "authorization_pending",
+        "error_description": "The authorization request is still pending.",
+        "error_uri": "https://docs.github.com/developers/apps/authorizing-oauth-apps#error-codes-for-the-device-flow"
+      }
+    }
+  ]
+}

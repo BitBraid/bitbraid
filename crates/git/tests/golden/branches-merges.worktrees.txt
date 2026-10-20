@@ -1,0 +1,17 @@
+*  ~ uncommitted work in a worktree on main
+*  42f22b3 merge feature/b
+|\
+* |  c914b37 merge feature/a
+| |\
+| | | *  ~ uncommitted work in a worktree on feature/b
+| | |/
+| * |  a16e2f5 b1
+| | | *  ~ uncommitted work in a worktree on feature/a
+| | |/
+| | *  f84778d a2
+| | *  b827456 a1
+|/ /
+*  6a1eb26 base work
+| *  ~ uncommitted work in a worktree detached, at the first commit
+|/
+*  0648e66 init

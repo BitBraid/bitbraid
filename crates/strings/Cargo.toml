@@ -1,0 +1,32 @@
+[package]
+name = "bitbraid-strings"
+description = "The string catalog: every word a person reads, from Fluent files, looked up by id"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+publish.workspace = true
+
+[package.metadata.bitbraid]
+layer = 0
+
+[lints]
+workspace = true
+
+[features]
+# The checks the crates' tests hold their catalogs and sources to:
+# every id that is looked up is in the catalog with the arguments it
+# takes, every message is looked up somewhere, and no sentence is
+# written into the code. Only tests turn it on.
+check = []
+# A `Message` in a table that is written out as JSON is written as its text.
+serde = ["dep:serde"]
+
+[dependencies]
+# Fluent (Project Fluent, Apache-2.0 OR MIT): the file format, the
+# messages' plurals and arguments, and the bundle that formats them.
+fluent-bundle = "0.16"
+fluent-syntax = "0.12"
+serde = { workspace = true, optional = true }

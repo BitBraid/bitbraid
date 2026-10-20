@@ -1,0 +1,72 @@
+[package]
+name = "bitbraid-ui"
+description = "GPUI desktop application: shell, views, themes, keymap, terminal"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+publish.workspace = true
+
+[package.metadata.bitbraid]
+layer = 4
+
+[lints]
+workspace = true
+
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+toml = { workspace = true }
+toml_edit = { workspace = true }
+gpui-kit = { workspace = true }
+futures = { workspace = true }
+base64 = { workspace = true }
+directories = { workspace = true }
+bitbraid-core = { workspace = true }
+bitbraid-git = { workspace = true }
+bitbraid-engine = { workspace = true }
+bitbraid-integrations = { workspace = true }
+# The shell inside the window (AGENTS.md section 2).
+bitbraid-terminal = { workspace = true }
+# The words of the window, from its Fluent files.
+bitbraid-strings = { workspace = true }
+# The pixels of an author's picture, as the toolkit takes them.
+image = { workspace = true }
+
+# The main thread's time on a processor in a measuring run on macOS
+# (`processor_time`): the thread's own clock. Not a new crate in the tree:
+# the terminal's signals come from it.
+[target.'cfg(target_os = "macos")'.dependencies]
+rustix = { workspace = true, features = ["time"] }
+
+# The token a second start hands to the running instance on Windows, from
+# the system's random source. Not a new crate in the tree: the
+# toolkit's random numbers come from it, in the same version.
+[target.'cfg(windows)'.dependencies]
+getrandom = { version = "0.3", default-features = false }
+
+[dev-dependencies]
+# The interface is opened without a display in `tests/offscreen.rs`: the
+# toolkit's test platform, its headless renderer, and PNG files to compare.
+gpui-kit = { workspace = true, features = ["test-support"] }
+bitbraid-testkit = { workspace = true }
+# The catalog's checks: every lookup is in it, no sentence in the code.
+bitbraid-strings = { workspace = true, features = ["check"] }
+# git children read no system configuration in the tests (see the feature).
+bitbraid-git = { workspace = true, features = ["hermetic"] }
+image = { version = "0.25", default-features = false, features = ["png"] }
+# To hear from the toolkit which graphics adapter it drew with.
+log = "0.4"
+
+# The text system that takes its fonts from the test alone lives in the
+# toolkit's renderer crate, which is what draws on Linux; on Windows,
+# whose own renderer cannot draw off screen, it draws the pictures asked
+# for there (BITBRAID_OFFSCREEN_ON_WINDOWS).
+[target.'cfg(any(target_os = "linux", windows))'.dev-dependencies]
+gpui-wgpu = { package = "gpui-pre-wgpu", version = "=0.3.8", features = ["test-support"] }
+
+[[test]]
+name = "offscreen"
+harness = false

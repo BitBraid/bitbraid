@@ -1,0 +1,6 @@
+pinned: main
+  *  d8a6919 g1
+* |  a9191c1 n3
+* |  348abf9 n2
+|/
+*  e96ce3e n1

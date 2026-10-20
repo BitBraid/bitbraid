@@ -1,0 +1,41 @@
+[package]
+name = "bitbraid-engine"
+description = "Command registry, journal and undo, operations and progress, conflict prediction, hooks"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+publish.workspace = true
+
+[package.metadata.bitbraid]
+layer = 2
+
+[lints]
+workspace = true
+
+[dependencies]
+# The words it says to a person, from its Fluent files.
+bitbraid-strings = { workspace = true }
+thiserror = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+base64 = { workspace = true }
+toml = { workspace = true }
+bitbraid-core = { workspace = true }
+bitbraid-git = { workspace = true }
+bitbraid-terminal = { workspace = true }
+
+# The key that has Windows hand bitbraid:// links to the application: the
+# registry is reached through `unsafe` calls, which this workspace forbids.
+# The toolkit's Windows platform brings this crate already.
+[target.'cfg(windows)'.dependencies]
+windows-registry = "0.6"
+
+[dev-dependencies]
+# The catalog's check: every lookup is in it, every message looked up.
+bitbraid-strings = { workspace = true, features = ["check"] }
+bitbraid-testkit = { workspace = true }
+# git children read no system configuration in the tests (see the feature).
+bitbraid-git = { workspace = true, features = ["hermetic"] }

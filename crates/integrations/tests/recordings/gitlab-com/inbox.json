@@ -1,0 +1,1788 @@
+{
+  "note": "Recorded from gitlab.com by tests/suite/live_gitlab_com.rs: the test account's public projects",
+  "exchanges": [
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/user",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Tue, 13 Oct 2026 23:43:25 GMT",
+        "etag": "W/\"aa58b27699ee18ef7e485423c4d15c74\"",
+        "ratelimit-limit": "2000",
+        "ratelimit-remaining": "1950",
+        "ratelimit-reset": "1791935040"
+      },
+      "body": {
+        "avatar_url": "https://avatars.example.invalid/user-1",
+        "bio": "",
+        "bot": false,
+        "can_create_group": true,
+        "can_create_project": true,
+        "color_scheme_id": 1,
+        "commit_email": "user-1@example.invalid",
+        "confirmed_at": "2000-01-01T00:00:00Z",
+        "created_at": "2000-01-01T00:00:00Z",
+        "current_sign_in_at": "2000-01-01T00:00:00Z",
+        "discord": "",
+        "email": "user-1@example.invalid",
+        "external": false,
+        "extra_shared_runners_minutes_limit": null,
+        "github": "",
+        "id": 100001,
+        "identities": [],
+        "job_title": "",
+        "last_activity_on": "2000-01-01T00:00:00Z",
+        "last_sign_in_at": "2000-01-01T00:00:00Z",
+        "linkedin": "",
+        "local_time": null,
+        "location": "",
+        "locked": false,
+        "name": "User 1",
+        "organization": "",
+        "preferred_language": "en",
+        "private_profile": false,
+        "projects_limit": 100000,
+        "pronouns": null,
+        "public_email": null,
+        "scim_identities": [],
+        "shared_runners_minutes_limit": null,
+        "state": "active",
+        "theme_id": 3,
+        "twitter": "",
+        "two_factor_enabled": false,
+        "username": "user-1",
+        "web_url": "https://gitlab.com/user-1",
+        "website_url": "",
+        "work_information": null
+      }
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/personal_access_tokens/self",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Tue, 13 Oct 2026 23:43:25 GMT",
+        "etag": "W/\"48142b8c6f6d231ec8ad1be85ed95a4a\"",
+        "ratelimit-limit": "2000",
+        "ratelimit-remaining": "1949",
+        "ratelimit-reset": "1791935040"
+      },
+      "body": {
+        "active": true,
+        "created_at": "2026-10-13T18:14:53.420Z",
+        "description": "",
+        "expires_at": "2026-11-12",
+        "granular": false,
+        "id": 300122,
+        "last_used_at": "2026-10-13T23:43:06.509Z",
+        "last_used_ips": [],
+        "name": "BitBraid test",
+        "revoked": false,
+        "scopes": [
+          "api",
+          "read_user"
+        ],
+        "user_id": 100001
+      }
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/merge_requests?scope=all&state=opened&author_username=user-1&with_labels_details=true&per_page=50",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Tue, 13 Oct 2026 23:43:26 GMT",
+        "etag": "W/\"6b40205166f645fc0bf36adc1440f545\"",
+        "link": "<https://gitlab.com/api/v4/merge_requests?author_username=user-1&non_archived=false&order_by=created_at&page=1&per_page=50&scope=all&sort=desc&state=opened&with_labels_details=true&with_merge_status_recheck=false>; rel=\"first\", <https://gitlab.com/api/v4/merge_requests?author_username=user-1&non_archived=false&order_by=created_at&page=1&per_page=50&scope=all&sort=desc&state=opened&with_labels_details=true&with_merge_status_recheck=false>; rel=\"last\"",
+        "ratelimit-limit": "2000",
+        "ratelimit-remaining": "1948",
+        "ratelimit-reset": "1791935040",
+        "x-page": "1",
+        "x-per-page": "50",
+        "x-total": "6",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "allow_collaboration": true,
+          "allow_maintainer_to_push": true,
+          "approvals_before_merge": null,
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "bot": false,
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "https://gitlab.com/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-13T18:32:28.958Z",
+          "description": "Made by the live test: A change from a fork.",
+          "detailed_merge_status": "mergeable",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 300123,
+          "iid": 8,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-13T18:32:30.660Z",
+          "project_id": 300124,
+          "reference": "!8",
+          "references": {
+            "full": "user-1/bitbraid-live!8",
+            "relative": "!8",
+            "short": "!8"
+          },
+          "reviewers": [],
+          "sha": "9996132877c58f0b57ff903f9b01c266045233ef",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-fork-topic",
+          "source_project_id": 300125,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 300124,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "A change from a fork",
+          "updated_at": "2026-10-13T18:32:30.672Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "https://gitlab.com/user-1/bitbraid-live/-/merge_requests/8",
+          "work_in_progress": false
+        },
+        {
+          "approvals_before_merge": null,
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "bot": false,
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "https://gitlab.com/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-13T18:32:10.178Z",
+          "description": "Made by the live test: Second of a stack.",
+          "detailed_merge_status": "mergeable",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 300128,
+          "iid": 5,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-13T18:32:11.066Z",
+          "project_id": 300124,
+          "reference": "!5",
+          "references": {
+            "full": "user-1/bitbraid-live!5",
+            "relative": "!5",
+            "short": "!5"
+          },
+          "reviewers": [],
+          "sha": "f3910a409f9fe412b9f23f95fc5f3578c121eeba",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-stack-2",
+          "source_project_id": 300124,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "bb-stack-1",
+          "target_project_id": 300124,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Second of a stack",
+          "updated_at": "2026-10-13T18:32:11.071Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "https://gitlab.com/user-1/bitbraid-live/-/merge_requests/5",
+          "work_in_progress": false
+        },
+        {
+          "approvals_before_merge": null,
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "bot": false,
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "https://gitlab.com/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-13T18:32:07.754Z",
+          "description": "Made by the live test: First of a stack.",
+          "detailed_merge_status": "mergeable",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 300129,
+          "iid": 4,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-13T18:32:11.004Z",
+          "project_id": 300124,
+          "reference": "!4",
+          "references": {
+            "full": "user-1/bitbraid-live!4",
+            "relative": "!4",
+            "short": "!4"
+          },
+          "reviewers": [],
+          "sha": "91a5bf1e167d364597fcd73ed7b4c783f0cb13af",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-stack-1",
+          "source_project_id": 300124,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 300124,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "First of a stack",
+          "updated_at": "2026-10-13T18:32:11.016Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "https://gitlab.com/user-1/bitbraid-live/-/merge_requests/4",
+          "work_in_progress": false
+        },
+        {
+          "approvals_before_merge": null,
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "bot": false,
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "https://gitlab.com/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-13T18:32:03.940Z",
+          "description": "Made by the live test: Draft: Try another way.",
+          "detailed_merge_status": "draft_status",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": true,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 300130,
+          "iid": 3,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#428bca",
+              "description": "How it looks",
+              "description_html": "How it looks",
+              "id": 300131,
+              "name": "ui",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-13T18:32:05.186Z",
+          "project_id": 300124,
+          "reference": "!3",
+          "references": {
+            "full": "user-1/bitbraid-live!3",
+            "relative": "!3",
+            "short": "!3"
+          },
+          "reviewers": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-1",
+              "id": 100001,
+              "locked": false,
+              "name": "User 1",
+              "public_email": null,
+              "state": "active",
+              "username": "user-1",
+              "web_url": "https://gitlab.com/user-1"
+            }
+          ],
+          "sha": "5f780a5f633dabf5d2f076e99d56b8ae136f593a",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-draft",
+          "source_project_id": 300124,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 300124,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Draft: Try another way",
+          "updated_at": "2026-10-13T18:32:05.192Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "https://gitlab.com/user-1/bitbraid-live/-/merge_requests/3",
+          "work_in_progress": true
+        },
+        {
+          "approvals_before_merge": null,
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "bot": false,
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "https://gitlab.com/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-13T18:31:59.095Z",
+          "description": "Made by the live test: Change the wording.",
+          "detailed_merge_status": "mergeable",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 300132,
+          "iid": 2,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-13T18:32:00.178Z",
+          "project_id": 300124,
+          "reference": "!2",
+          "references": {
+            "full": "user-1/bitbraid-live!2",
+            "relative": "!2",
+            "short": "!2"
+          },
+          "reviewers": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-1",
+              "id": 100001,
+              "locked": false,
+              "name": "User 1",
+              "public_email": null,
+              "state": "active",
+              "username": "user-1",
+              "web_url": "https://gitlab.com/user-1"
+            }
+          ],
+          "sha": "7fb261b876253475ddd4d6db957f426a0bb59317",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-changes",
+          "source_project_id": 300124,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 300124,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Change the wording",
+          "updated_at": "2026-10-13T18:32:00.447Z",
+          "upvotes": 0,
+          "user_notes_count": 1,
+          "web_url": "https://gitlab.com/user-1/bitbraid-live/-/merge_requests/2",
+          "work_in_progress": false
+        },
+        {
+          "approvals_before_merge": null,
+          "assignee": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "https://gitlab.com/user-1"
+          },
+          "assignees": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-1",
+              "id": 100001,
+              "locked": false,
+              "name": "User 1",
+              "public_email": null,
+              "state": "active",
+              "username": "user-1",
+              "web_url": "https://gitlab.com/user-1"
+            }
+          ],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "bot": false,
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "https://gitlab.com/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-13T18:31:49.724Z",
+          "description": "Made by the live test: Add a file to review.",
+          "detailed_merge_status": "mergeable",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 300133,
+          "iid": 1,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#d9534f",
+              "description": "Something is broken",
+              "description_html": "Something is broken",
+              "id": 300134,
+              "name": "bug",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": {
+            "created_at": "2026-10-13T18:31:40.821Z",
+            "description": null,
+            "due_date": "2026-12-31",
+            "expired": false,
+            "id": 300135,
+            "iid": 1,
+            "project_id": 300124,
+            "start_date": null,
+            "state": "active",
+            "title": "v1",
+            "updated_at": "2026-10-13T18:31:40.821Z",
+            "web_url": "https://gitlab.com/user-1/bitbraid-live/-/milestones/1"
+          },
+          "prepared_at": "2026-10-13T18:31:50.705Z",
+          "project_id": 300124,
+          "reference": "!1",
+          "references": {
+            "full": "user-1/bitbraid-live!1",
+            "relative": "!1",
+            "short": "!1"
+          },
+          "reviewers": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-1",
+              "id": 100001,
+              "locked": false,
+              "name": "User 1",
+              "public_email": null,
+              "state": "active",
+              "username": "user-1",
+              "web_url": "https://gitlab.com/user-1"
+            }
+          ],
+          "sha": "c12f078ee5a3857a636a969a66eef60436473833",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-topic",
+          "source_project_id": 300124,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 300124,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Add a file to review",
+          "updated_at": "2026-10-13T18:31:50.710Z",
+          "upvotes": 0,
+          "user_notes_count": 4,
+          "web_url": "https://gitlab.com/user-1/bitbraid-live/-/merge_requests/1",
+          "work_in_progress": false
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/merge_requests?scope=all&state=opened&assignee_username=user-1&with_labels_details=true&per_page=50",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Tue, 13 Oct 2026 23:43:26 GMT",
+        "etag": "W/\"de9a0caa27610c630899bb41eb91b81f\"",
+        "link": "<https://gitlab.com/api/v4/merge_requests?assignee_username%5B%5D=user-1&non_archived=false&order_by=created_at&page=1&per_page=50&scope=all&sort=desc&state=opened&with_labels_details=true&with_merge_status_recheck=false>; rel=\"first\", <https://gitlab.com/api/v4/merge_requests?assignee_username%5B%5D=user-1&non_archived=false&order_by=created_at&page=1&per_page=50&scope=all&sort=desc&state=opened&with_labels_details=true&with_merge_status_recheck=false>; rel=\"last\"",
+        "ratelimit-limit": "2000",
+        "ratelimit-remaining": "1947",
+        "ratelimit-reset": "1791935040",
+        "x-page": "1",
+        "x-per-page": "50",
+        "x-total": "1",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "approvals_before_merge": null,
+          "assignee": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "https://gitlab.com/user-1"
+          },
+          "assignees": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-1",
+              "id": 100001,
+              "locked": false,
+              "name": "User 1",
+              "public_email": null,
+              "state": "active",
+              "username": "user-1",
+              "web_url": "https://gitlab.com/user-1"
+            }
+          ],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "bot": false,
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "https://gitlab.com/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-13T18:31:49.724Z",
+          "description": "Made by the live test: Add a file to review.",
+          "detailed_merge_status": "mergeable",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 300133,
+          "iid": 1,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#d9534f",
+              "description": "Something is broken",
+              "description_html": "Something is broken",
+              "id": 300134,
+              "name": "bug",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": {
+            "created_at": "2026-10-13T18:31:40.821Z",
+            "description": null,
+            "due_date": "2026-12-31",
+            "expired": false,
+            "id": 300135,
+            "iid": 1,
+            "project_id": 300124,
+            "start_date": null,
+            "state": "active",
+            "title": "v1",
+            "updated_at": "2026-10-13T18:31:40.821Z",
+            "web_url": "https://gitlab.com/user-1/bitbraid-live/-/milestones/1"
+          },
+          "prepared_at": "2026-10-13T18:31:50.705Z",
+          "project_id": 300124,
+          "reference": "!1",
+          "references": {
+            "full": "user-1/bitbraid-live!1",
+            "relative": "!1",
+            "short": "!1"
+          },
+          "reviewers": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-1",
+              "id": 100001,
+              "locked": false,
+              "name": "User 1",
+              "public_email": null,
+              "state": "active",
+              "username": "user-1",
+              "web_url": "https://gitlab.com/user-1"
+            }
+          ],
+          "sha": "c12f078ee5a3857a636a969a66eef60436473833",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-topic",
+          "source_project_id": 300124,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 300124,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Add a file to review",
+          "updated_at": "2026-10-13T18:31:50.710Z",
+          "upvotes": 0,
+          "user_notes_count": 4,
+          "web_url": "https://gitlab.com/user-1/bitbraid-live/-/merge_requests/1",
+          "work_in_progress": false
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/merge_requests?scope=all&state=opened&reviewer_username=user-1&with_labels_details=true&per_page=50",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Tue, 13 Oct 2026 23:43:26 GMT",
+        "etag": "W/\"f59b127915da3755fc2a80c5218e1d65\"",
+        "link": "<https://gitlab.com/api/v4/merge_requests?non_archived=false&order_by=created_at&page=1&per_page=50&reviewer_username=user-1&scope=all&sort=desc&state=opened&with_labels_details=true&with_merge_status_recheck=false>; rel=\"first\", <https://gitlab.com/api/v4/merge_requests?non_archived=false&order_by=created_at&page=1&per_page=50&reviewer_username=user-1&scope=all&sort=desc&state=opened&with_labels_details=true&with_merge_status_recheck=false>; rel=\"last\"",
+        "ratelimit-limit": "2000",
+        "ratelimit-remaining": "1946",
+        "ratelimit-reset": "1791935040",
+        "x-page": "1",
+        "x-per-page": "50",
+        "x-total": "3",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "approvals_before_merge": null,
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "bot": false,
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "https://gitlab.com/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-13T18:32:03.940Z",
+          "description": "Made by the live test: Draft: Try another way.",
+          "detailed_merge_status": "draft_status",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": true,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 300130,
+          "iid": 3,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#428bca",
+              "description": "How it looks",
+              "description_html": "How it looks",
+              "id": 300131,
+              "name": "ui",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-13T18:32:05.186Z",
+          "project_id": 300124,
+          "reference": "!3",
+          "references": {
+            "full": "user-1/bitbraid-live!3",
+            "relative": "!3",
+            "short": "!3"
+          },
+          "reviewers": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-1",
+              "id": 100001,
+              "locked": false,
+              "name": "User 1",
+              "public_email": null,
+              "state": "active",
+              "username": "user-1",
+              "web_url": "https://gitlab.com/user-1"
+            }
+          ],
+          "sha": "5f780a5f633dabf5d2f076e99d56b8ae136f593a",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-draft",
+          "source_project_id": 300124,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 300124,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Draft: Try another way",
+          "updated_at": "2026-10-13T18:32:05.192Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "https://gitlab.com/user-1/bitbraid-live/-/merge_requests/3",
+          "work_in_progress": true
+        },
+        {
+          "approvals_before_merge": null,
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "bot": false,
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "https://gitlab.com/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-13T18:31:59.095Z",
+          "description": "Made by the live test: Change the wording.",
+          "detailed_merge_status": "mergeable",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 300132,
+          "iid": 2,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-13T18:32:00.178Z",
+          "project_id": 300124,
+          "reference": "!2",
+          "references": {
+            "full": "user-1/bitbraid-live!2",
+            "relative": "!2",
+            "short": "!2"
+          },
+          "reviewers": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-1",
+              "id": 100001,
+              "locked": false,
+              "name": "User 1",
+              "public_email": null,
+              "state": "active",
+              "username": "user-1",
+              "web_url": "https://gitlab.com/user-1"
+            }
+          ],
+          "sha": "7fb261b876253475ddd4d6db957f426a0bb59317",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-changes",
+          "source_project_id": 300124,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 300124,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Change the wording",
+          "updated_at": "2026-10-13T18:32:00.447Z",
+          "upvotes": 0,
+          "user_notes_count": 1,
+          "web_url": "https://gitlab.com/user-1/bitbraid-live/-/merge_requests/2",
+          "work_in_progress": false
+        },
+        {
+          "approvals_before_merge": null,
+          "assignee": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "https://gitlab.com/user-1"
+          },
+          "assignees": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-1",
+              "id": 100001,
+              "locked": false,
+              "name": "User 1",
+              "public_email": null,
+              "state": "active",
+              "username": "user-1",
+              "web_url": "https://gitlab.com/user-1"
+            }
+          ],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "bot": false,
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "https://gitlab.com/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-13T18:31:49.724Z",
+          "description": "Made by the live test: Add a file to review.",
+          "detailed_merge_status": "mergeable",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 300133,
+          "iid": 1,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#d9534f",
+              "description": "Something is broken",
+              "description_html": "Something is broken",
+              "id": 300134,
+              "name": "bug",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": {
+            "created_at": "2026-10-13T18:31:40.821Z",
+            "description": null,
+            "due_date": "2026-12-31",
+            "expired": false,
+            "id": 300135,
+            "iid": 1,
+            "project_id": 300124,
+            "start_date": null,
+            "state": "active",
+            "title": "v1",
+            "updated_at": "2026-10-13T18:31:40.821Z",
+            "web_url": "https://gitlab.com/user-1/bitbraid-live/-/milestones/1"
+          },
+          "prepared_at": "2026-10-13T18:31:50.705Z",
+          "project_id": 300124,
+          "reference": "!1",
+          "references": {
+            "full": "user-1/bitbraid-live!1",
+            "relative": "!1",
+            "short": "!1"
+          },
+          "reviewers": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-1",
+              "id": 100001,
+              "locked": false,
+              "name": "User 1",
+              "public_email": null,
+              "state": "active",
+              "username": "user-1",
+              "web_url": "https://gitlab.com/user-1"
+            }
+          ],
+          "sha": "c12f078ee5a3857a636a969a66eef60436473833",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-topic",
+          "source_project_id": 300124,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 300124,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Add a file to review",
+          "updated_at": "2026-10-13T18:31:50.710Z",
+          "upvotes": 0,
+          "user_notes_count": 4,
+          "web_url": "https://gitlab.com/user-1/bitbraid-live/-/merge_requests/1",
+          "work_in_progress": false
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/api/graphql",
+      "request_body": {
+        "query": "query($path: ID!, $iids: [String!]) { project(fullPath: $path) { mergeRequests(iids: $iids, first: 100) { nodes { iid sourceProject { fullPath } headPipeline { status } reviewers { nodes { username mergeRequestInteraction { reviewState approved } } } approvedBy { nodes { username } } diffStatsSummary { additions deletions } } } } }",
+        "variables": {
+          "iids": [
+            "8",
+            "5",
+            "4",
+            "3",
+            "2",
+            "1"
+          ],
+          "path": "user-1/bitbraid-live"
+        }
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 23:43:27 GMT",
+        "etag": "W/\"7fe4f7958beed6e65ab581a43b8022c5\"",
+        "ratelimit-limit": "2000",
+        "ratelimit-remaining": "1945",
+        "ratelimit-reset": "1791935040"
+      },
+      "body": {
+        "data": {
+          "project": {
+            "mergeRequests": {
+              "nodes": [
+                {
+                  "approvedBy": {
+                    "nodes": []
+                  },
+                  "diffStatsSummary": {
+                    "additions": 1,
+                    "deletions": 0
+                  },
+                  "headPipeline": null,
+                  "iid": "8",
+                  "reviewers": {
+                    "nodes": []
+                  },
+                  "sourceProject": {
+                    "fullPath": "user-1/bitbraid-live-fork"
+                  }
+                },
+                {
+                  "approvedBy": {
+                    "nodes": []
+                  },
+                  "diffStatsSummary": {
+                    "additions": 1,
+                    "deletions": 0
+                  },
+                  "headPipeline": null,
+                  "iid": "5",
+                  "reviewers": {
+                    "nodes": []
+                  },
+                  "sourceProject": {
+                    "fullPath": "user-1/bitbraid-live"
+                  }
+                },
+                {
+                  "approvedBy": {
+                    "nodes": []
+                  },
+                  "diffStatsSummary": {
+                    "additions": 2,
+                    "deletions": 0
+                  },
+                  "headPipeline": {
+                    "status": "RUNNING"
+                  },
+                  "iid": "4",
+                  "reviewers": {
+                    "nodes": []
+                  },
+                  "sourceProject": {
+                    "fullPath": "user-1/bitbraid-live"
+                  }
+                },
+                {
+                  "approvedBy": {
+                    "nodes": []
+                  },
+                  "diffStatsSummary": {
+                    "additions": 2,
+                    "deletions": 0
+                  },
+                  "headPipeline": {
+                    "status": "PENDING"
+                  },
+                  "iid": "3",
+                  "reviewers": {
+                    "nodes": [
+                      {
+                        "mergeRequestInteraction": {
+                          "approved": false,
+                          "reviewState": "UNREVIEWED"
+                        },
+                        "username": "user-1"
+                      }
+                    ]
+                  },
+                  "sourceProject": {
+                    "fullPath": "user-1/bitbraid-live"
+                  }
+                },
+                {
+                  "approvedBy": {
+                    "nodes": []
+                  },
+                  "diffStatsSummary": {
+                    "additions": 2,
+                    "deletions": 0
+                  },
+                  "headPipeline": null,
+                  "iid": "2",
+                  "reviewers": {
+                    "nodes": [
+                      {
+                        "mergeRequestInteraction": {
+                          "approved": false,
+                          "reviewState": "REQUESTED_CHANGES"
+                        },
+                        "username": "user-1"
+                      }
+                    ]
+                  },
+                  "sourceProject": {
+                    "fullPath": "user-1/bitbraid-live"
+                  }
+                },
+                {
+                  "approvedBy": {
+                    "nodes": [
+                      {
+                        "username": "user-1"
+                      }
+                    ]
+                  },
+                  "diffStatsSummary": {
+                    "additions": 2,
+                    "deletions": 0
+                  },
+                  "headPipeline": {
+                    "status": "FAILED"
+                  },
+                  "iid": "1",
+                  "reviewers": {
+                    "nodes": [
+                      {
+                        "mergeRequestInteraction": {
+                          "approved": true,
+                          "reviewState": "APPROVED"
+                        },
+                        "username": "user-1"
+                      }
+                    ]
+                  },
+                  "sourceProject": {
+                    "fullPath": "user-1/bitbraid-live"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/issues?scope=all&state=opened&assignee_username=user-1&with_labels_details=true&per_page=50",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Tue, 13 Oct 2026 23:43:27 GMT",
+        "etag": "W/\"3bb66c9c8cdc5b0d7e272d3fc054a6c9\"",
+        "link": "<https://gitlab.com/api/v4/issues?assignee_username%5B%5D=user-1&non_archived=true&order_by=created_at&page=1&per_page=50&scope=all&sort=desc&state=opened&with_labels_details=true>; rel=\"first\", <https://gitlab.com/api/v4/issues?assignee_username%5B%5D=user-1&non_archived=true&order_by=created_at&page=1&per_page=50&scope=all&sort=desc&state=opened&with_labels_details=true>; rel=\"last\"",
+        "ratelimit-limit": "2000",
+        "ratelimit-remaining": "1944",
+        "ratelimit-reset": "1791935040",
+        "x-page": "1",
+        "x-per-page": "50",
+        "x-total": "1",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "_links": {
+            "award_emoji": "https://gitlab.com/api/v4/projects/300124/issues/1/award_emoji",
+            "closed_as_duplicate_of": null,
+            "notes": "https://gitlab.com/api/v4/projects/300124/issues/1/notes",
+            "project": "https://gitlab.com/api/v4/projects/300124",
+            "self": "https://gitlab.com/api/v4/projects/300124/issues/1"
+          },
+          "assignee": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "https://gitlab.com/user-1"
+          },
+          "assignees": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-1",
+              "id": 100001,
+              "locked": false,
+              "name": "User 1",
+              "public_email": null,
+              "state": "active",
+              "username": "user-1",
+              "web_url": "https://gitlab.com/user-1"
+            }
+          ],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "https://gitlab.com/user-1"
+          },
+          "blocking_issues_count": 0,
+          "closed_at": null,
+          "closed_by": null,
+          "confidential": false,
+          "created_at": "2026-10-13T18:32:35.219Z",
+          "description": "Clicking it does nothing at all.",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "due_date": null,
+          "has_tasks": true,
+          "id": 300143,
+          "iid": 1,
+          "imported": false,
+          "imported_from": "none",
+          "issue_type": "issue",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#d9534f",
+              "description": "Something is broken",
+              "description_html": "Something is broken",
+              "id": 300134,
+              "name": "bug",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_requests_count": 0,
+          "milestone": {
+            "created_at": "2026-10-13T18:31:40.821Z",
+            "description": null,
+            "due_date": "2026-12-31",
+            "expired": false,
+            "id": 300135,
+            "iid": 1,
+            "project_id": 300124,
+            "start_date": null,
+            "state": "active",
+            "title": "v1",
+            "updated_at": "2026-10-13T18:31:40.821Z",
+            "web_url": "https://gitlab.com/user-1/bitbraid-live/-/milestones/1"
+          },
+          "moved_to_id": null,
+          "project_id": 300124,
+          "references": {
+            "full": "user-1/bitbraid-live#1",
+            "relative": "#1",
+            "short": "#1"
+          },
+          "service_desk_reply_to": null,
+          "severity": "UNKNOWN",
+          "start_date": null,
+          "state": "opened",
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "task_status": "0 of 0 checklist items completed",
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "The button does nothing",
+          "type": "ISSUE",
+          "updated_at": "2026-10-13T18:32:35.219Z",
+          "upvotes": 0,
+          "user_notes_count": 2,
+          "web_url": "https://gitlab.com/user-1/bitbraid-live/-/work_items/1"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/issues?scope=all&state=opened&author_username=user-1&with_labels_details=true&per_page=50",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Tue, 13 Oct 2026 23:43:28 GMT",
+        "etag": "W/\"a6cd43147c0d01b2d08982b3b0791ccf\"",
+        "link": "<https://gitlab.com/api/v4/issues?author_username=user-1&non_archived=true&order_by=created_at&page=1&per_page=50&scope=all&sort=desc&state=opened&with_labels_details=true>; rel=\"first\", <https://gitlab.com/api/v4/issues?author_username=user-1&non_archived=true&order_by=created_at&page=1&per_page=50&scope=all&sort=desc&state=opened&with_labels_details=true>; rel=\"last\"",
+        "ratelimit-limit": "2000",
+        "ratelimit-remaining": "1943",
+        "ratelimit-reset": "1791935040",
+        "x-page": "1",
+        "x-per-page": "50",
+        "x-total": "2",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "_links": {
+            "award_emoji": "https://gitlab.com/api/v4/projects/300124/issues/3/award_emoji",
+            "closed_as_duplicate_of": null,
+            "notes": "https://gitlab.com/api/v4/projects/300124/issues/3/notes",
+            "project": "https://gitlab.com/api/v4/projects/300124",
+            "self": "https://gitlab.com/api/v4/projects/300124/issues/3"
+          },
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "https://gitlab.com/user-1"
+          },
+          "blocking_issues_count": 0,
+          "closed_at": null,
+          "closed_by": null,
+          "confidential": false,
+          "created_at": "2026-10-13T18:32:40.268Z",
+          "description": "A line under it would do.",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "due_date": null,
+          "has_tasks": true,
+          "id": 300144,
+          "iid": 3,
+          "imported": false,
+          "imported_from": "none",
+          "issue_type": "issue",
+          "labels": [],
+          "merge_requests_count": 0,
+          "milestone": null,
+          "moved_to_id": null,
+          "project_id": 300124,
+          "references": {
+            "full": "user-1/bitbraid-live#3",
+            "relative": "#3",
+            "short": "#3"
+          },
+          "service_desk_reply_to": null,
+          "severity": "UNKNOWN",
+          "start_date": null,
+          "state": "opened",
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "task_status": "0 of 0 checklist items completed",
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Say what the menu is for",
+          "type": "ISSUE",
+          "updated_at": "2026-10-13T18:32:40.268Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "https://gitlab.com/user-1/bitbraid-live/-/work_items/3"
+        },
+        {
+          "_links": {
+            "award_emoji": "https://gitlab.com/api/v4/projects/300124/issues/1/award_emoji",
+            "closed_as_duplicate_of": null,
+            "notes": "https://gitlab.com/api/v4/projects/300124/issues/1/notes",
+            "project": "https://gitlab.com/api/v4/projects/300124",
+            "self": "https://gitlab.com/api/v4/projects/300124/issues/1"
+          },
+          "assignee": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "https://gitlab.com/user-1"
+          },
+          "assignees": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-1",
+              "id": 100001,
+              "locked": false,
+              "name": "User 1",
+              "public_email": null,
+              "state": "active",
+              "username": "user-1",
+              "web_url": "https://gitlab.com/user-1"
+            }
+          ],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "https://gitlab.com/user-1"
+          },
+          "blocking_issues_count": 0,
+          "closed_at": null,
+          "closed_by": null,
+          "confidential": false,
+          "created_at": "2026-10-13T18:32:35.219Z",
+          "description": "Clicking it does nothing at all.",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "due_date": null,
+          "has_tasks": true,
+          "id": 300143,
+          "iid": 1,
+          "imported": false,
+          "imported_from": "none",
+          "issue_type": "issue",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#d9534f",
+              "description": "Something is broken",
+              "description_html": "Something is broken",
+              "id": 300134,
+              "name": "bug",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_requests_count": 0,
+          "milestone": {
+            "created_at": "2026-10-13T18:31:40.821Z",
+            "description": null,
+            "due_date": "2026-12-31",
+            "expired": false,
+            "id": 300135,
+            "iid": 1,
+            "project_id": 300124,
+            "start_date": null,
+            "state": "active",
+            "title": "v1",
+            "updated_at": "2026-10-13T18:31:40.821Z",
+            "web_url": "https://gitlab.com/user-1/bitbraid-live/-/milestones/1"
+          },
+          "moved_to_id": null,
+          "project_id": 300124,
+          "references": {
+            "full": "user-1/bitbraid-live#1",
+            "relative": "#1",
+            "short": "#1"
+          },
+          "service_desk_reply_to": null,
+          "severity": "UNKNOWN",
+          "start_date": null,
+          "state": "opened",
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "task_status": "0 of 0 checklist items completed",
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "The button does nothing",
+          "type": "ISSUE",
+          "updated_at": "2026-10-13T18:32:35.219Z",
+          "upvotes": 0,
+          "user_notes_count": 2,
+          "web_url": "https://gitlab.com/user-1/bitbraid-live/-/work_items/1"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/todos?type=Issue&state=pending&per_page=50",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Tue, 13 Oct 2026 23:43:28 GMT",
+        "etag": "W/\"97c2c97792811dc97b8fefb8124ef856\"",
+        "link": "<https://gitlab.com/api/v4/todos?page=1&per_page=50&state=pending&type=Issue>; rel=\"first\", <https://gitlab.com/api/v4/todos?page=1&per_page=50&state=pending&type=Issue>; rel=\"last\"",
+        "ratelimit-limit": "2000",
+        "ratelimit-remaining": "1942",
+        "ratelimit-reset": "1791935040",
+        "x-page": "1",
+        "x-per-page": "50",
+        "x-total": "1",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "action_name": "directly_addressed",
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "https://gitlab.com/user-1"
+          },
+          "body": "@user-1 the one at the top.",
+          "created_at": "2026-10-13T18:32:37.371Z",
+          "id": 300145,
+          "project": {
+            "created_at": "2026-10-13T18:31:36.854Z",
+            "description": "Synthetic test data of BitBraid's live tests",
+            "id": 300124,
+            "name": "bitbraid-live",
+            "name_with_namespace": "User 1 / bitbraid-live",
+            "path": "bitbraid-live",
+            "path_with_namespace": "user-1/bitbraid-live"
+          },
+          "state": "pending",
+          "target": {
+            "_links": {
+              "award_emoji": "https://gitlab.com/api/v4/projects/300124/issues/1/award_emoji",
+              "closed_as_duplicate_of": null,
+              "notes": "https://gitlab.com/api/v4/projects/300124/issues/1/notes",
+              "project": "https://gitlab.com/api/v4/projects/300124",
+              "self": "https://gitlab.com/api/v4/projects/300124/issues/1"
+            },
+            "assignee": {
+              "avatar_url": "https://avatars.example.invalid/user-1",
+              "id": 100001,
+              "locked": false,
+              "name": "User 1",
+              "public_email": null,
+              "state": "active",
+              "username": "user-1",
+              "web_url": "https://gitlab.com/user-1"
+            },
+            "assignees": [
+              {
+                "avatar_url": "https://avatars.example.invalid/user-1",
+                "id": 100001,
+                "locked": false,
+                "name": "User 1",
+                "public_email": null,
+                "state": "active",
+                "username": "user-1",
+                "web_url": "https://gitlab.com/user-1"
+              }
+            ],
+            "author": {
+              "avatar_url": "https://avatars.example.invalid/user-1",
+              "id": 100001,
+              "locked": false,
+              "name": "User 1",
+              "public_email": null,
+              "state": "active",
+              "username": "user-1",
+              "web_url": "https://gitlab.com/user-1"
+            },
+            "blocking_issues_count": 0,
+            "closed_at": null,
+            "closed_by": null,
+            "confidential": false,
+            "created_at": "2026-10-13T18:32:35.219Z",
+            "description": "Clicking it does nothing at all.",
+            "discussion_locked": null,
+            "downvotes": 0,
+            "due_date": null,
+            "has_tasks": true,
+            "id": 300143,
+            "iid": 1,
+            "imported": false,
+            "imported_from": "none",
+            "issue_type": "issue",
+            "labels": [
+              "bug"
+            ],
+            "merge_requests_count": 0,
+            "milestone": {
+              "created_at": "2026-10-13T18:31:40.821Z",
+              "description": null,
+              "due_date": "2026-12-31",
+              "expired": false,
+              "id": 300135,
+              "iid": 1,
+              "project_id": 300124,
+              "start_date": null,
+              "state": "active",
+              "title": "v1",
+              "updated_at": "2026-10-13T18:31:40.821Z",
+              "web_url": "https://gitlab.com/user-1/bitbraid-live/-/milestones/1"
+            },
+            "moved_to_id": null,
+            "project_id": 300124,
+            "references": {
+              "full": "user-1/bitbraid-live#1",
+              "relative": "#1",
+              "short": "#1"
+            },
+            "service_desk_reply_to": null,
+            "severity": "UNKNOWN",
+            "start_date": null,
+            "state": "opened",
+            "task_completion_status": {
+              "completed_count": 0,
+              "count": 0
+            },
+            "task_status": "0 of 0 checklist items completed",
+            "time_stats": {
+              "human_time_estimate": null,
+              "human_total_time_spent": null,
+              "time_estimate": 0,
+              "total_time_spent": 0
+            },
+            "title": "The button does nothing",
+            "type": "ISSUE",
+            "updated_at": "2026-10-13T18:32:35.219Z",
+            "upvotes": 0,
+            "user_notes_count": 2,
+            "web_url": "https://gitlab.com/user-1/bitbraid-live/-/work_items/1"
+          },
+          "target_type": "Issue",
+          "target_url": "https://gitlab.com/user-1/bitbraid-live/-/work_items/1#note_300146",
+          "updated_at": "2026-10-13T18:32:37.371Z"
+        }
+      ]
+    }
+  ]
+}

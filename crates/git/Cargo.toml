@@ -1,0 +1,56 @@
+[package]
+name = "bitbraid-git"
+description = "Repository model: snapshot, graph layout, status, diff, blame; gix/git2/git-exe backends"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+publish.workspace = true
+
+[package.metadata.bitbraid]
+layer = 1
+
+[lints]
+workspace = true
+
+[dependencies]
+# The words it says to a person, from its Fluent files.
+bitbraid-strings = { workspace = true, features = ["serde"] }
+thiserror = { workspace = true }
+serde = { workspace = true }
+bitbraid-core = { workspace = true }
+gix = { version = "0.89", default-features = false, features = ["max-performance-safe", "blob-diff", "status", "blame", "dirwalk", "excludes", "attributes", "mailmap", "index", "revision", "parallel", "worktree-mutation", "comfort", "sha1", "sha256"] }
+serde_json = { workspace = true }
+notify = "8"
+git2 = { version = "0.21", default-features = false, features = ["vendored-libgit2"] }
+# The user's time zone, for the dates of a search. Not a new crate in the
+# tree: gix reads dates with it, in the same version and with the same
+# features.
+jiff = "0.2"
+
+# A signal to a whole process group, to stop git-lfs and the programs it
+# starts along with git; the standard library can only kill the one
+# process it started. Not a new crate in the tree either.
+[target.'cfg(unix)'.dependencies]
+rustix = { workspace = true }
+
+# The askpass server's token on Windows, from the system's random source;
+# Unix reads /dev/urandom. Not a new crate in the tree: gix's temporary
+# files take their random names from it, in the same version.
+[target.'cfg(windows)'.dependencies]
+getrandom = { version = "0.3", default-features = false }
+
+[features]
+# For tests only: git children read no system-wide configuration, as the
+# testkit's oracle reads none, so that what a test compares does not
+# depend on the machine (Git for Windows sets core.autocrlf, core.symlinks
+# and init.defaultBranch there). The tests of the crates above turn it on
+# as a dev-dependency; a build of the application never has it.
+hermetic = []
+
+[dev-dependencies]
+# The catalog's check: every lookup is in it, every message looked up.
+bitbraid-strings = { workspace = true, features = ["check"] }
+bitbraid-testkit = { workspace = true }

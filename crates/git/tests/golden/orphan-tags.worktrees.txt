@@ -1,0 +1,7 @@
+*  ~ uncommitted work in a worktree on docs
+*  9924ff8 d1
+*  ~ uncommitted work in a worktree on main
+*  6946e6c c2
+| *  ~ uncommitted work in a worktree detached, at the first commit
+|/
+*  7683ee3 c1

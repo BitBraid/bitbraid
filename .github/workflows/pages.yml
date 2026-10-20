@@ -1,0 +1,57 @@
+name: pages
+
+# The website (`site/`), assembled by `site/build.sh` and published on
+# GitHub Pages. Its source in the repository's settings must be "GitHub
+# Actions"; the custom domain is set there too.
+#
+# It runs in the project's own repository only, never in a fork.
+#
+# The download buttons point at the files of the latest published release
+# (`site/build.sh <dir> <version>`), so the page is published again when a
+# release is; before the first, they point at the release page.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "site/**"
+      - "brand/**"
+      - ".github/workflows/pages.yml"
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deployment at a time; a newer one waits rather than cutting one off.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: ${{ github.repository == 'BitBraid/bitbraid' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v5
+      - name: Assemble the site
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # The latest published release, if there is one (drafts and
+          # pre-releases are not "latest").
+          tag=$(gh release view --repo "$GITHUB_REPOSITORY" --json tagName --jq .tagName 2>/dev/null || true)
+          site/build.sh "$RUNNER_TEMP/site" ${tag:+"${tag#v}"}
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: ${{ runner.temp }}/site
+      - id: deployment
+        uses: actions/deploy-pages@v4

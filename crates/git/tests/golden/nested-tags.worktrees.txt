@@ -1,0 +1,7 @@
+*  d8a6919 g1
+| *  ~ uncommitted work in a worktree on main
+| *  a9191c1 n3
+| *  348abf9 n2
+| | *  ~ uncommitted work in a worktree detached, at the first commit
+|/ /
+*  e96ce3e n1

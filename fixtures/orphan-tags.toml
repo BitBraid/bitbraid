@@ -1,0 +1,22 @@
+name = "orphan-tags"
+description = "An orphan branch unrelated to main, a lightweight and an annotated tag."
+
+[[steps]]
+commit = { message = "c1", file = "a.txt", content = "1" }
+[[steps]]
+commit = { message = "c2", file = "a.txt", content = "2" }
+[[steps]]
+tag = { name = "t-light", at = "HEAD~1" }
+[[steps]]
+orphan = { name = "docs" }
+[[steps]]
+commit = { message = "d1", file = "docs/index.md", content = "# docs" }
+[[steps]]
+tag = { name = "t-anno", message = "annotated on docs" }
+[[steps]]
+checkout = { target = "main" }
+
+[expect]
+commits = 3
+branches = ["docs", "main"]
+tags = ["t-anno", "t-light"]

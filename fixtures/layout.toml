@@ -1,0 +1,37 @@
+name = "layout"
+description = "Files in folders a few levels deep, of sizes that differ: for sparse checkout (which folders are checked out) and for the size of a repository (the largest blobs, the commit and path each came in by). A file is grown, one is removed, one comes in on a branch that is merged, and the same content comes in twice at two paths."
+
+[[steps]]
+commit = { message = "lay out the project", files = [
+  { path = "README.md", content = "# layout" },
+  { path = "Cargo.toml", content = "[package]\nname = \"layout\"" },
+  { path = "src/core/lib.rs", content = "pub fn core() {}\npub fn more() {}" },
+  { path = "src/ui/view.rs", content = "pub fn view() {}" },
+  { path = "docs/guide.md", content = "A guide." },
+  { path = "tools/build.sh", content = "#!/bin/sh\necho build\necho done here" },
+  { path = "with space/note.txt", content = "a note" },
+] }
+[[steps]]
+commit = { message = "grow the guide", file = "docs/guide.md", content = "A guide.\nIt grew a second line, and then a third one that is longer than the rest.\nAnd a fourth." }
+[[steps]]
+branch = { name = "feature/ui", checkout = true }
+[[steps]]
+commit = { message = "add the big view", file = "src/ui/big.rs", content = "pub fn big() {\n    // The largest file of all, by some way: it goes on and on and on,\n    // line after line, so that it is the first of the largest blobs.\n    let words = [\"one\", \"two\", \"three\", \"four\", \"five\", \"six\", \"seven\"];\n    for word in words { println!(\"{word}\"); }\n}" }
+[[steps]]
+checkout = { target = "main" }
+[[steps]]
+commit = { message = "add the assets", files = [
+  { path = "assets/logo.svg", content = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><circle r=\"7\"/></svg>" },
+  { path = "assets/copy/logo.svg", content = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><circle r=\"7\"/></svg>" },
+] }
+[[steps]]
+merge = { branches = ["feature/ui"], message = "Merge the big view" }
+[[steps]]
+remove = { path = "tools/build.sh" }
+[[steps]]
+commit = { message = "drop the build script" }
+
+[expect]
+commits = 6
+branches = ["feature/ui", "main"]
+tags = []

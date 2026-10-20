@@ -1,0 +1,2070 @@
+{
+  "note": "Recorded from github.com by tests/suite/live_github.rs (a private test repository)",
+  "exchanges": [
+    {
+      "method": "GET",
+      "path_and_query": "/user",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 23:54:48 GMT",
+        "etag": "\"7eebdabe98a79bf6eb2c0199e88a91e6f788ae541d09fbd430d956d2efd38b60\"",
+        "last-modified": "Sun, 27 Sep 2026 17:31:53 GMT",
+        "x-oauth-scopes": "admin:public_key, gist, read:org, repo",
+        "x-ratelimit-limit": "5000",
+        "x-ratelimit-remaining": "4635",
+        "x-ratelimit-reset": "1791852647",
+        "x-ratelimit-resource": "core",
+        "x-ratelimit-used": "365"
+      },
+      "body": {
+        "avatar_url": "https://avatars.example.invalid/user-1",
+        "bio": null,
+        "blog": "",
+        "company": null,
+        "created_at": "2000-01-01T00:00:00Z",
+        "email": "user-1@example.invalid",
+        "events_url": "https://api.github.com/users/user-1/events{/privacy}",
+        "followers": 0,
+        "followers_url": "https://api.github.com/users/user-1/followers",
+        "following": 0,
+        "following_url": "https://api.github.com/users/user-1/following{/other_user}",
+        "gists_url": "https://api.github.com/users/user-1/gists{/gist_id}",
+        "gravatar_id": "",
+        "hireable": null,
+        "html_url": "https://github.com/user-1",
+        "id": 100001,
+        "location": "",
+        "login": "user-1",
+        "name": "User 1",
+        "node_id": "node-1",
+        "notification_email": "user-1@example.invalid",
+        "organizations_url": "https://api.github.com/users/user-1/orgs",
+        "public_gists": 0,
+        "public_repos": 0,
+        "received_events_url": "https://api.github.com/users/user-1/received_events",
+        "repos_url": "https://api.github.com/users/user-1/repos",
+        "site_admin": false,
+        "starred_url": "https://api.github.com/users/user-1/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/user-1/subscriptions",
+        "twitter_username": null,
+        "type": "User",
+        "updated_at": "2000-01-01T00:00:00Z",
+        "url": "https://api.github.com/users/user-1",
+        "user_view_type": "public"
+      }
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/graphql",
+      "request_body": {
+        "query": "query($search: String!, $first: Int!, $after: String) { search(query: $search, type: ISSUE, first: $first, after: $after) { pageInfo { hasNextPage endCursor } nodes { ... on PullRequest { number title state isDraft url createdAt updatedAt author { login avatarUrl url ... on User { name } } headRefName headRefOid headRepository { nameWithOwner } baseRefName baseRepository { nameWithOwner } labels(first: 20) { nodes { name color description } } assignees(first: 20) { nodes { login name avatarUrl url } } reviewRequests(first: 20) { nodes { requestedReviewer { ... on User { login name avatarUrl url } ... on Team { combinedSlug name avatarUrl url } ... on Bot { login avatarUrl url } ... on Mannequin { login avatarUrl url } } } } latestReviews(first: 20) { nodes { state author { login avatarUrl url ... on User { name } } } } comments { totalCount } commits(last: 1) { nodes { commit { statusCheckRollup { state } } } } } } } }",
+        "variables": {
+          "after": null,
+          "first": 100,
+          "search": "repo:user-1/bitbraid-test-core is:pr sort:created-desc"
+        }
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 23:54:49 GMT",
+        "x-accepted-oauth-scopes": "repo",
+        "x-oauth-scopes": "admin:public_key, gist, read:org, repo",
+        "x-ratelimit-limit": "5000",
+        "x-ratelimit-remaining": "4890",
+        "x-ratelimit-reset": "1791851829",
+        "x-ratelimit-resource": "graphql",
+        "x-ratelimit-used": "110"
+      },
+      "body": {
+        "data": {
+          "search": {
+            "nodes": [
+              {
+                "assignees": {
+                  "nodes": []
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": "User 1",
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "comments": {
+                  "totalCount": 0
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": null
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-12T23:48:31Z",
+                "headRefName": "bb-p-closed",
+                "headRefOid": "0a5e2992ee397fca1764dd60b799b8dbeebd8113",
+                "headRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "isDraft": false,
+                "labels": {
+                  "nodes": []
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 6,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "CLOSED",
+                "title": "Closed without merging",
+                "updatedAt": "2026-10-12T23:48:32Z",
+                "url": "https://github.com/user-1/bitbraid-test-core/pull/6"
+              },
+              {
+                "assignees": {
+                  "nodes": []
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": "User 1",
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "comments": {
+                  "totalCount": 0
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": null
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-12T23:48:24Z",
+                "headRefName": "bb-p-merged",
+                "headRefOid": "abe8b92f027bab2c55b61edd0746b34b8ebc5a57",
+                "headRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "isDraft": false,
+                "labels": {
+                  "nodes": []
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 5,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "MERGED",
+                "title": "Merged already",
+                "updatedAt": "2026-10-12T23:48:27Z",
+                "url": "https://github.com/user-1/bitbraid-test-core/pull/5"
+              },
+              {
+                "assignees": {
+                  "nodes": []
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": "User 1",
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "bb-p-stack-1",
+                "baseRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "comments": {
+                  "totalCount": 0
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": null
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-12T23:48:19Z",
+                "headRefName": "bb-p-stack-2",
+                "headRefOid": "841666f2d108b1d1c79acf44fe3721e0f37c37f4",
+                "headRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "isDraft": false,
+                "labels": {
+                  "nodes": []
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 4,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "OPEN",
+                "title": "Second of a stack",
+                "updatedAt": "2026-10-12T23:48:19Z",
+                "url": "https://github.com/user-1/bitbraid-test-core/pull/4"
+              },
+              {
+                "assignees": {
+                  "nodes": []
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": "User 1",
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "comments": {
+                  "totalCount": 0
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": {
+                          "state": "FAILURE"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-12T23:48:18Z",
+                "headRefName": "bb-p-stack-1",
+                "headRefOid": "82c8217259539ac64847c5084cf1882a081d8545",
+                "headRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "isDraft": false,
+                "labels": {
+                  "nodes": []
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 3,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "OPEN",
+                "title": "First of a stack",
+                "updatedAt": "2026-10-12T23:48:18Z",
+                "url": "https://github.com/user-1/bitbraid-test-core/pull/3"
+              },
+              {
+                "assignees": {
+                  "nodes": []
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": "User 1",
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "comments": {
+                  "totalCount": 0
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": {
+                          "state": "PENDING"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-12T23:48:09Z",
+                "headRefName": "bb-p-draft",
+                "headRefOid": "d24f1e9ff684e76c38f704ca3b1865c52e5071ff",
+                "headRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "isDraft": true,
+                "labels": {
+                  "nodes": [
+                    {
+                      "color": "0075ca",
+                      "description": "How it looks",
+                      "name": "ui"
+                    }
+                  ]
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 2,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "OPEN",
+                "title": "Try another way",
+                "updatedAt": "2026-10-12T23:54:38Z",
+                "url": "https://github.com/user-1/bitbraid-test-core/pull/2"
+              },
+              {
+                "assignees": {
+                  "nodes": [
+                    {
+                      "avatarUrl": "https://avatars.example.invalid/user-1",
+                      "login": "user-1",
+                      "name": "User 1",
+                      "url": "https://github.com/user-1"
+                    }
+                  ]
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": "User 1",
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "comments": {
+                  "totalCount": 1
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": {
+                          "state": "FAILURE"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-12T22:50:49Z",
+                "headRefName": "bb-p-topic",
+                "headRefOid": "7802fee5a71c66a697cad3315808700a2e4e87f8",
+                "headRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "isDraft": false,
+                "labels": {
+                  "nodes": [
+                    {
+                      "color": "d73a4a",
+                      "description": "Something isn't working",
+                      "name": "bug"
+                    }
+                  ]
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 1,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "OPEN",
+                "title": "Add a file to review",
+                "updatedAt": "2026-10-12T23:54:35Z",
+                "url": "https://github.com/user-1/bitbraid-test-core/pull/1"
+              }
+            ],
+            "pageInfo": {
+              "endCursor": "Y3Vyc29yOjY=",
+              "hasNextPage": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/graphql",
+      "request_body": {
+        "query": "query($search: String!, $first: Int!, $after: String) { search(query: $search, type: ISSUE, first: $first, after: $after) { pageInfo { hasNextPage endCursor } nodes { ... on PullRequest { number title state isDraft url createdAt updatedAt author { login avatarUrl url ... on User { name } } headRefName headRefOid headRepository { nameWithOwner } baseRefName baseRepository { nameWithOwner } labels(first: 20) { nodes { name color description } } assignees(first: 20) { nodes { login name avatarUrl url } } reviewRequests(first: 20) { nodes { requestedReviewer { ... on User { login name avatarUrl url } ... on Team { combinedSlug name avatarUrl url } ... on Bot { login avatarUrl url } ... on Mannequin { login avatarUrl url } } } } latestReviews(first: 20) { nodes { state author { login avatarUrl url ... on User { name } } } } comments { totalCount } commits(last: 1) { nodes { commit { statusCheckRollup { state } } } } } } } }",
+        "variables": {
+          "after": null,
+          "first": 100,
+          "search": "repo:user-1/bitbraid-test-core is:pr is:open sort:created-desc"
+        }
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 23:54:49 GMT",
+        "x-accepted-oauth-scopes": "repo",
+        "x-oauth-scopes": "admin:public_key, gist, read:org, repo",
+        "x-ratelimit-limit": "5000",
+        "x-ratelimit-remaining": "4885",
+        "x-ratelimit-reset": "1791851829",
+        "x-ratelimit-resource": "graphql",
+        "x-ratelimit-used": "115"
+      },
+      "body": {
+        "data": {
+          "search": {
+            "nodes": [
+              {
+                "assignees": {
+                  "nodes": []
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": "User 1",
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "bb-p-stack-1",
+                "baseRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "comments": {
+                  "totalCount": 0
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": null
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-12T23:48:19Z",
+                "headRefName": "bb-p-stack-2",
+                "headRefOid": "841666f2d108b1d1c79acf44fe3721e0f37c37f4",
+                "headRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "isDraft": false,
+                "labels": {
+                  "nodes": []
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 4,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "OPEN",
+                "title": "Second of a stack",
+                "updatedAt": "2026-10-12T23:48:19Z",
+                "url": "https://github.com/user-1/bitbraid-test-core/pull/4"
+              },
+              {
+                "assignees": {
+                  "nodes": []
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": "User 1",
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "comments": {
+                  "totalCount": 0
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": {
+                          "state": "FAILURE"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-12T23:48:18Z",
+                "headRefName": "bb-p-stack-1",
+                "headRefOid": "82c8217259539ac64847c5084cf1882a081d8545",
+                "headRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "isDraft": false,
+                "labels": {
+                  "nodes": []
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 3,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "OPEN",
+                "title": "First of a stack",
+                "updatedAt": "2026-10-12T23:48:18Z",
+                "url": "https://github.com/user-1/bitbraid-test-core/pull/3"
+              },
+              {
+                "assignees": {
+                  "nodes": []
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": "User 1",
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "comments": {
+                  "totalCount": 0
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": {
+                          "state": "PENDING"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-12T23:48:09Z",
+                "headRefName": "bb-p-draft",
+                "headRefOid": "d24f1e9ff684e76c38f704ca3b1865c52e5071ff",
+                "headRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "isDraft": true,
+                "labels": {
+                  "nodes": [
+                    {
+                      "color": "0075ca",
+                      "description": "How it looks",
+                      "name": "ui"
+                    }
+                  ]
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 2,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "OPEN",
+                "title": "Try another way",
+                "updatedAt": "2026-10-12T23:54:38Z",
+                "url": "https://github.com/user-1/bitbraid-test-core/pull/2"
+              },
+              {
+                "assignees": {
+                  "nodes": [
+                    {
+                      "avatarUrl": "https://avatars.example.invalid/user-1",
+                      "login": "user-1",
+                      "name": "User 1",
+                      "url": "https://github.com/user-1"
+                    }
+                  ]
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": "User 1",
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "comments": {
+                  "totalCount": 1
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": {
+                          "state": "FAILURE"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-12T22:50:49Z",
+                "headRefName": "bb-p-topic",
+                "headRefOid": "7802fee5a71c66a697cad3315808700a2e4e87f8",
+                "headRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "isDraft": false,
+                "labels": {
+                  "nodes": [
+                    {
+                      "color": "d73a4a",
+                      "description": "Something isn't working",
+                      "name": "bug"
+                    }
+                  ]
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 1,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "OPEN",
+                "title": "Add a file to review",
+                "updatedAt": "2026-10-12T23:54:35Z",
+                "url": "https://github.com/user-1/bitbraid-test-core/pull/1"
+              }
+            ],
+            "pageInfo": {
+              "endCursor": "Y3Vyc29yOjQ=",
+              "hasNextPage": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/graphql",
+      "request_body": {
+        "query": "query($search: String!, $first: Int!, $after: String) { search(query: $search, type: ISSUE, first: $first, after: $after) { pageInfo { hasNextPage endCursor } nodes { ... on PullRequest { number title state isDraft url createdAt updatedAt author { login avatarUrl url ... on User { name } } headRefName headRefOid headRepository { nameWithOwner } baseRefName baseRepository { nameWithOwner } labels(first: 20) { nodes { name color description } } assignees(first: 20) { nodes { login name avatarUrl url } } reviewRequests(first: 20) { nodes { requestedReviewer { ... on User { login name avatarUrl url } ... on Team { combinedSlug name avatarUrl url } ... on Bot { login avatarUrl url } ... on Mannequin { login avatarUrl url } } } } latestReviews(first: 20) { nodes { state author { login avatarUrl url ... on User { name } } } } comments { totalCount } commits(last: 1) { nodes { commit { statusCheckRollup { state } } } } } } } }",
+        "variables": {
+          "after": null,
+          "first": 100,
+          "search": "repo:user-1/bitbraid-test-core is:pr is:open author:user-1 sort:created-desc"
+        }
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 23:54:50 GMT",
+        "x-accepted-oauth-scopes": "repo",
+        "x-oauth-scopes": "admin:public_key, gist, read:org, repo",
+        "x-ratelimit-limit": "5000",
+        "x-ratelimit-remaining": "4880",
+        "x-ratelimit-reset": "1791851829",
+        "x-ratelimit-resource": "graphql",
+        "x-ratelimit-used": "120"
+      },
+      "body": {
+        "data": {
+          "search": {
+            "nodes": [
+              {
+                "assignees": {
+                  "nodes": []
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": "User 1",
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "bb-p-stack-1",
+                "baseRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "comments": {
+                  "totalCount": 0
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": null
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-12T23:48:19Z",
+                "headRefName": "bb-p-stack-2",
+                "headRefOid": "841666f2d108b1d1c79acf44fe3721e0f37c37f4",
+                "headRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "isDraft": false,
+                "labels": {
+                  "nodes": []
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 4,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "OPEN",
+                "title": "Second of a stack",
+                "updatedAt": "2026-10-12T23:48:19Z",
+                "url": "https://github.com/user-1/bitbraid-test-core/pull/4"
+              },
+              {
+                "assignees": {
+                  "nodes": []
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": "User 1",
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "comments": {
+                  "totalCount": 0
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": {
+                          "state": "FAILURE"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-12T23:48:18Z",
+                "headRefName": "bb-p-stack-1",
+                "headRefOid": "82c8217259539ac64847c5084cf1882a081d8545",
+                "headRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "isDraft": false,
+                "labels": {
+                  "nodes": []
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 3,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "OPEN",
+                "title": "First of a stack",
+                "updatedAt": "2026-10-12T23:48:18Z",
+                "url": "https://github.com/user-1/bitbraid-test-core/pull/3"
+              },
+              {
+                "assignees": {
+                  "nodes": []
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": "User 1",
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "comments": {
+                  "totalCount": 0
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": {
+                          "state": "PENDING"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-12T23:48:09Z",
+                "headRefName": "bb-p-draft",
+                "headRefOid": "d24f1e9ff684e76c38f704ca3b1865c52e5071ff",
+                "headRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "isDraft": true,
+                "labels": {
+                  "nodes": [
+                    {
+                      "color": "0075ca",
+                      "description": "How it looks",
+                      "name": "ui"
+                    }
+                  ]
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 2,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "OPEN",
+                "title": "Try another way",
+                "updatedAt": "2026-10-12T23:54:38Z",
+                "url": "https://github.com/user-1/bitbraid-test-core/pull/2"
+              },
+              {
+                "assignees": {
+                  "nodes": [
+                    {
+                      "avatarUrl": "https://avatars.example.invalid/user-1",
+                      "login": "user-1",
+                      "name": "User 1",
+                      "url": "https://github.com/user-1"
+                    }
+                  ]
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": "User 1",
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "comments": {
+                  "totalCount": 1
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": {
+                          "state": "FAILURE"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-12T22:50:49Z",
+                "headRefName": "bb-p-topic",
+                "headRefOid": "7802fee5a71c66a697cad3315808700a2e4e87f8",
+                "headRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "isDraft": false,
+                "labels": {
+                  "nodes": [
+                    {
+                      "color": "d73a4a",
+                      "description": "Something isn't working",
+                      "name": "bug"
+                    }
+                  ]
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 1,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "OPEN",
+                "title": "Add a file to review",
+                "updatedAt": "2026-10-12T23:54:35Z",
+                "url": "https://github.com/user-1/bitbraid-test-core/pull/1"
+              }
+            ],
+            "pageInfo": {
+              "endCursor": "Y3Vyc29yOjQ=",
+              "hasNextPage": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/graphql",
+      "request_body": {
+        "query": "query($search: String!, $first: Int!, $after: String) { search(query: $search, type: ISSUE, first: $first, after: $after) { pageInfo { hasNextPage endCursor } nodes { ... on PullRequest { number title state isDraft url createdAt updatedAt author { login avatarUrl url ... on User { name } } headRefName headRefOid headRepository { nameWithOwner } baseRefName baseRepository { nameWithOwner } labels(first: 20) { nodes { name color description } } assignees(first: 20) { nodes { login name avatarUrl url } } reviewRequests(first: 20) { nodes { requestedReviewer { ... on User { login name avatarUrl url } ... on Team { combinedSlug name avatarUrl url } ... on Bot { login avatarUrl url } ... on Mannequin { login avatarUrl url } } } } latestReviews(first: 20) { nodes { state author { login avatarUrl url ... on User { name } } } } comments { totalCount } commits(last: 1) { nodes { commit { statusCheckRollup { state } } } } } } } }",
+        "variables": {
+          "after": null,
+          "first": 100,
+          "search": "repo:user-1/bitbraid-test-core is:pr is:open assignee:user-1 sort:created-desc"
+        }
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 23:54:51 GMT",
+        "x-accepted-oauth-scopes": "repo",
+        "x-oauth-scopes": "admin:public_key, gist, read:org, repo",
+        "x-ratelimit-limit": "5000",
+        "x-ratelimit-remaining": "4875",
+        "x-ratelimit-reset": "1791851829",
+        "x-ratelimit-resource": "graphql",
+        "x-ratelimit-used": "125"
+      },
+      "body": {
+        "data": {
+          "search": {
+            "nodes": [
+              {
+                "assignees": {
+                  "nodes": [
+                    {
+                      "avatarUrl": "https://avatars.example.invalid/user-1",
+                      "login": "user-1",
+                      "name": "User 1",
+                      "url": "https://github.com/user-1"
+                    }
+                  ]
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": "User 1",
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "comments": {
+                  "totalCount": 1
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": {
+                          "state": "FAILURE"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-12T22:50:49Z",
+                "headRefName": "bb-p-topic",
+                "headRefOid": "7802fee5a71c66a697cad3315808700a2e4e87f8",
+                "headRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "isDraft": false,
+                "labels": {
+                  "nodes": [
+                    {
+                      "color": "d73a4a",
+                      "description": "Something isn't working",
+                      "name": "bug"
+                    }
+                  ]
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 1,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "OPEN",
+                "title": "Add a file to review",
+                "updatedAt": "2026-10-12T23:54:35Z",
+                "url": "https://github.com/user-1/bitbraid-test-core/pull/1"
+              }
+            ],
+            "pageInfo": {
+              "endCursor": "Y3Vyc29yOjE=",
+              "hasNextPage": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/graphql",
+      "request_body": {
+        "query": "query($search: String!, $first: Int!, $after: String) { search(query: $search, type: ISSUE, first: $first, after: $after) { pageInfo { hasNextPage endCursor } nodes { ... on PullRequest { number title state isDraft url createdAt updatedAt author { login avatarUrl url ... on User { name } } headRefName headRefOid headRepository { nameWithOwner } baseRefName baseRepository { nameWithOwner } labels(first: 20) { nodes { name color description } } assignees(first: 20) { nodes { login name avatarUrl url } } reviewRequests(first: 20) { nodes { requestedReviewer { ... on User { login name avatarUrl url } ... on Team { combinedSlug name avatarUrl url } ... on Bot { login avatarUrl url } ... on Mannequin { login avatarUrl url } } } } latestReviews(first: 20) { nodes { state author { login avatarUrl url ... on User { name } } } } comments { totalCount } commits(last: 1) { nodes { commit { statusCheckRollup { state } } } } } } } }",
+        "variables": {
+          "after": null,
+          "first": 100,
+          "search": "repo:user-1/bitbraid-test-core is:pr is:open review-requested:user-1 sort:created-desc"
+        }
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 23:54:51 GMT",
+        "x-accepted-oauth-scopes": "repo",
+        "x-oauth-scopes": "admin:public_key, gist, read:org, repo",
+        "x-ratelimit-limit": "5000",
+        "x-ratelimit-remaining": "4870",
+        "x-ratelimit-reset": "1791851829",
+        "x-ratelimit-resource": "graphql",
+        "x-ratelimit-used": "130"
+      },
+      "body": {
+        "data": {
+          "search": {
+            "nodes": [],
+            "pageInfo": {
+              "endCursor": null,
+              "hasNextPage": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/graphql",
+      "request_body": {
+        "query": "query($search: String!, $first: Int!, $after: String) { search(query: $search, type: ISSUE, first: $first, after: $after) { pageInfo { hasNextPage endCursor } nodes { ... on PullRequest { number title state isDraft url createdAt updatedAt author { login avatarUrl url ... on User { name } } headRefName headRefOid headRepository { nameWithOwner } baseRefName baseRepository { nameWithOwner } labels(first: 20) { nodes { name color description } } assignees(first: 20) { nodes { login name avatarUrl url } } reviewRequests(first: 20) { nodes { requestedReviewer { ... on User { login name avatarUrl url } ... on Team { combinedSlug name avatarUrl url } ... on Bot { login avatarUrl url } ... on Mannequin { login avatarUrl url } } } } latestReviews(first: 20) { nodes { state author { login avatarUrl url ... on User { name } } } } comments { totalCount } commits(last: 1) { nodes { commit { statusCheckRollup { state } } } } } } } }",
+        "variables": {
+          "after": null,
+          "first": 100,
+          "search": "repo:user-1/bitbraid-test-core is:pr is:merged sort:created-desc"
+        }
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 23:54:52 GMT",
+        "x-accepted-oauth-scopes": "repo",
+        "x-oauth-scopes": "admin:public_key, gist, read:org, repo",
+        "x-ratelimit-limit": "5000",
+        "x-ratelimit-remaining": "4865",
+        "x-ratelimit-reset": "1791851829",
+        "x-ratelimit-resource": "graphql",
+        "x-ratelimit-used": "135"
+      },
+      "body": {
+        "data": {
+          "search": {
+            "nodes": [
+              {
+                "assignees": {
+                  "nodes": []
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": "User 1",
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "comments": {
+                  "totalCount": 0
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": null
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-12T23:48:24Z",
+                "headRefName": "bb-p-merged",
+                "headRefOid": "abe8b92f027bab2c55b61edd0746b34b8ebc5a57",
+                "headRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "isDraft": false,
+                "labels": {
+                  "nodes": []
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 5,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "MERGED",
+                "title": "Merged already",
+                "updatedAt": "2026-10-12T23:48:27Z",
+                "url": "https://github.com/user-1/bitbraid-test-core/pull/5"
+              }
+            ],
+            "pageInfo": {
+              "endCursor": "Y3Vyc29yOjE=",
+              "hasNextPage": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/graphql",
+      "request_body": {
+        "query": "query($search: String!, $first: Int!, $after: String) { search(query: $search, type: ISSUE, first: $first, after: $after) { pageInfo { hasNextPage endCursor } nodes { ... on PullRequest { number title state isDraft url createdAt updatedAt author { login avatarUrl url ... on User { name } } headRefName headRefOid headRepository { nameWithOwner } baseRefName baseRepository { nameWithOwner } labels(first: 20) { nodes { name color description } } assignees(first: 20) { nodes { login name avatarUrl url } } reviewRequests(first: 20) { nodes { requestedReviewer { ... on User { login name avatarUrl url } ... on Team { combinedSlug name avatarUrl url } ... on Bot { login avatarUrl url } ... on Mannequin { login avatarUrl url } } } } latestReviews(first: 20) { nodes { state author { login avatarUrl url ... on User { name } } } } comments { totalCount } commits(last: 1) { nodes { commit { statusCheckRollup { state } } } } } } } }",
+        "variables": {
+          "after": null,
+          "first": 100,
+          "search": "repo:user-1/bitbraid-test-core is:pr is:closed is:unmerged sort:created-desc"
+        }
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 23:54:52 GMT",
+        "x-accepted-oauth-scopes": "repo",
+        "x-oauth-scopes": "admin:public_key, gist, read:org, repo",
+        "x-ratelimit-limit": "5000",
+        "x-ratelimit-remaining": "4860",
+        "x-ratelimit-reset": "1791851829",
+        "x-ratelimit-resource": "graphql",
+        "x-ratelimit-used": "140"
+      },
+      "body": {
+        "data": {
+          "search": {
+            "nodes": [
+              {
+                "assignees": {
+                  "nodes": []
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": "User 1",
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "comments": {
+                  "totalCount": 0
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": null
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-12T23:48:31Z",
+                "headRefName": "bb-p-closed",
+                "headRefOid": "0a5e2992ee397fca1764dd60b799b8dbeebd8113",
+                "headRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "isDraft": false,
+                "labels": {
+                  "nodes": []
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 6,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "CLOSED",
+                "title": "Closed without merging",
+                "updatedAt": "2026-10-12T23:48:32Z",
+                "url": "https://github.com/user-1/bitbraid-test-core/pull/6"
+              }
+            ],
+            "pageInfo": {
+              "endCursor": "Y3Vyc29yOjE=",
+              "hasNextPage": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/graphql",
+      "request_body": {
+        "query": "query($search: String!, $first: Int!, $after: String) { search(query: $search, type: ISSUE, first: $first, after: $after) { pageInfo { hasNextPage endCursor } nodes { ... on PullRequest { number title state isDraft url createdAt updatedAt author { login avatarUrl url ... on User { name } } headRefName headRefOid headRepository { nameWithOwner } baseRefName baseRepository { nameWithOwner } labels(first: 20) { nodes { name color description } } assignees(first: 20) { nodes { login name avatarUrl url } } reviewRequests(first: 20) { nodes { requestedReviewer { ... on User { login name avatarUrl url } ... on Team { combinedSlug name avatarUrl url } ... on Bot { login avatarUrl url } ... on Mannequin { login avatarUrl url } } } } latestReviews(first: 20) { nodes { state author { login avatarUrl url ... on User { name } } } } comments { totalCount } commits(last: 1) { nodes { commit { statusCheckRollup { state } } } } } } } }",
+        "variables": {
+          "after": null,
+          "first": 100,
+          "search": "repo:user-1/bitbraid-test-core is:pr is:open label:bug sort:created-desc"
+        }
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 23:54:53 GMT",
+        "x-accepted-oauth-scopes": "repo",
+        "x-oauth-scopes": "admin:public_key, gist, read:org, repo",
+        "x-ratelimit-limit": "5000",
+        "x-ratelimit-remaining": "4988",
+        "x-ratelimit-reset": "1791852670",
+        "x-ratelimit-resource": "graphql",
+        "x-ratelimit-used": "12"
+      },
+      "body": {
+        "data": {
+          "search": {
+            "nodes": [
+              {
+                "assignees": {
+                  "nodes": [
+                    {
+                      "avatarUrl": "https://avatars.example.invalid/user-1",
+                      "login": "user-1",
+                      "name": "User 1",
+                      "url": "https://github.com/user-1"
+                    }
+                  ]
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": "User 1",
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "comments": {
+                  "totalCount": 1
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": {
+                          "state": "FAILURE"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-12T22:50:49Z",
+                "headRefName": "bb-p-topic",
+                "headRefOid": "7802fee5a71c66a697cad3315808700a2e4e87f8",
+                "headRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "isDraft": false,
+                "labels": {
+                  "nodes": [
+                    {
+                      "color": "d73a4a",
+                      "description": "Something isn't working",
+                      "name": "bug"
+                    }
+                  ]
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 1,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "OPEN",
+                "title": "Add a file to review",
+                "updatedAt": "2026-10-12T23:54:35Z",
+                "url": "https://github.com/user-1/bitbraid-test-core/pull/1"
+              }
+            ],
+            "pageInfo": {
+              "endCursor": "Y3Vyc29yOjE=",
+              "hasNextPage": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/graphql",
+      "request_body": {
+        "query": "query($search: String!, $first: Int!, $after: String) { search(query: $search, type: ISSUE, first: $first, after: $after) { pageInfo { hasNextPage endCursor } nodes { ... on PullRequest { number title state isDraft url createdAt updatedAt author { login avatarUrl url ... on User { name } } headRefName headRefOid headRepository { nameWithOwner } baseRefName baseRepository { nameWithOwner } labels(first: 20) { nodes { name color description } } assignees(first: 20) { nodes { login name avatarUrl url } } reviewRequests(first: 20) { nodes { requestedReviewer { ... on User { login name avatarUrl url } ... on Team { combinedSlug name avatarUrl url } ... on Bot { login avatarUrl url } ... on Mannequin { login avatarUrl url } } } } latestReviews(first: 20) { nodes { state author { login avatarUrl url ... on User { name } } } } comments { totalCount } commits(last: 1) { nodes { commit { statusCheckRollup { state } } } } } } } }",
+        "variables": {
+          "after": null,
+          "first": 100,
+          "search": "repo:user-1/bitbraid-test-core is:pr is:open label:bug sort:created-desc"
+        }
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 23:54:53 GMT",
+        "x-accepted-oauth-scopes": "repo",
+        "x-oauth-scopes": "admin:public_key, gist, read:org, repo",
+        "x-ratelimit-limit": "5000",
+        "x-ratelimit-remaining": "4855",
+        "x-ratelimit-reset": "1791851829",
+        "x-ratelimit-resource": "graphql",
+        "x-ratelimit-used": "145"
+      },
+      "body": {
+        "data": {
+          "search": {
+            "nodes": [
+              {
+                "assignees": {
+                  "nodes": [
+                    {
+                      "avatarUrl": "https://avatars.example.invalid/user-1",
+                      "login": "user-1",
+                      "name": "User 1",
+                      "url": "https://github.com/user-1"
+                    }
+                  ]
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": "User 1",
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "comments": {
+                  "totalCount": 1
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": {
+                          "state": "FAILURE"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-12T22:50:49Z",
+                "headRefName": "bb-p-topic",
+                "headRefOid": "7802fee5a71c66a697cad3315808700a2e4e87f8",
+                "headRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "isDraft": false,
+                "labels": {
+                  "nodes": [
+                    {
+                      "color": "d73a4a",
+                      "description": "Something isn't working",
+                      "name": "bug"
+                    }
+                  ]
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 1,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "OPEN",
+                "title": "Add a file to review",
+                "updatedAt": "2026-10-12T23:54:35Z",
+                "url": "https://github.com/user-1/bitbraid-test-core/pull/1"
+              }
+            ],
+            "pageInfo": {
+              "endCursor": "Y3Vyc29yOjE=",
+              "hasNextPage": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/graphql",
+      "request_body": {
+        "query": "query($search: String!, $first: Int!, $after: String) { search(query: $search, type: ISSUE, first: $first, after: $after) { pageInfo { hasNextPage endCursor } nodes { ... on PullRequest { number title state isDraft url createdAt updatedAt author { login avatarUrl url ... on User { name } } headRefName headRefOid headRepository { nameWithOwner } baseRefName baseRepository { nameWithOwner } labels(first: 20) { nodes { name color description } } assignees(first: 20) { nodes { login name avatarUrl url } } reviewRequests(first: 20) { nodes { requestedReviewer { ... on User { login name avatarUrl url } ... on Team { combinedSlug name avatarUrl url } ... on Bot { login avatarUrl url } ... on Mannequin { login avatarUrl url } } } } latestReviews(first: 20) { nodes { state author { login avatarUrl url ... on User { name } } } } comments { totalCount } commits(last: 1) { nodes { commit { statusCheckRollup { state } } } } } } } }",
+        "variables": {
+          "after": null,
+          "first": 100,
+          "search": "repo:user-1/bitbraid-test-core is:pr is:open label:ui sort:created-desc"
+        }
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 23:54:54 GMT",
+        "x-accepted-oauth-scopes": "repo",
+        "x-oauth-scopes": "admin:public_key, gist, read:org, repo",
+        "x-ratelimit-limit": "5000",
+        "x-ratelimit-remaining": "4850",
+        "x-ratelimit-reset": "1791851829",
+        "x-ratelimit-resource": "graphql",
+        "x-ratelimit-used": "150"
+      },
+      "body": {
+        "data": {
+          "search": {
+            "nodes": [
+              {
+                "assignees": {
+                  "nodes": []
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": "User 1",
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "comments": {
+                  "totalCount": 0
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": {
+                          "state": "PENDING"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-12T23:48:09Z",
+                "headRefName": "bb-p-draft",
+                "headRefOid": "d24f1e9ff684e76c38f704ca3b1865c52e5071ff",
+                "headRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "isDraft": true,
+                "labels": {
+                  "nodes": [
+                    {
+                      "color": "0075ca",
+                      "description": "How it looks",
+                      "name": "ui"
+                    }
+                  ]
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 2,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "OPEN",
+                "title": "Try another way",
+                "updatedAt": "2026-10-12T23:54:38Z",
+                "url": "https://github.com/user-1/bitbraid-test-core/pull/2"
+              }
+            ],
+            "pageInfo": {
+              "endCursor": "Y3Vyc29yOjE=",
+              "hasNextPage": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/graphql",
+      "request_body": {
+        "query": "query($search: String!, $first: Int!, $after: String) { search(query: $search, type: ISSUE, first: $first, after: $after) { pageInfo { hasNextPage endCursor } nodes { ... on PullRequest { number title state isDraft url createdAt updatedAt author { login avatarUrl url ... on User { name } } headRefName headRefOid headRepository { nameWithOwner } baseRefName baseRepository { nameWithOwner } labels(first: 20) { nodes { name color description } } assignees(first: 20) { nodes { login name avatarUrl url } } reviewRequests(first: 20) { nodes { requestedReviewer { ... on User { login name avatarUrl url } ... on Team { combinedSlug name avatarUrl url } ... on Bot { login avatarUrl url } ... on Mannequin { login avatarUrl url } } } } latestReviews(first: 20) { nodes { state author { login avatarUrl url ... on User { name } } } } comments { totalCount } commits(last: 1) { nodes { commit { statusCheckRollup { state } } } } } } } }",
+        "variables": {
+          "after": null,
+          "first": 100,
+          "search": "repo:user-1/bitbraid-test-core is:pr is:open draft:true sort:created-desc"
+        }
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 23:54:55 GMT",
+        "x-accepted-oauth-scopes": "repo",
+        "x-oauth-scopes": "admin:public_key, gist, read:org, repo",
+        "x-ratelimit-limit": "5000",
+        "x-ratelimit-remaining": "4845",
+        "x-ratelimit-reset": "1791851829",
+        "x-ratelimit-resource": "graphql",
+        "x-ratelimit-used": "155"
+      },
+      "body": {
+        "data": {
+          "search": {
+            "nodes": [
+              {
+                "assignees": {
+                  "nodes": []
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": "User 1",
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "comments": {
+                  "totalCount": 0
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": {
+                          "state": "PENDING"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-12T23:48:09Z",
+                "headRefName": "bb-p-draft",
+                "headRefOid": "d24f1e9ff684e76c38f704ca3b1865c52e5071ff",
+                "headRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "isDraft": true,
+                "labels": {
+                  "nodes": [
+                    {
+                      "color": "0075ca",
+                      "description": "How it looks",
+                      "name": "ui"
+                    }
+                  ]
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 2,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "OPEN",
+                "title": "Try another way",
+                "updatedAt": "2026-10-12T23:54:38Z",
+                "url": "https://github.com/user-1/bitbraid-test-core/pull/2"
+              }
+            ],
+            "pageInfo": {
+              "endCursor": "Y3Vyc29yOjE=",
+              "hasNextPage": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/graphql",
+      "request_body": {
+        "query": "query($search: String!, $first: Int!, $after: String) { search(query: $search, type: ISSUE, first: $first, after: $after) { pageInfo { hasNextPage endCursor } nodes { ... on PullRequest { number title state isDraft url createdAt updatedAt author { login avatarUrl url ... on User { name } } headRefName headRefOid headRepository { nameWithOwner } baseRefName baseRepository { nameWithOwner } labels(first: 20) { nodes { name color description } } assignees(first: 20) { nodes { login name avatarUrl url } } reviewRequests(first: 20) { nodes { requestedReviewer { ... on User { login name avatarUrl url } ... on Team { combinedSlug name avatarUrl url } ... on Bot { login avatarUrl url } ... on Mannequin { login avatarUrl url } } } } latestReviews(first: 20) { nodes { state author { login avatarUrl url ... on User { name } } } } comments { totalCount } commits(last: 1) { nodes { commit { statusCheckRollup { state } } } } } } } }",
+        "variables": {
+          "after": null,
+          "first": 100,
+          "search": "repo:user-1/bitbraid-test-core is:pr is:open -label:bug sort:created-desc"
+        }
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 23:54:56 GMT",
+        "x-accepted-oauth-scopes": "repo",
+        "x-oauth-scopes": "admin:public_key, gist, read:org, repo",
+        "x-ratelimit-limit": "5000",
+        "x-ratelimit-remaining": "4840",
+        "x-ratelimit-reset": "1791851829",
+        "x-ratelimit-resource": "graphql",
+        "x-ratelimit-used": "160"
+      },
+      "body": {
+        "data": {
+          "search": {
+            "nodes": [
+              {
+                "assignees": {
+                  "nodes": []
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": "User 1",
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "bb-p-stack-1",
+                "baseRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "comments": {
+                  "totalCount": 0
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": null
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-12T23:48:19Z",
+                "headRefName": "bb-p-stack-2",
+                "headRefOid": "841666f2d108b1d1c79acf44fe3721e0f37c37f4",
+                "headRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "isDraft": false,
+                "labels": {
+                  "nodes": []
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 4,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "OPEN",
+                "title": "Second of a stack",
+                "updatedAt": "2026-10-12T23:48:19Z",
+                "url": "https://github.com/user-1/bitbraid-test-core/pull/4"
+              },
+              {
+                "assignees": {
+                  "nodes": []
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": "User 1",
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "comments": {
+                  "totalCount": 0
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": {
+                          "state": "FAILURE"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-12T23:48:18Z",
+                "headRefName": "bb-p-stack-1",
+                "headRefOid": "82c8217259539ac64847c5084cf1882a081d8545",
+                "headRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "isDraft": false,
+                "labels": {
+                  "nodes": []
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 3,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "OPEN",
+                "title": "First of a stack",
+                "updatedAt": "2026-10-12T23:48:18Z",
+                "url": "https://github.com/user-1/bitbraid-test-core/pull/3"
+              },
+              {
+                "assignees": {
+                  "nodes": []
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": "User 1",
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "comments": {
+                  "totalCount": 0
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": {
+                          "state": "PENDING"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-12T23:48:09Z",
+                "headRefName": "bb-p-draft",
+                "headRefOid": "d24f1e9ff684e76c38f704ca3b1865c52e5071ff",
+                "headRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "isDraft": true,
+                "labels": {
+                  "nodes": [
+                    {
+                      "color": "0075ca",
+                      "description": "How it looks",
+                      "name": "ui"
+                    }
+                  ]
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 2,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "OPEN",
+                "title": "Try another way",
+                "updatedAt": "2026-10-12T23:54:38Z",
+                "url": "https://github.com/user-1/bitbraid-test-core/pull/2"
+              }
+            ],
+            "pageInfo": {
+              "endCursor": "Y3Vyc29yOjM=",
+              "hasNextPage": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/graphql",
+      "request_body": {
+        "query": "query($search: String!, $first: Int!, $after: String) { search(query: $search, type: ISSUE, first: $first, after: $after) { pageInfo { hasNextPage endCursor } nodes { ... on PullRequest { number title state isDraft url createdAt updatedAt author { login avatarUrl url ... on User { name } } headRefName headRefOid headRepository { nameWithOwner } baseRefName baseRepository { nameWithOwner } labels(first: 20) { nodes { name color description } } assignees(first: 20) { nodes { login name avatarUrl url } } reviewRequests(first: 20) { nodes { requestedReviewer { ... on User { login name avatarUrl url } ... on Team { combinedSlug name avatarUrl url } ... on Bot { login avatarUrl url } ... on Mannequin { login avatarUrl url } } } } latestReviews(first: 20) { nodes { state author { login avatarUrl url ... on User { name } } } } comments { totalCount } commits(last: 1) { nodes { commit { statusCheckRollup { state } } } } } } } }",
+        "variables": {
+          "after": null,
+          "first": 100,
+          "search": "repo:user-1/bitbraid-test-core is:pr is:open base:bb-p-stack-1 sort:created-desc"
+        }
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 23:54:56 GMT",
+        "x-accepted-oauth-scopes": "repo",
+        "x-oauth-scopes": "admin:public_key, gist, read:org, repo",
+        "x-ratelimit-limit": "5000",
+        "x-ratelimit-remaining": "4835",
+        "x-ratelimit-reset": "1791851829",
+        "x-ratelimit-resource": "graphql",
+        "x-ratelimit-used": "165"
+      },
+      "body": {
+        "data": {
+          "search": {
+            "nodes": [
+              {
+                "assignees": {
+                  "nodes": []
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": "User 1",
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "bb-p-stack-1",
+                "baseRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "comments": {
+                  "totalCount": 0
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": null
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-12T23:48:19Z",
+                "headRefName": "bb-p-stack-2",
+                "headRefOid": "841666f2d108b1d1c79acf44fe3721e0f37c37f4",
+                "headRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "isDraft": false,
+                "labels": {
+                  "nodes": []
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 4,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "OPEN",
+                "title": "Second of a stack",
+                "updatedAt": "2026-10-12T23:48:19Z",
+                "url": "https://github.com/user-1/bitbraid-test-core/pull/4"
+              }
+            ],
+            "pageInfo": {
+              "endCursor": "Y3Vyc29yOjE=",
+              "hasNextPage": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/graphql",
+      "request_body": {
+        "query": "query($search: String!, $first: Int!, $after: String) { search(query: $search, type: ISSUE, first: $first, after: $after) { pageInfo { hasNextPage endCursor } nodes { ... on PullRequest { number title state isDraft url createdAt updatedAt author { login avatarUrl url ... on User { name } } headRefName headRefOid headRepository { nameWithOwner } baseRefName baseRepository { nameWithOwner } labels(first: 20) { nodes { name color description } } assignees(first: 20) { nodes { login name avatarUrl url } } reviewRequests(first: 20) { nodes { requestedReviewer { ... on User { login name avatarUrl url } ... on Team { combinedSlug name avatarUrl url } ... on Bot { login avatarUrl url } ... on Mannequin { login avatarUrl url } } } } latestReviews(first: 20) { nodes { state author { login avatarUrl url ... on User { name } } } } comments { totalCount } commits(last: 1) { nodes { commit { statusCheckRollup { state } } } } } } } }",
+        "variables": {
+          "after": null,
+          "first": 100,
+          "search": "repo:user-1/bitbraid-test-core is:pr is:open status:failure label:bug sort:created-desc"
+        }
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 23:54:57 GMT",
+        "x-accepted-oauth-scopes": "repo",
+        "x-oauth-scopes": "admin:public_key, gist, read:org, repo",
+        "x-ratelimit-limit": "5000",
+        "x-ratelimit-remaining": "4830",
+        "x-ratelimit-reset": "1791851829",
+        "x-ratelimit-resource": "graphql",
+        "x-ratelimit-used": "170"
+      },
+      "body": {
+        "data": {
+          "search": {
+            "nodes": [
+              {
+                "assignees": {
+                  "nodes": [
+                    {
+                      "avatarUrl": "https://avatars.example.invalid/user-1",
+                      "login": "user-1",
+                      "name": "User 1",
+                      "url": "https://github.com/user-1"
+                    }
+                  ]
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": "User 1",
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "comments": {
+                  "totalCount": 1
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": {
+                          "state": "FAILURE"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-12T22:50:49Z",
+                "headRefName": "bb-p-topic",
+                "headRefOid": "7802fee5a71c66a697cad3315808700a2e4e87f8",
+                "headRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "isDraft": false,
+                "labels": {
+                  "nodes": [
+                    {
+                      "color": "d73a4a",
+                      "description": "Something isn't working",
+                      "name": "bug"
+                    }
+                  ]
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 1,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "OPEN",
+                "title": "Add a file to review",
+                "updatedAt": "2026-10-12T23:54:35Z",
+                "url": "https://github.com/user-1/bitbraid-test-core/pull/1"
+              }
+            ],
+            "pageInfo": {
+              "endCursor": "Y3Vyc29yOjE=",
+              "hasNextPage": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/graphql",
+      "request_body": {
+        "query": "query($search: String!, $first: Int!, $after: String) { search(query: $search, type: ISSUE, first: $first, after: $after) { pageInfo { hasNextPage endCursor } nodes { ... on PullRequest { number title state isDraft url createdAt updatedAt author { login avatarUrl url ... on User { name } } headRefName headRefOid headRepository { nameWithOwner } baseRefName baseRepository { nameWithOwner } labels(first: 20) { nodes { name color description } } assignees(first: 20) { nodes { login name avatarUrl url } } reviewRequests(first: 20) { nodes { requestedReviewer { ... on User { login name avatarUrl url } ... on Team { combinedSlug name avatarUrl url } ... on Bot { login avatarUrl url } ... on Mannequin { login avatarUrl url } } } } latestReviews(first: 20) { nodes { state author { login avatarUrl url ... on User { name } } } } comments { totalCount } commits(last: 1) { nodes { commit { statusCheckRollup { state } } } } } } } }",
+        "variables": {
+          "after": null,
+          "first": 100,
+          "search": "repo:user-1/bitbraid-test-core is:pr is:open milestone:v1 sort:created-desc"
+        }
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 23:54:57 GMT",
+        "x-accepted-oauth-scopes": "repo",
+        "x-oauth-scopes": "admin:public_key, gist, read:org, repo",
+        "x-ratelimit-limit": "5000",
+        "x-ratelimit-remaining": "4825",
+        "x-ratelimit-reset": "1791851829",
+        "x-ratelimit-resource": "graphql",
+        "x-ratelimit-used": "175"
+      },
+      "body": {
+        "data": {
+          "search": {
+            "nodes": [
+              {
+                "assignees": {
+                  "nodes": [
+                    {
+                      "avatarUrl": "https://avatars.example.invalid/user-1",
+                      "login": "user-1",
+                      "name": "User 1",
+                      "url": "https://github.com/user-1"
+                    }
+                  ]
+                },
+                "author": {
+                  "avatarUrl": "https://avatars.example.invalid/user-1",
+                  "login": "user-1",
+                  "name": "User 1",
+                  "url": "https://github.com/user-1"
+                },
+                "baseRefName": "main",
+                "baseRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "comments": {
+                  "totalCount": 1
+                },
+                "commits": {
+                  "nodes": [
+                    {
+                      "commit": {
+                        "statusCheckRollup": {
+                          "state": "FAILURE"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "createdAt": "2026-10-12T22:50:49Z",
+                "headRefName": "bb-p-topic",
+                "headRefOid": "7802fee5a71c66a697cad3315808700a2e4e87f8",
+                "headRepository": {
+                  "nameWithOwner": "user-1/bitbraid-test-core"
+                },
+                "isDraft": false,
+                "labels": {
+                  "nodes": [
+                    {
+                      "color": "d73a4a",
+                      "description": "Something isn't working",
+                      "name": "bug"
+                    }
+                  ]
+                },
+                "latestReviews": {
+                  "nodes": []
+                },
+                "number": 1,
+                "reviewRequests": {
+                  "nodes": []
+                },
+                "state": "OPEN",
+                "title": "Add a file to review",
+                "updatedAt": "2026-10-12T23:54:35Z",
+                "url": "https://github.com/user-1/bitbraid-test-core/pull/1"
+              }
+            ],
+            "pageInfo": {
+              "endCursor": "Y3Vyc29yOjE=",
+              "hasNextPage": false
+            }
+          }
+        }
+      }
+    }
+  ]
+}

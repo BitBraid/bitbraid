@@ -1,0 +1,6 @@
+pinned: main
+*  368403f mixed.txt to LF and a line of it
+*  bac399f an LF line in a CRLF file
+*  84369a6 a line of a CRLF file
+*  375b5e8 only the line endings of lf.txt
+*  b9c2696 files with every kind of line ending

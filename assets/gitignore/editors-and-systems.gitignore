@@ -1,0 +1,9 @@
+# What editors and operating systems leave in a folder.
+.idea/
+*.iml
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini

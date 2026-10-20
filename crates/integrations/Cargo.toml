@@ -1,0 +1,68 @@
+[package]
+name = "bitbraid-integrations"
+description = "Hosting providers and issue trackers, OAuth, keychain"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+publish.workspace = true
+
+[package.metadata.bitbraid]
+layer = 3
+
+[lints]
+workspace = true
+
+[dependencies]
+# The words it says to a person, from its Fluent files.
+bitbraid-strings = { workspace = true }
+thiserror = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+toml = { workspace = true }
+bitbraid-core = { workspace = true }
+bitbraid-git = { workspace = true }
+bitbraid-engine = { workspace = true }
+rustls = { workspace = true }
+rustls-native-certs = { workspace = true }
+httparse = { workspace = true }
+sha2 = { workspace = true }
+directories = { workspace = true }
+image = { workspace = true, features = ["png", "jpeg", "gif", "webp"] }
+minisign-verify = { workspace = true }
+semver = { workspace = true }
+# The Windows installer's script, handed to PowerShell encoded; GitHub's
+# node ids of the older shape, read when a recording is scrubbed.
+base64 = { workspace = true }
+
+# The Secret Service, for the tokens of accounts: the client the toolkit
+# already brings, with the same features, waited on with the executor it
+# comes with.
+[target.'cfg(any(target_os = "linux", target_os = "freebsd"))'.dependencies]
+oo7 = { version = "0.6", default-features = false, features = ["async-std", "native_crypto"] }
+async-io = "2"
+
+# Windows' Credential Manager, for the same tokens: the calls to it need
+# `unsafe`, which this workspace forbids, and `keyring` makes them. With
+# only its Windows feature it brings nothing the Windows build does not
+# have already.
+[target.'cfg(windows)'.dependencies]
+keyring = { version = "3.6", default-features = false, features = ["windows-native"] }
+
+# macOS's login keychain, for the same tokens: the Security framework
+# through `security-framework`, in the version the build already has for
+# the system's certificates (rustls-native-certs). `keyring` would bring
+# an older one of its own.
+[target.'cfg(target_os = "macos")'.dependencies]
+security-framework = { version = "3.7", default-features = false }
+
+[dev-dependencies]
+# The catalog's check: every lookup is in it, every message looked up.
+bitbraid-strings = { workspace = true, features = ["check"] }
+bitbraid-testkit = { workspace = true }
+# git children read no system configuration in the tests (see the feature).
+bitbraid-git = { workspace = true, features = ["hermetic"] }
+# A certificate made for the one test that speaks TLS to this machine.
+rcgen = { version = "0.14", default-features = false, features = ["crypto", "ring"] }

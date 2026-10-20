@@ -1,0 +1,8 @@
+*  3259076 drop the build script
+*  ef2eacb Merge the big view
+|\
+* |  f6b24f2 add the assets
+| *  1c08ca9 add the big view
+|/
+*  7831b91 grow the guide
+*  4c05e8d lay out the project

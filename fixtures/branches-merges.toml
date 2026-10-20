@@ -1,0 +1,32 @@
+name = "branches-merges"
+description = "Two feature branches merged back into main with merge commits, one annotated tag."
+
+[[steps]]
+commit = { message = "init", file = "README.md", content = "# branches" }
+[[steps]]
+commit = { message = "base work", file = "base.txt", content = "base" }
+[[steps]]
+branch = { name = "feature/a", checkout = true }
+[[steps]]
+commit = { message = "a1", file = "a.txt", content = "a1" }
+[[steps]]
+commit = { message = "a2", file = "a.txt", content = "a2" }
+[[steps]]
+checkout = { target = "main" }
+[[steps]]
+branch = { name = "feature/b", checkout = true }
+[[steps]]
+commit = { message = "b1", file = "b.txt", content = "b1" }
+[[steps]]
+checkout = { target = "main" }
+[[steps]]
+merge = { branches = ["feature/a"], message = "merge feature/a" }
+[[steps]]
+merge = { branches = ["feature/b"], message = "merge feature/b" }
+[[steps]]
+tag = { name = "v1.0", message = "release 1.0" }
+
+[expect]
+commits = 7
+branches = ["feature/a", "feature/b", "main"]
+tags = ["v1.0"]

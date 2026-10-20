@@ -1,0 +1,7 @@
+# .NET: build output and what the IDE keeps per user.
+bin/
+obj/
+.vs/
+*.user
+*.suo
+TestResults/

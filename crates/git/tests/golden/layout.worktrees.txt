@@ -1,0 +1,13 @@
+*  ~ uncommitted work in a worktree on main
+*  3259076 drop the build script
+*  ef2eacb Merge the big view
+|\
+* |  f6b24f2 add the assets
+| | *  ~ uncommitted work in a worktree on feature/ui
+| |/
+| *  1c08ca9 add the big view
+|/
+*  7831b91 grow the guide
+| *  ~ uncommitted work in a worktree detached, at the first commit
+|/
+*  4c05e8d lay out the project

@@ -1,0 +1,29 @@
+[package]
+name = "bitbraid"
+description = "BitBraid desktop application"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+publish.workspace = true
+
+[package.metadata.bitbraid]
+layer = 5
+
+[lints]
+workspace = true
+
+[[bin]]
+name = "bitbraid"
+path = "src/main.rs"
+
+[dependencies]
+bitbraid-ui = { workspace = true }
+
+# The icon on Windows is drawn from brand/icon.svg when the binary is
+# built (build.rs). Not a new crate in the tree: the toolkit draws SVG
+# with it.
+[target.'cfg(windows)'.build-dependencies]
+resvg = { version = "0.46", default-features = false }

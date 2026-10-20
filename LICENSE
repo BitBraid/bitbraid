@@ -1,0 +1,55 @@
+MIT License
+
+Copyright (c) 2026 BitBraid contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+------------------------------------------------------------------------------
+
+The name and logo
+
+The licence above does not cover the name BitBraid or its logo, mark and
+application icon: the files in brand/ and the icons and pictures made from
+them for the application, its packages and its website.
+
+You may:
+
+- use them unchanged to refer to BitBraid: in writing about it, in links to
+  it, in lists of software and in talks;
+- ship them with BitBraid, in a package of it built from its source,
+  including a distribution's package with the patches distributions usually
+  carry (building, paths, dependencies, security fixes);
+- scale them, and use the variant made for the background: logo.svg and
+  mark.svg on dark, logo-on-light.svg and mark-on-light.svg on light,
+  mark-mono.svg in one colour.
+
+You may not:
+
+- use them, or anything that could be taken for them, for another product,
+  service or project;
+- change them: other colours, other shapes, other lettering, or parts of
+  them combined with something else;
+- use them in a way that suggests BitBraid endorses you or what you make;
+- keep them on a fork that changes what the program does. A fork is welcome
+  under the licence above, with a name and icon of its own.
+
+Everything not given here is reserved by the BitBraid contributors; if you
+are unsure whether a use is fine, ask in the project's issues. The logo's
+lettering is outlined from the Outfit typeface (SIL Open Font Licence 1.1);
+these terms cover the outlined logo, not the typeface.

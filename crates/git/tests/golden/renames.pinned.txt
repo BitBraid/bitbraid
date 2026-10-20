@@ -1,0 +1,5 @@
+pinned: main
+*  afd30ab delete keep
+*  9195593 modify b
+*  9bb2988 rename a to b
+*  a65e332 add a and keep

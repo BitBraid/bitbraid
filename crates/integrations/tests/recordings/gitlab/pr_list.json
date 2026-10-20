@@ -1,0 +1,3712 @@
+{
+  "note": "Recorded from GitLab CE 19.4 on this machine by tests/suite/live_gitlab_ce.rs",
+  "exchanges": [
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/user",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:54 GMT",
+        "etag": "W/\"875f82d5c816a108dcb0674b59bd3ecc\""
+      },
+      "body": {
+        "avatar_url": "https://avatars.example.invalid/user-1",
+        "bio": "",
+        "bot": false,
+        "can_create_group": true,
+        "can_create_project": true,
+        "color_scheme_id": 1,
+        "commit_email": "user-1@example.invalid",
+        "confirmed_at": "2000-01-01T00:00:00Z",
+        "created_at": "2000-01-01T00:00:00Z",
+        "current_sign_in_at": "2000-01-01T00:00:00Z",
+        "discord": "",
+        "email": "user-1@example.invalid",
+        "external": false,
+        "github": "",
+        "id": 100001,
+        "identities": [],
+        "job_title": "",
+        "last_activity_on": "2000-01-01T00:00:00Z",
+        "last_sign_in_at": "2000-01-01T00:00:00Z",
+        "linkedin": "",
+        "local_time": null,
+        "location": "",
+        "locked": false,
+        "name": "User 1",
+        "organization": "",
+        "preferred_language": "en",
+        "private_profile": false,
+        "projects_limit": 100000,
+        "pronouns": null,
+        "public_email": null,
+        "state": "active",
+        "theme_id": 3,
+        "twitter": "",
+        "two_factor_enabled": false,
+        "username": "user-1",
+        "web_url": "http://127.0.0.1:8929/user-1",
+        "website_url": "",
+        "work_information": null
+      }
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/personal_access_tokens/self",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:54 GMT",
+        "etag": "W/\"9c689619d6f0d50298fd9d91336fa132\""
+      },
+      "body": {
+        "active": true,
+        "created_at": "2026-10-12T23:42:49.123Z",
+        "description": null,
+        "expires_at": "2026-10-19",
+        "granular": false,
+        "id": 57,
+        "last_used_at": "2026-10-12T23:42:50.310Z",
+        "last_used_ips": [],
+        "name": "Bb-514ea340ab11296ff8102d34-p9",
+        "revoked": false,
+        "scopes": [
+          "api",
+          "read_user"
+        ],
+        "user_id": 100001
+      }
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?state=all&with_labels_details=true&per_page=100",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:54 GMT",
+        "etag": "W/\"328ce14f344977e8591ead9297495ff1\"",
+        "link": "<http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=all&with_labels_details=true&with_merge_status_recheck=false>; rel=\"first\", <http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=all&with_labels_details=true&with_merge_status_recheck=false>; rel=\"last\"",
+        "x-page": "1",
+        "x-per-page": "100",
+        "x-total": "7",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "allow_collaboration": false,
+          "allow_maintainer_to_push": false,
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-2",
+            "id": 100002,
+            "locked": false,
+            "name": "User 2",
+            "public_email": null,
+            "state": "active",
+            "username": "user-2",
+            "web_url": "http://127.0.0.1:8929/user-2"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-12T23:37:56.593Z",
+          "description": "Made by the live test: A change from a fork.",
+          "detailed_merge_status": "mergeable",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 11,
+          "iid": 8,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-12T23:38:00.216Z",
+          "project_id": 1,
+          "reference": "!8",
+          "references": {
+            "full": "bb-p-group/bb-p-project!8",
+            "relative": "!8",
+            "short": "!8"
+          },
+          "reviewers": [],
+          "sha": "f780180fe81ed6da21727435683eaaa0f3ac51df",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-fork-topic",
+          "source_project_id": 3,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "A change from a fork",
+          "updated_at": "2026-10-12T23:38:00.223Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/8",
+          "work_in_progress": false
+        },
+        {
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": "2026-10-12T23:37:50.590Z",
+          "closed_by": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "created_at": "2026-10-12T23:37:50.374Z",
+          "description": "Made by the live test: Closed without merging.",
+          "detailed_merge_status": "not_open",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 10,
+          "iid": 7,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-12T23:37:54.729Z",
+          "project_id": 1,
+          "reference": "!7",
+          "references": {
+            "full": "bb-p-group/bb-p-project!7",
+            "relative": "!7",
+            "short": "!7"
+          },
+          "reviewers": [],
+          "sha": "09f8ae9e6c4579dac148570b2bf9b4063d13722a",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-closed",
+          "source_project_id": 1,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "closed",
+          "target_branch": "main",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Closed without merging",
+          "updated_at": "2026-10-12T23:37:54.730Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/7",
+          "work_in_progress": false
+        },
+        {
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-12T23:37:43.370Z",
+          "description": "Made by the live test: Merged already.",
+          "detailed_merge_status": "not_open",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 9,
+          "iid": 6,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [],
+          "merge_after": null,
+          "merge_commit_sha": "e2794226e684da7dbdcc931b28c55469a6f675f5",
+          "merge_status": "can_be_merged",
+          "merge_user": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": "2026-10-12T23:37:48.390Z",
+          "merged_by": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "milestone": null,
+          "prepared_at": "2026-10-12T23:37:48.481Z",
+          "project_id": 1,
+          "reference": "!6",
+          "references": {
+            "full": "bb-p-group/bb-p-project!6",
+            "relative": "!6",
+            "short": "!6"
+          },
+          "reviewers": [],
+          "sha": "c670fe8da71a7d5a2dfa49d8c67fdb36dc1c8076",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-merged",
+          "source_project_id": 1,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "merged",
+          "target_branch": "main",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Merged already",
+          "updated_at": "2026-10-12T23:37:48.701Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/6",
+          "work_in_progress": false
+        },
+        {
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-12T23:37:42.386Z",
+          "description": "Made by the live test: Second of a stack.",
+          "detailed_merge_status": "mergeable",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 8,
+          "iid": 5,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-12T23:37:45.339Z",
+          "project_id": 1,
+          "reference": "!5",
+          "references": {
+            "full": "bb-p-group/bb-p-project!5",
+            "relative": "!5",
+            "short": "!5"
+          },
+          "reviewers": [],
+          "sha": "5d7ea1757209327bfe5afc71748a40369ff2e76b",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-stack-2",
+          "source_project_id": 1,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "bb-p-stack-1",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Second of a stack",
+          "updated_at": "2026-10-12T23:37:45.360Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/5",
+          "work_in_progress": false
+        },
+        {
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-12T23:37:42.047Z",
+          "description": "Made by the live test: First of a stack.",
+          "detailed_merge_status": "unchecked",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 7,
+          "iid": 4,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "unchecked",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-12T23:37:44.130Z",
+          "project_id": 1,
+          "reference": "!4",
+          "references": {
+            "full": "bb-p-group/bb-p-project!4",
+            "relative": "!4",
+            "short": "!4"
+          },
+          "reviewers": [],
+          "sha": "87ed86802975245acad6a9d3e9c45c243e3b2a28",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-stack-1",
+          "source_project_id": 1,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "First of a stack",
+          "updated_at": "2026-10-12T23:37:44.153Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/4",
+          "work_in_progress": false
+        },
+        {
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-12T23:37:39.944Z",
+          "description": "Made by the live test: Draft: Try another way.",
+          "detailed_merge_status": "draft_status",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": true,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 6,
+          "iid": 3,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#428bca",
+              "description": "How it looks",
+              "description_html": "How it looks",
+              "id": 5,
+              "name": "ui",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-12T23:37:43.564Z",
+          "project_id": 1,
+          "reference": "!3",
+          "references": {
+            "full": "bb-p-group/bb-p-project!3",
+            "relative": "!3",
+            "short": "!3"
+          },
+          "reviewers": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-1",
+              "id": 100001,
+              "locked": false,
+              "name": "User 1",
+              "public_email": null,
+              "state": "active",
+              "username": "user-1",
+              "web_url": "http://127.0.0.1:8929/user-1"
+            }
+          ],
+          "sha": "72272d5f10c55f9e3da533a926531ac0f2b59a22",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-draft",
+          "source_project_id": 1,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Draft: Try another way",
+          "updated_at": "2026-10-12T23:37:43.574Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/3",
+          "work_in_progress": true
+        },
+        {
+          "assignee": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "assignees": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-1",
+              "id": 100001,
+              "locked": false,
+              "name": "User 1",
+              "public_email": null,
+              "state": "active",
+              "username": "user-1",
+              "web_url": "http://127.0.0.1:8929/user-1"
+            }
+          ],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-12T22:48:19.610Z",
+          "description": "Made by the live test.",
+          "detailed_merge_status": "mergeable",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 2,
+          "iid": 2,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#d9534f",
+              "description": "Something is broken",
+              "description_html": "Something is broken",
+              "id": 4,
+              "name": "bug",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": {
+            "created_at": "2026-10-12T23:37:33.888Z",
+            "description": null,
+            "due_date": "2026-12-31",
+            "expired": false,
+            "id": 1,
+            "iid": 1,
+            "project_id": 1,
+            "start_date": null,
+            "state": "active",
+            "title": "v1",
+            "updated_at": "2026-10-12T23:37:33.888Z",
+            "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/milestones/1"
+          },
+          "prepared_at": "2026-10-12T22:48:20.267Z",
+          "project_id": 1,
+          "reference": "!2",
+          "references": {
+            "full": "bb-p-group/bb-p-project!2",
+            "relative": "!2",
+            "short": "!2"
+          },
+          "reviewers": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-2",
+              "id": 100002,
+              "locked": false,
+              "name": "User 2",
+              "public_email": null,
+              "state": "active",
+              "username": "user-2",
+              "web_url": "http://127.0.0.1:8929/user-2"
+            }
+          ],
+          "sha": "91342a24f52d21ef96b01fff4ab4015c95acc7af",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-topic",
+          "source_project_id": 1,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Add a file to review",
+          "updated_at": "2026-10-12T23:37:35.364Z",
+          "upvotes": 0,
+          "user_notes_count": 5,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/2",
+          "work_in_progress": false
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/api/graphql",
+      "request_body": {
+        "query": "query($path: ID!, $iids: [String!]) { project(fullPath: $path) { mergeRequests(iids: $iids, first: 100) { nodes { iid sourceProject { fullPath } headPipeline { status } reviewers { nodes { username mergeRequestInteraction { reviewState approved } } } approvedBy { nodes { username } } } } } }",
+        "variables": {
+          "iids": [
+            "8",
+            "7",
+            "6",
+            "5",
+            "4",
+            "3",
+            "2"
+          ],
+          "path": "bb-p-group/bb-p-project"
+        }
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 23:42:55 GMT",
+        "etag": "W/\"5d01146082a7695127476650d00520f2\""
+      },
+      "body": {
+        "data": {
+          "project": {
+            "mergeRequests": {
+              "nodes": [
+                {
+                  "approvedBy": {
+                    "nodes": []
+                  },
+                  "headPipeline": null,
+                  "iid": "8",
+                  "reviewers": {
+                    "nodes": []
+                  },
+                  "sourceProject": {
+                    "fullPath": "user-2/bb-p-project"
+                  }
+                },
+                {
+                  "approvedBy": {
+                    "nodes": []
+                  },
+                  "headPipeline": null,
+                  "iid": "7",
+                  "reviewers": {
+                    "nodes": []
+                  },
+                  "sourceProject": {
+                    "fullPath": "bb-p-group/bb-p-project"
+                  }
+                },
+                {
+                  "approvedBy": {
+                    "nodes": []
+                  },
+                  "headPipeline": null,
+                  "iid": "6",
+                  "reviewers": {
+                    "nodes": []
+                  },
+                  "sourceProject": {
+                    "fullPath": "bb-p-group/bb-p-project"
+                  }
+                },
+                {
+                  "approvedBy": {
+                    "nodes": []
+                  },
+                  "headPipeline": null,
+                  "iid": "5",
+                  "reviewers": {
+                    "nodes": []
+                  },
+                  "sourceProject": {
+                    "fullPath": "bb-p-group/bb-p-project"
+                  }
+                },
+                {
+                  "approvedBy": {
+                    "nodes": []
+                  },
+                  "headPipeline": {
+                    "status": "RUNNING"
+                  },
+                  "iid": "4",
+                  "reviewers": {
+                    "nodes": []
+                  },
+                  "sourceProject": {
+                    "fullPath": "bb-p-group/bb-p-project"
+                  }
+                },
+                {
+                  "approvedBy": {
+                    "nodes": []
+                  },
+                  "headPipeline": {
+                    "status": "PENDING"
+                  },
+                  "iid": "3",
+                  "reviewers": {
+                    "nodes": [
+                      {
+                        "mergeRequestInteraction": {
+                          "approved": false,
+                          "reviewState": "UNREVIEWED"
+                        },
+                        "username": "user-1"
+                      }
+                    ]
+                  },
+                  "sourceProject": {
+                    "fullPath": "bb-p-group/bb-p-project"
+                  }
+                },
+                {
+                  "approvedBy": {
+                    "nodes": [
+                      {
+                        "username": "user-2"
+                      }
+                    ]
+                  },
+                  "headPipeline": {
+                    "status": "FAILED"
+                  },
+                  "iid": "2",
+                  "reviewers": {
+                    "nodes": [
+                      {
+                        "mergeRequestInteraction": {
+                          "approved": true,
+                          "reviewState": "APPROVED"
+                        },
+                        "username": "user-2"
+                      }
+                    ]
+                  },
+                  "sourceProject": {
+                    "fullPath": "bb-p-group/bb-p-project"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?state=opened&with_labels_details=true&per_page=100",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:55 GMT",
+        "etag": "W/\"e2ac969b2ceeedd72d4359b0ef1e6480\"",
+        "link": "<http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true&with_merge_status_recheck=false>; rel=\"first\", <http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true&with_merge_status_recheck=false>; rel=\"last\"",
+        "x-page": "1",
+        "x-per-page": "100",
+        "x-total": "5",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "allow_collaboration": false,
+          "allow_maintainer_to_push": false,
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-2",
+            "id": 100002,
+            "locked": false,
+            "name": "User 2",
+            "public_email": null,
+            "state": "active",
+            "username": "user-2",
+            "web_url": "http://127.0.0.1:8929/user-2"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-12T23:37:56.593Z",
+          "description": "Made by the live test: A change from a fork.",
+          "detailed_merge_status": "mergeable",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 11,
+          "iid": 8,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-12T23:38:00.216Z",
+          "project_id": 1,
+          "reference": "!8",
+          "references": {
+            "full": "bb-p-group/bb-p-project!8",
+            "relative": "!8",
+            "short": "!8"
+          },
+          "reviewers": [],
+          "sha": "f780180fe81ed6da21727435683eaaa0f3ac51df",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-fork-topic",
+          "source_project_id": 3,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "A change from a fork",
+          "updated_at": "2026-10-12T23:38:00.223Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/8",
+          "work_in_progress": false
+        },
+        {
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-12T23:37:42.386Z",
+          "description": "Made by the live test: Second of a stack.",
+          "detailed_merge_status": "mergeable",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 8,
+          "iid": 5,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-12T23:37:45.339Z",
+          "project_id": 1,
+          "reference": "!5",
+          "references": {
+            "full": "bb-p-group/bb-p-project!5",
+            "relative": "!5",
+            "short": "!5"
+          },
+          "reviewers": [],
+          "sha": "5d7ea1757209327bfe5afc71748a40369ff2e76b",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-stack-2",
+          "source_project_id": 1,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "bb-p-stack-1",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Second of a stack",
+          "updated_at": "2026-10-12T23:37:45.360Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/5",
+          "work_in_progress": false
+        },
+        {
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-12T23:37:42.047Z",
+          "description": "Made by the live test: First of a stack.",
+          "detailed_merge_status": "unchecked",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 7,
+          "iid": 4,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "unchecked",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-12T23:37:44.130Z",
+          "project_id": 1,
+          "reference": "!4",
+          "references": {
+            "full": "bb-p-group/bb-p-project!4",
+            "relative": "!4",
+            "short": "!4"
+          },
+          "reviewers": [],
+          "sha": "87ed86802975245acad6a9d3e9c45c243e3b2a28",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-stack-1",
+          "source_project_id": 1,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "First of a stack",
+          "updated_at": "2026-10-12T23:37:44.153Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/4",
+          "work_in_progress": false
+        },
+        {
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-12T23:37:39.944Z",
+          "description": "Made by the live test: Draft: Try another way.",
+          "detailed_merge_status": "draft_status",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": true,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 6,
+          "iid": 3,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#428bca",
+              "description": "How it looks",
+              "description_html": "How it looks",
+              "id": 5,
+              "name": "ui",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-12T23:37:43.564Z",
+          "project_id": 1,
+          "reference": "!3",
+          "references": {
+            "full": "bb-p-group/bb-p-project!3",
+            "relative": "!3",
+            "short": "!3"
+          },
+          "reviewers": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-1",
+              "id": 100001,
+              "locked": false,
+              "name": "User 1",
+              "public_email": null,
+              "state": "active",
+              "username": "user-1",
+              "web_url": "http://127.0.0.1:8929/user-1"
+            }
+          ],
+          "sha": "72272d5f10c55f9e3da533a926531ac0f2b59a22",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-draft",
+          "source_project_id": 1,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Draft: Try another way",
+          "updated_at": "2026-10-12T23:37:43.574Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/3",
+          "work_in_progress": true
+        },
+        {
+          "assignee": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "assignees": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-1",
+              "id": 100001,
+              "locked": false,
+              "name": "User 1",
+              "public_email": null,
+              "state": "active",
+              "username": "user-1",
+              "web_url": "http://127.0.0.1:8929/user-1"
+            }
+          ],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-12T22:48:19.610Z",
+          "description": "Made by the live test.",
+          "detailed_merge_status": "mergeable",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 2,
+          "iid": 2,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#d9534f",
+              "description": "Something is broken",
+              "description_html": "Something is broken",
+              "id": 4,
+              "name": "bug",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": {
+            "created_at": "2026-10-12T23:37:33.888Z",
+            "description": null,
+            "due_date": "2026-12-31",
+            "expired": false,
+            "id": 1,
+            "iid": 1,
+            "project_id": 1,
+            "start_date": null,
+            "state": "active",
+            "title": "v1",
+            "updated_at": "2026-10-12T23:37:33.888Z",
+            "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/milestones/1"
+          },
+          "prepared_at": "2026-10-12T22:48:20.267Z",
+          "project_id": 1,
+          "reference": "!2",
+          "references": {
+            "full": "bb-p-group/bb-p-project!2",
+            "relative": "!2",
+            "short": "!2"
+          },
+          "reviewers": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-2",
+              "id": 100002,
+              "locked": false,
+              "name": "User 2",
+              "public_email": null,
+              "state": "active",
+              "username": "user-2",
+              "web_url": "http://127.0.0.1:8929/user-2"
+            }
+          ],
+          "sha": "91342a24f52d21ef96b01fff4ab4015c95acc7af",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-topic",
+          "source_project_id": 1,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Add a file to review",
+          "updated_at": "2026-10-12T23:37:35.364Z",
+          "upvotes": 0,
+          "user_notes_count": 5,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/2",
+          "work_in_progress": false
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/api/graphql",
+      "request_body": {
+        "query": "query($path: ID!, $iids: [String!]) { project(fullPath: $path) { mergeRequests(iids: $iids, first: 100) { nodes { iid sourceProject { fullPath } headPipeline { status } reviewers { nodes { username mergeRequestInteraction { reviewState approved } } } approvedBy { nodes { username } } } } } }",
+        "variables": {
+          "iids": [
+            "8",
+            "5",
+            "4",
+            "3",
+            "2"
+          ],
+          "path": "bb-p-group/bb-p-project"
+        }
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 23:42:55 GMT",
+        "etag": "W/\"c5b7440bdce7a373e689efefe20fbde9\""
+      },
+      "body": {
+        "data": {
+          "project": {
+            "mergeRequests": {
+              "nodes": [
+                {
+                  "approvedBy": {
+                    "nodes": []
+                  },
+                  "headPipeline": null,
+                  "iid": "8",
+                  "reviewers": {
+                    "nodes": []
+                  },
+                  "sourceProject": {
+                    "fullPath": "user-2/bb-p-project"
+                  }
+                },
+                {
+                  "approvedBy": {
+                    "nodes": []
+                  },
+                  "headPipeline": null,
+                  "iid": "5",
+                  "reviewers": {
+                    "nodes": []
+                  },
+                  "sourceProject": {
+                    "fullPath": "bb-p-group/bb-p-project"
+                  }
+                },
+                {
+                  "approvedBy": {
+                    "nodes": []
+                  },
+                  "headPipeline": {
+                    "status": "RUNNING"
+                  },
+                  "iid": "4",
+                  "reviewers": {
+                    "nodes": []
+                  },
+                  "sourceProject": {
+                    "fullPath": "bb-p-group/bb-p-project"
+                  }
+                },
+                {
+                  "approvedBy": {
+                    "nodes": []
+                  },
+                  "headPipeline": {
+                    "status": "PENDING"
+                  },
+                  "iid": "3",
+                  "reviewers": {
+                    "nodes": [
+                      {
+                        "mergeRequestInteraction": {
+                          "approved": false,
+                          "reviewState": "UNREVIEWED"
+                        },
+                        "username": "user-1"
+                      }
+                    ]
+                  },
+                  "sourceProject": {
+                    "fullPath": "bb-p-group/bb-p-project"
+                  }
+                },
+                {
+                  "approvedBy": {
+                    "nodes": [
+                      {
+                        "username": "user-2"
+                      }
+                    ]
+                  },
+                  "headPipeline": {
+                    "status": "FAILED"
+                  },
+                  "iid": "2",
+                  "reviewers": {
+                    "nodes": [
+                      {
+                        "mergeRequestInteraction": {
+                          "approved": true,
+                          "reviewState": "APPROVED"
+                        },
+                        "username": "user-2"
+                      }
+                    ]
+                  },
+                  "sourceProject": {
+                    "fullPath": "bb-p-group/bb-p-project"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?state=opened&with_labels_details=true&author_username=user-1&per_page=100",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:55 GMT",
+        "etag": "W/\"107bb0692d0de395380e92bd37f428e2\"",
+        "link": "<http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?author_username=user-1&id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true&with_merge_status_recheck=false>; rel=\"first\", <http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?author_username=user-1&id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true&with_merge_status_recheck=false>; rel=\"last\"",
+        "x-page": "1",
+        "x-per-page": "100",
+        "x-total": "4",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-12T23:37:42.386Z",
+          "description": "Made by the live test: Second of a stack.",
+          "detailed_merge_status": "mergeable",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 8,
+          "iid": 5,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-12T23:37:45.339Z",
+          "project_id": 1,
+          "reference": "!5",
+          "references": {
+            "full": "bb-p-group/bb-p-project!5",
+            "relative": "!5",
+            "short": "!5"
+          },
+          "reviewers": [],
+          "sha": "5d7ea1757209327bfe5afc71748a40369ff2e76b",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-stack-2",
+          "source_project_id": 1,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "bb-p-stack-1",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Second of a stack",
+          "updated_at": "2026-10-12T23:37:45.360Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/5",
+          "work_in_progress": false
+        },
+        {
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-12T23:37:42.047Z",
+          "description": "Made by the live test: First of a stack.",
+          "detailed_merge_status": "unchecked",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 7,
+          "iid": 4,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "unchecked",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-12T23:37:44.130Z",
+          "project_id": 1,
+          "reference": "!4",
+          "references": {
+            "full": "bb-p-group/bb-p-project!4",
+            "relative": "!4",
+            "short": "!4"
+          },
+          "reviewers": [],
+          "sha": "87ed86802975245acad6a9d3e9c45c243e3b2a28",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-stack-1",
+          "source_project_id": 1,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "First of a stack",
+          "updated_at": "2026-10-12T23:37:44.153Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/4",
+          "work_in_progress": false
+        },
+        {
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-12T23:37:39.944Z",
+          "description": "Made by the live test: Draft: Try another way.",
+          "detailed_merge_status": "draft_status",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": true,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 6,
+          "iid": 3,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#428bca",
+              "description": "How it looks",
+              "description_html": "How it looks",
+              "id": 5,
+              "name": "ui",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-12T23:37:43.564Z",
+          "project_id": 1,
+          "reference": "!3",
+          "references": {
+            "full": "bb-p-group/bb-p-project!3",
+            "relative": "!3",
+            "short": "!3"
+          },
+          "reviewers": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-1",
+              "id": 100001,
+              "locked": false,
+              "name": "User 1",
+              "public_email": null,
+              "state": "active",
+              "username": "user-1",
+              "web_url": "http://127.0.0.1:8929/user-1"
+            }
+          ],
+          "sha": "72272d5f10c55f9e3da533a926531ac0f2b59a22",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-draft",
+          "source_project_id": 1,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Draft: Try another way",
+          "updated_at": "2026-10-12T23:37:43.574Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/3",
+          "work_in_progress": true
+        },
+        {
+          "assignee": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "assignees": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-1",
+              "id": 100001,
+              "locked": false,
+              "name": "User 1",
+              "public_email": null,
+              "state": "active",
+              "username": "user-1",
+              "web_url": "http://127.0.0.1:8929/user-1"
+            }
+          ],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-12T22:48:19.610Z",
+          "description": "Made by the live test.",
+          "detailed_merge_status": "mergeable",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 2,
+          "iid": 2,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#d9534f",
+              "description": "Something is broken",
+              "description_html": "Something is broken",
+              "id": 4,
+              "name": "bug",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": {
+            "created_at": "2026-10-12T23:37:33.888Z",
+            "description": null,
+            "due_date": "2026-12-31",
+            "expired": false,
+            "id": 1,
+            "iid": 1,
+            "project_id": 1,
+            "start_date": null,
+            "state": "active",
+            "title": "v1",
+            "updated_at": "2026-10-12T23:37:33.888Z",
+            "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/milestones/1"
+          },
+          "prepared_at": "2026-10-12T22:48:20.267Z",
+          "project_id": 1,
+          "reference": "!2",
+          "references": {
+            "full": "bb-p-group/bb-p-project!2",
+            "relative": "!2",
+            "short": "!2"
+          },
+          "reviewers": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-2",
+              "id": 100002,
+              "locked": false,
+              "name": "User 2",
+              "public_email": null,
+              "state": "active",
+              "username": "user-2",
+              "web_url": "http://127.0.0.1:8929/user-2"
+            }
+          ],
+          "sha": "91342a24f52d21ef96b01fff4ab4015c95acc7af",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-topic",
+          "source_project_id": 1,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Add a file to review",
+          "updated_at": "2026-10-12T23:37:35.364Z",
+          "upvotes": 0,
+          "user_notes_count": 5,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/2",
+          "work_in_progress": false
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/api/graphql",
+      "request_body": {
+        "query": "query($path: ID!, $iids: [String!]) { project(fullPath: $path) { mergeRequests(iids: $iids, first: 100) { nodes { iid sourceProject { fullPath } headPipeline { status } reviewers { nodes { username mergeRequestInteraction { reviewState approved } } } approvedBy { nodes { username } } } } } }",
+        "variables": {
+          "iids": [
+            "5",
+            "4",
+            "3",
+            "2"
+          ],
+          "path": "bb-p-group/bb-p-project"
+        }
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 23:42:55 GMT",
+        "etag": "W/\"3f13a330b2cebf18c8c0fea8a12e57b5\""
+      },
+      "body": {
+        "data": {
+          "project": {
+            "mergeRequests": {
+              "nodes": [
+                {
+                  "approvedBy": {
+                    "nodes": []
+                  },
+                  "headPipeline": null,
+                  "iid": "5",
+                  "reviewers": {
+                    "nodes": []
+                  },
+                  "sourceProject": {
+                    "fullPath": "bb-p-group/bb-p-project"
+                  }
+                },
+                {
+                  "approvedBy": {
+                    "nodes": []
+                  },
+                  "headPipeline": {
+                    "status": "RUNNING"
+                  },
+                  "iid": "4",
+                  "reviewers": {
+                    "nodes": []
+                  },
+                  "sourceProject": {
+                    "fullPath": "bb-p-group/bb-p-project"
+                  }
+                },
+                {
+                  "approvedBy": {
+                    "nodes": []
+                  },
+                  "headPipeline": {
+                    "status": "PENDING"
+                  },
+                  "iid": "3",
+                  "reviewers": {
+                    "nodes": [
+                      {
+                        "mergeRequestInteraction": {
+                          "approved": false,
+                          "reviewState": "UNREVIEWED"
+                        },
+                        "username": "user-1"
+                      }
+                    ]
+                  },
+                  "sourceProject": {
+                    "fullPath": "bb-p-group/bb-p-project"
+                  }
+                },
+                {
+                  "approvedBy": {
+                    "nodes": [
+                      {
+                        "username": "user-2"
+                      }
+                    ]
+                  },
+                  "headPipeline": {
+                    "status": "FAILED"
+                  },
+                  "iid": "2",
+                  "reviewers": {
+                    "nodes": [
+                      {
+                        "mergeRequestInteraction": {
+                          "approved": true,
+                          "reviewState": "APPROVED"
+                        },
+                        "username": "user-2"
+                      }
+                    ]
+                  },
+                  "sourceProject": {
+                    "fullPath": "bb-p-group/bb-p-project"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?state=opened&with_labels_details=true&assignee_username=user-1&per_page=100",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:55 GMT",
+        "etag": "W/\"1574acef10c101c3fea23c49bbfed236\"",
+        "link": "<http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?assignee_username%5B%5D=user-1&id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true&with_merge_status_recheck=false>; rel=\"first\", <http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?assignee_username%5B%5D=user-1&id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true&with_merge_status_recheck=false>; rel=\"last\"",
+        "x-page": "1",
+        "x-per-page": "100",
+        "x-total": "1",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "assignee": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "assignees": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-1",
+              "id": 100001,
+              "locked": false,
+              "name": "User 1",
+              "public_email": null,
+              "state": "active",
+              "username": "user-1",
+              "web_url": "http://127.0.0.1:8929/user-1"
+            }
+          ],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-12T22:48:19.610Z",
+          "description": "Made by the live test.",
+          "detailed_merge_status": "mergeable",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 2,
+          "iid": 2,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#d9534f",
+              "description": "Something is broken",
+              "description_html": "Something is broken",
+              "id": 4,
+              "name": "bug",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": {
+            "created_at": "2026-10-12T23:37:33.888Z",
+            "description": null,
+            "due_date": "2026-12-31",
+            "expired": false,
+            "id": 1,
+            "iid": 1,
+            "project_id": 1,
+            "start_date": null,
+            "state": "active",
+            "title": "v1",
+            "updated_at": "2026-10-12T23:37:33.888Z",
+            "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/milestones/1"
+          },
+          "prepared_at": "2026-10-12T22:48:20.267Z",
+          "project_id": 1,
+          "reference": "!2",
+          "references": {
+            "full": "bb-p-group/bb-p-project!2",
+            "relative": "!2",
+            "short": "!2"
+          },
+          "reviewers": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-2",
+              "id": 100002,
+              "locked": false,
+              "name": "User 2",
+              "public_email": null,
+              "state": "active",
+              "username": "user-2",
+              "web_url": "http://127.0.0.1:8929/user-2"
+            }
+          ],
+          "sha": "91342a24f52d21ef96b01fff4ab4015c95acc7af",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-topic",
+          "source_project_id": 1,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Add a file to review",
+          "updated_at": "2026-10-12T23:37:35.364Z",
+          "upvotes": 0,
+          "user_notes_count": 5,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/2",
+          "work_in_progress": false
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/api/graphql",
+      "request_body": {
+        "query": "query($path: ID!, $iids: [String!]) { project(fullPath: $path) { mergeRequests(iids: $iids, first: 100) { nodes { iid sourceProject { fullPath } headPipeline { status } reviewers { nodes { username mergeRequestInteraction { reviewState approved } } } approvedBy { nodes { username } } } } } }",
+        "variables": {
+          "iids": [
+            "2"
+          ],
+          "path": "bb-p-group/bb-p-project"
+        }
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 23:42:56 GMT",
+        "etag": "W/\"0b3c3ec7aa1e9b4ea5a6ee8545da080a\""
+      },
+      "body": {
+        "data": {
+          "project": {
+            "mergeRequests": {
+              "nodes": [
+                {
+                  "approvedBy": {
+                    "nodes": [
+                      {
+                        "username": "user-2"
+                      }
+                    ]
+                  },
+                  "headPipeline": {
+                    "status": "FAILED"
+                  },
+                  "iid": "2",
+                  "reviewers": {
+                    "nodes": [
+                      {
+                        "mergeRequestInteraction": {
+                          "approved": true,
+                          "reviewState": "APPROVED"
+                        },
+                        "username": "user-2"
+                      }
+                    ]
+                  },
+                  "sourceProject": {
+                    "fullPath": "bb-p-group/bb-p-project"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?state=opened&with_labels_details=true&reviewer_username=user-1&per_page=100",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:56 GMT",
+        "etag": "W/\"0a2a322acf87745ec1fcab640e16ea2f\"",
+        "link": "<http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&reviewer_username=user-1&sort=desc&state=opened&with_labels_details=true&with_merge_status_recheck=false>; rel=\"first\", <http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&reviewer_username=user-1&sort=desc&state=opened&with_labels_details=true&with_merge_status_recheck=false>; rel=\"last\"",
+        "x-page": "1",
+        "x-per-page": "100",
+        "x-total": "1",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-12T23:37:39.944Z",
+          "description": "Made by the live test: Draft: Try another way.",
+          "detailed_merge_status": "draft_status",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": true,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 6,
+          "iid": 3,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#428bca",
+              "description": "How it looks",
+              "description_html": "How it looks",
+              "id": 5,
+              "name": "ui",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-12T23:37:43.564Z",
+          "project_id": 1,
+          "reference": "!3",
+          "references": {
+            "full": "bb-p-group/bb-p-project!3",
+            "relative": "!3",
+            "short": "!3"
+          },
+          "reviewers": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-1",
+              "id": 100001,
+              "locked": false,
+              "name": "User 1",
+              "public_email": null,
+              "state": "active",
+              "username": "user-1",
+              "web_url": "http://127.0.0.1:8929/user-1"
+            }
+          ],
+          "sha": "72272d5f10c55f9e3da533a926531ac0f2b59a22",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-draft",
+          "source_project_id": 1,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Draft: Try another way",
+          "updated_at": "2026-10-12T23:37:43.574Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/3",
+          "work_in_progress": true
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/api/graphql",
+      "request_body": {
+        "query": "query($path: ID!, $iids: [String!]) { project(fullPath: $path) { mergeRequests(iids: $iids, first: 100) { nodes { iid sourceProject { fullPath } headPipeline { status } reviewers { nodes { username mergeRequestInteraction { reviewState approved } } } approvedBy { nodes { username } } } } } }",
+        "variables": {
+          "iids": [
+            "3"
+          ],
+          "path": "bb-p-group/bb-p-project"
+        }
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 23:42:56 GMT",
+        "etag": "W/\"032572f9b91a8d39305bd23eccde9be0\""
+      },
+      "body": {
+        "data": {
+          "project": {
+            "mergeRequests": {
+              "nodes": [
+                {
+                  "approvedBy": {
+                    "nodes": []
+                  },
+                  "headPipeline": {
+                    "status": "PENDING"
+                  },
+                  "iid": "3",
+                  "reviewers": {
+                    "nodes": [
+                      {
+                        "mergeRequestInteraction": {
+                          "approved": false,
+                          "reviewState": "UNREVIEWED"
+                        },
+                        "username": "user-1"
+                      }
+                    ]
+                  },
+                  "sourceProject": {
+                    "fullPath": "bb-p-group/bb-p-project"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?state=opened&with_labels_details=true&labels=bug&per_page=100",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:56 GMT",
+        "etag": "W/\"1574acef10c101c3fea23c49bbfed236\"",
+        "link": "<http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?id=bb-p-group%2Fbb-p-project&labels%5B%5D=bug&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true&with_merge_status_recheck=false>; rel=\"first\", <http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?id=bb-p-group%2Fbb-p-project&labels%5B%5D=bug&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true&with_merge_status_recheck=false>; rel=\"last\"",
+        "x-page": "1",
+        "x-per-page": "100",
+        "x-total": "1",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "assignee": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "assignees": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-1",
+              "id": 100001,
+              "locked": false,
+              "name": "User 1",
+              "public_email": null,
+              "state": "active",
+              "username": "user-1",
+              "web_url": "http://127.0.0.1:8929/user-1"
+            }
+          ],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-12T22:48:19.610Z",
+          "description": "Made by the live test.",
+          "detailed_merge_status": "mergeable",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 2,
+          "iid": 2,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#d9534f",
+              "description": "Something is broken",
+              "description_html": "Something is broken",
+              "id": 4,
+              "name": "bug",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": {
+            "created_at": "2026-10-12T23:37:33.888Z",
+            "description": null,
+            "due_date": "2026-12-31",
+            "expired": false,
+            "id": 1,
+            "iid": 1,
+            "project_id": 1,
+            "start_date": null,
+            "state": "active",
+            "title": "v1",
+            "updated_at": "2026-10-12T23:37:33.888Z",
+            "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/milestones/1"
+          },
+          "prepared_at": "2026-10-12T22:48:20.267Z",
+          "project_id": 1,
+          "reference": "!2",
+          "references": {
+            "full": "bb-p-group/bb-p-project!2",
+            "relative": "!2",
+            "short": "!2"
+          },
+          "reviewers": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-2",
+              "id": 100002,
+              "locked": false,
+              "name": "User 2",
+              "public_email": null,
+              "state": "active",
+              "username": "user-2",
+              "web_url": "http://127.0.0.1:8929/user-2"
+            }
+          ],
+          "sha": "91342a24f52d21ef96b01fff4ab4015c95acc7af",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-topic",
+          "source_project_id": 1,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Add a file to review",
+          "updated_at": "2026-10-12T23:37:35.364Z",
+          "upvotes": 0,
+          "user_notes_count": 5,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/2",
+          "work_in_progress": false
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/api/graphql",
+      "request_body": {
+        "query": "query($path: ID!, $iids: [String!]) { project(fullPath: $path) { mergeRequests(iids: $iids, first: 100) { nodes { iid sourceProject { fullPath } headPipeline { status } reviewers { nodes { username mergeRequestInteraction { reviewState approved } } } approvedBy { nodes { username } } } } } }",
+        "variables": {
+          "iids": [
+            "2"
+          ],
+          "path": "bb-p-group/bb-p-project"
+        }
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 23:42:56 GMT",
+        "etag": "W/\"0b3c3ec7aa1e9b4ea5a6ee8545da080a\""
+      },
+      "body": {
+        "data": {
+          "project": {
+            "mergeRequests": {
+              "nodes": [
+                {
+                  "approvedBy": {
+                    "nodes": [
+                      {
+                        "username": "user-2"
+                      }
+                    ]
+                  },
+                  "headPipeline": {
+                    "status": "FAILED"
+                  },
+                  "iid": "2",
+                  "reviewers": {
+                    "nodes": [
+                      {
+                        "mergeRequestInteraction": {
+                          "approved": true,
+                          "reviewState": "APPROVED"
+                        },
+                        "username": "user-2"
+                      }
+                    ]
+                  },
+                  "sourceProject": {
+                    "fullPath": "bb-p-group/bb-p-project"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?state=opened&with_labels_details=true&labels=bug&per_page=100",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:56 GMT",
+        "etag": "W/\"1574acef10c101c3fea23c49bbfed236\"",
+        "link": "<http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?id=bb-p-group%2Fbb-p-project&labels%5B%5D=bug&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true&with_merge_status_recheck=false>; rel=\"first\", <http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?id=bb-p-group%2Fbb-p-project&labels%5B%5D=bug&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true&with_merge_status_recheck=false>; rel=\"last\"",
+        "x-page": "1",
+        "x-per-page": "100",
+        "x-total": "1",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "assignee": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "assignees": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-1",
+              "id": 100001,
+              "locked": false,
+              "name": "User 1",
+              "public_email": null,
+              "state": "active",
+              "username": "user-1",
+              "web_url": "http://127.0.0.1:8929/user-1"
+            }
+          ],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-12T22:48:19.610Z",
+          "description": "Made by the live test.",
+          "detailed_merge_status": "mergeable",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 2,
+          "iid": 2,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#d9534f",
+              "description": "Something is broken",
+              "description_html": "Something is broken",
+              "id": 4,
+              "name": "bug",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": {
+            "created_at": "2026-10-12T23:37:33.888Z",
+            "description": null,
+            "due_date": "2026-12-31",
+            "expired": false,
+            "id": 1,
+            "iid": 1,
+            "project_id": 1,
+            "start_date": null,
+            "state": "active",
+            "title": "v1",
+            "updated_at": "2026-10-12T23:37:33.888Z",
+            "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/milestones/1"
+          },
+          "prepared_at": "2026-10-12T22:48:20.267Z",
+          "project_id": 1,
+          "reference": "!2",
+          "references": {
+            "full": "bb-p-group/bb-p-project!2",
+            "relative": "!2",
+            "short": "!2"
+          },
+          "reviewers": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-2",
+              "id": 100002,
+              "locked": false,
+              "name": "User 2",
+              "public_email": null,
+              "state": "active",
+              "username": "user-2",
+              "web_url": "http://127.0.0.1:8929/user-2"
+            }
+          ],
+          "sha": "91342a24f52d21ef96b01fff4ab4015c95acc7af",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-topic",
+          "source_project_id": 1,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Add a file to review",
+          "updated_at": "2026-10-12T23:37:35.364Z",
+          "upvotes": 0,
+          "user_notes_count": 5,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/2",
+          "work_in_progress": false
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?state=opened&with_labels_details=true&labels=ui&per_page=100",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:56 GMT",
+        "etag": "W/\"0a2a322acf87745ec1fcab640e16ea2f\"",
+        "link": "<http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?id=bb-p-group%2Fbb-p-project&labels%5B%5D=ui&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true&with_merge_status_recheck=false>; rel=\"first\", <http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?id=bb-p-group%2Fbb-p-project&labels%5B%5D=ui&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true&with_merge_status_recheck=false>; rel=\"last\"",
+        "x-page": "1",
+        "x-per-page": "100",
+        "x-total": "1",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-12T23:37:39.944Z",
+          "description": "Made by the live test: Draft: Try another way.",
+          "detailed_merge_status": "draft_status",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": true,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 6,
+          "iid": 3,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#428bca",
+              "description": "How it looks",
+              "description_html": "How it looks",
+              "id": 5,
+              "name": "ui",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-12T23:37:43.564Z",
+          "project_id": 1,
+          "reference": "!3",
+          "references": {
+            "full": "bb-p-group/bb-p-project!3",
+            "relative": "!3",
+            "short": "!3"
+          },
+          "reviewers": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-1",
+              "id": 100001,
+              "locked": false,
+              "name": "User 1",
+              "public_email": null,
+              "state": "active",
+              "username": "user-1",
+              "web_url": "http://127.0.0.1:8929/user-1"
+            }
+          ],
+          "sha": "72272d5f10c55f9e3da533a926531ac0f2b59a22",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-draft",
+          "source_project_id": 1,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Draft: Try another way",
+          "updated_at": "2026-10-12T23:37:43.574Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/3",
+          "work_in_progress": true
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/api/graphql",
+      "request_body": {
+        "query": "query($path: ID!, $iids: [String!]) { project(fullPath: $path) { mergeRequests(iids: $iids, first: 100) { nodes { iid sourceProject { fullPath } headPipeline { status } reviewers { nodes { username mergeRequestInteraction { reviewState approved } } } approvedBy { nodes { username } } } } } }",
+        "variables": {
+          "iids": [
+            "2",
+            "3"
+          ],
+          "path": "bb-p-group/bb-p-project"
+        }
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 23:42:56 GMT",
+        "etag": "W/\"538a4a36ab104d3b2dae60b524b257c7\""
+      },
+      "body": {
+        "data": {
+          "project": {
+            "mergeRequests": {
+              "nodes": [
+                {
+                  "approvedBy": {
+                    "nodes": []
+                  },
+                  "headPipeline": {
+                    "status": "PENDING"
+                  },
+                  "iid": "3",
+                  "reviewers": {
+                    "nodes": [
+                      {
+                        "mergeRequestInteraction": {
+                          "approved": false,
+                          "reviewState": "UNREVIEWED"
+                        },
+                        "username": "user-1"
+                      }
+                    ]
+                  },
+                  "sourceProject": {
+                    "fullPath": "bb-p-group/bb-p-project"
+                  }
+                },
+                {
+                  "approvedBy": {
+                    "nodes": [
+                      {
+                        "username": "user-2"
+                      }
+                    ]
+                  },
+                  "headPipeline": {
+                    "status": "FAILED"
+                  },
+                  "iid": "2",
+                  "reviewers": {
+                    "nodes": [
+                      {
+                        "mergeRequestInteraction": {
+                          "approved": true,
+                          "reviewState": "APPROVED"
+                        },
+                        "username": "user-2"
+                      }
+                    ]
+                  },
+                  "sourceProject": {
+                    "fullPath": "bb-p-group/bb-p-project"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?state=opened&with_labels_details=true&wip=yes&per_page=100",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:56 GMT",
+        "etag": "W/\"0a2a322acf87745ec1fcab640e16ea2f\"",
+        "link": "<http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&wip=yes&with_labels_details=true&with_merge_status_recheck=false>; rel=\"first\", <http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&wip=yes&with_labels_details=true&with_merge_status_recheck=false>; rel=\"last\"",
+        "x-page": "1",
+        "x-per-page": "100",
+        "x-total": "1",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-12T23:37:39.944Z",
+          "description": "Made by the live test: Draft: Try another way.",
+          "detailed_merge_status": "draft_status",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": true,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 6,
+          "iid": 3,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#428bca",
+              "description": "How it looks",
+              "description_html": "How it looks",
+              "id": 5,
+              "name": "ui",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-12T23:37:43.564Z",
+          "project_id": 1,
+          "reference": "!3",
+          "references": {
+            "full": "bb-p-group/bb-p-project!3",
+            "relative": "!3",
+            "short": "!3"
+          },
+          "reviewers": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-1",
+              "id": 100001,
+              "locked": false,
+              "name": "User 1",
+              "public_email": null,
+              "state": "active",
+              "username": "user-1",
+              "web_url": "http://127.0.0.1:8929/user-1"
+            }
+          ],
+          "sha": "72272d5f10c55f9e3da533a926531ac0f2b59a22",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-draft",
+          "source_project_id": 1,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Draft: Try another way",
+          "updated_at": "2026-10-12T23:37:43.574Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/3",
+          "work_in_progress": true
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/api/graphql",
+      "request_body": {
+        "query": "query($path: ID!, $iids: [String!]) { project(fullPath: $path) { mergeRequests(iids: $iids, first: 100) { nodes { iid sourceProject { fullPath } headPipeline { status } reviewers { nodes { username mergeRequestInteraction { reviewState approved } } } approvedBy { nodes { username } } } } } }",
+        "variables": {
+          "iids": [
+            "3"
+          ],
+          "path": "bb-p-group/bb-p-project"
+        }
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 23:42:57 GMT",
+        "etag": "W/\"032572f9b91a8d39305bd23eccde9be0\""
+      },
+      "body": {
+        "data": {
+          "project": {
+            "mergeRequests": {
+              "nodes": [
+                {
+                  "approvedBy": {
+                    "nodes": []
+                  },
+                  "headPipeline": {
+                    "status": "PENDING"
+                  },
+                  "iid": "3",
+                  "reviewers": {
+                    "nodes": [
+                      {
+                        "mergeRequestInteraction": {
+                          "approved": false,
+                          "reviewState": "UNREVIEWED"
+                        },
+                        "username": "user-1"
+                      }
+                    ]
+                  },
+                  "sourceProject": {
+                    "fullPath": "bb-p-group/bb-p-project"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?state=opened&with_labels_details=true&author_username=user-2&per_page=100",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:57 GMT",
+        "etag": "W/\"0a6f07234d78dfb51d24a4cddcdd61ac\"",
+        "link": "<http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?author_username=user-2&id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true&with_merge_status_recheck=false>; rel=\"first\", <http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?author_username=user-2&id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true&with_merge_status_recheck=false>; rel=\"last\"",
+        "x-page": "1",
+        "x-per-page": "100",
+        "x-total": "1",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "allow_collaboration": false,
+          "allow_maintainer_to_push": false,
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-2",
+            "id": 100002,
+            "locked": false,
+            "name": "User 2",
+            "public_email": null,
+            "state": "active",
+            "username": "user-2",
+            "web_url": "http://127.0.0.1:8929/user-2"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-12T23:37:56.593Z",
+          "description": "Made by the live test: A change from a fork.",
+          "detailed_merge_status": "mergeable",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 11,
+          "iid": 8,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-12T23:38:00.216Z",
+          "project_id": 1,
+          "reference": "!8",
+          "references": {
+            "full": "bb-p-group/bb-p-project!8",
+            "relative": "!8",
+            "short": "!8"
+          },
+          "reviewers": [],
+          "sha": "f780180fe81ed6da21727435683eaaa0f3ac51df",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-fork-topic",
+          "source_project_id": 3,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "A change from a fork",
+          "updated_at": "2026-10-12T23:38:00.223Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/8",
+          "work_in_progress": false
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/api/graphql",
+      "request_body": {
+        "query": "query($path: ID!, $iids: [String!]) { project(fullPath: $path) { mergeRequests(iids: $iids, first: 100) { nodes { iid sourceProject { fullPath } headPipeline { status } reviewers { nodes { username mergeRequestInteraction { reviewState approved } } } approvedBy { nodes { username } } } } } }",
+        "variables": {
+          "iids": [
+            "8"
+          ],
+          "path": "bb-p-group/bb-p-project"
+        }
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 23:42:57 GMT",
+        "etag": "W/\"1f1e3686fbf581c444e5e408d88a204d\""
+      },
+      "body": {
+        "data": {
+          "project": {
+            "mergeRequests": {
+              "nodes": [
+                {
+                  "approvedBy": {
+                    "nodes": []
+                  },
+                  "headPipeline": null,
+                  "iid": "8",
+                  "reviewers": {
+                    "nodes": []
+                  },
+                  "sourceProject": {
+                    "fullPath": "user-2/bb-p-project"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?state=opened&with_labels_details=true&not[labels]=bug&per_page=100",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:57 GMT",
+        "etag": "W/\"2efa08ace8557e02b988e29876a5d4e3\"",
+        "link": "<http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?id=bb-p-group%2Fbb-p-project&not%5Blabels%5D%5B%5D=bug&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true&with_merge_status_recheck=false>; rel=\"first\", <http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?id=bb-p-group%2Fbb-p-project&not%5Blabels%5D%5B%5D=bug&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&with_labels_details=true&with_merge_status_recheck=false>; rel=\"last\"",
+        "x-page": "1",
+        "x-per-page": "100",
+        "x-total": "4",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "allow_collaboration": false,
+          "allow_maintainer_to_push": false,
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-2",
+            "id": 100002,
+            "locked": false,
+            "name": "User 2",
+            "public_email": null,
+            "state": "active",
+            "username": "user-2",
+            "web_url": "http://127.0.0.1:8929/user-2"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-12T23:37:56.593Z",
+          "description": "Made by the live test: A change from a fork.",
+          "detailed_merge_status": "mergeable",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 11,
+          "iid": 8,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-12T23:38:00.216Z",
+          "project_id": 1,
+          "reference": "!8",
+          "references": {
+            "full": "bb-p-group/bb-p-project!8",
+            "relative": "!8",
+            "short": "!8"
+          },
+          "reviewers": [],
+          "sha": "f780180fe81ed6da21727435683eaaa0f3ac51df",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-fork-topic",
+          "source_project_id": 3,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "A change from a fork",
+          "updated_at": "2026-10-12T23:38:00.223Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/8",
+          "work_in_progress": false
+        },
+        {
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-12T23:37:42.386Z",
+          "description": "Made by the live test: Second of a stack.",
+          "detailed_merge_status": "mergeable",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 8,
+          "iid": 5,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-12T23:37:45.339Z",
+          "project_id": 1,
+          "reference": "!5",
+          "references": {
+            "full": "bb-p-group/bb-p-project!5",
+            "relative": "!5",
+            "short": "!5"
+          },
+          "reviewers": [],
+          "sha": "5d7ea1757209327bfe5afc71748a40369ff2e76b",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-stack-2",
+          "source_project_id": 1,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "bb-p-stack-1",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Second of a stack",
+          "updated_at": "2026-10-12T23:37:45.360Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/5",
+          "work_in_progress": false
+        },
+        {
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-12T23:37:42.047Z",
+          "description": "Made by the live test: First of a stack.",
+          "detailed_merge_status": "unchecked",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 7,
+          "iid": 4,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "unchecked",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-12T23:37:44.130Z",
+          "project_id": 1,
+          "reference": "!4",
+          "references": {
+            "full": "bb-p-group/bb-p-project!4",
+            "relative": "!4",
+            "short": "!4"
+          },
+          "reviewers": [],
+          "sha": "87ed86802975245acad6a9d3e9c45c243e3b2a28",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-stack-1",
+          "source_project_id": 1,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "First of a stack",
+          "updated_at": "2026-10-12T23:37:44.153Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/4",
+          "work_in_progress": false
+        },
+        {
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-12T23:37:39.944Z",
+          "description": "Made by the live test: Draft: Try another way.",
+          "detailed_merge_status": "draft_status",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": true,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 6,
+          "iid": 3,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [
+            {
+              "archived": false,
+              "color": "#428bca",
+              "description": "How it looks",
+              "description_html": "How it looks",
+              "id": 5,
+              "name": "ui",
+              "text_color": "#FFFFFF"
+            }
+          ],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-12T23:37:43.564Z",
+          "project_id": 1,
+          "reference": "!3",
+          "references": {
+            "full": "bb-p-group/bb-p-project!3",
+            "relative": "!3",
+            "short": "!3"
+          },
+          "reviewers": [
+            {
+              "avatar_url": "https://avatars.example.invalid/user-1",
+              "id": 100001,
+              "locked": false,
+              "name": "User 1",
+              "public_email": null,
+              "state": "active",
+              "username": "user-1",
+              "web_url": "http://127.0.0.1:8929/user-1"
+            }
+          ],
+          "sha": "72272d5f10c55f9e3da533a926531ac0f2b59a22",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-draft",
+          "source_project_id": 1,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "main",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Draft: Try another way",
+          "updated_at": "2026-10-12T23:37:43.574Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/3",
+          "work_in_progress": true
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/api/graphql",
+      "request_body": {
+        "query": "query($path: ID!, $iids: [String!]) { project(fullPath: $path) { mergeRequests(iids: $iids, first: 100) { nodes { iid sourceProject { fullPath } headPipeline { status } reviewers { nodes { username mergeRequestInteraction { reviewState approved } } } approvedBy { nodes { username } } } } } }",
+        "variables": {
+          "iids": [
+            "8",
+            "5",
+            "4",
+            "3"
+          ],
+          "path": "bb-p-group/bb-p-project"
+        }
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 23:42:57 GMT",
+        "etag": "W/\"0098fe9353cb0abfce6ece7609141b98\""
+      },
+      "body": {
+        "data": {
+          "project": {
+            "mergeRequests": {
+              "nodes": [
+                {
+                  "approvedBy": {
+                    "nodes": []
+                  },
+                  "headPipeline": null,
+                  "iid": "8",
+                  "reviewers": {
+                    "nodes": []
+                  },
+                  "sourceProject": {
+                    "fullPath": "user-2/bb-p-project"
+                  }
+                },
+                {
+                  "approvedBy": {
+                    "nodes": []
+                  },
+                  "headPipeline": null,
+                  "iid": "5",
+                  "reviewers": {
+                    "nodes": []
+                  },
+                  "sourceProject": {
+                    "fullPath": "bb-p-group/bb-p-project"
+                  }
+                },
+                {
+                  "approvedBy": {
+                    "nodes": []
+                  },
+                  "headPipeline": {
+                    "status": "RUNNING"
+                  },
+                  "iid": "4",
+                  "reviewers": {
+                    "nodes": []
+                  },
+                  "sourceProject": {
+                    "fullPath": "bb-p-group/bb-p-project"
+                  }
+                },
+                {
+                  "approvedBy": {
+                    "nodes": []
+                  },
+                  "headPipeline": {
+                    "status": "PENDING"
+                  },
+                  "iid": "3",
+                  "reviewers": {
+                    "nodes": [
+                      {
+                        "mergeRequestInteraction": {
+                          "approved": false,
+                          "reviewState": "UNREVIEWED"
+                        },
+                        "username": "user-1"
+                      }
+                    ]
+                  },
+                  "sourceProject": {
+                    "fullPath": "bb-p-group/bb-p-project"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path_and_query": "/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?state=opened&with_labels_details=true&target_branch=bb-p-stack-1&per_page=100",
+      "request_body": null,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Mon, 12 Oct 2026 23:42:57 GMT",
+        "etag": "W/\"dc16bf084b2c21917f631e8cd01deacb\"",
+        "link": "<http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&target_branch=bb-p-stack-1&with_labels_details=true&with_merge_status_recheck=false>; rel=\"first\", <http://127.0.0.1:8929/api/v4/projects/bb-p-group%2Fbb-p-project/merge_requests?id=bb-p-group%2Fbb-p-project&order_by=created_at&page=1&per_page=100&sort=desc&state=opened&target_branch=bb-p-stack-1&with_labels_details=true&with_merge_status_recheck=false>; rel=\"last\"",
+        "x-page": "1",
+        "x-per-page": "100",
+        "x-total": "1",
+        "x-total-pages": "1"
+      },
+      "body": [
+        {
+          "assignee": null,
+          "assignees": [],
+          "author": {
+            "avatar_url": "https://avatars.example.invalid/user-1",
+            "id": 100001,
+            "locked": false,
+            "name": "User 1",
+            "public_email": null,
+            "state": "active",
+            "username": "user-1",
+            "web_url": "http://127.0.0.1:8929/user-1"
+          },
+          "blocking_discussions_resolved": true,
+          "closed_at": null,
+          "closed_by": null,
+          "created_at": "2026-10-12T23:37:42.386Z",
+          "description": "Made by the live test: Second of a stack.",
+          "detailed_merge_status": "mergeable",
+          "discussion_locked": null,
+          "downvotes": 0,
+          "draft": false,
+          "force_remove_source_branch": true,
+          "has_conflicts": false,
+          "id": 8,
+          "iid": 5,
+          "imported": false,
+          "imported_from": "none",
+          "labels": [],
+          "merge_after": null,
+          "merge_commit_sha": null,
+          "merge_status": "can_be_merged",
+          "merge_user": null,
+          "merge_when_pipeline_succeeds": false,
+          "merged_at": null,
+          "merged_by": null,
+          "milestone": null,
+          "prepared_at": "2026-10-12T23:37:45.339Z",
+          "project_id": 1,
+          "reference": "!5",
+          "references": {
+            "full": "bb-p-group/bb-p-project!5",
+            "relative": "!5",
+            "short": "!5"
+          },
+          "reviewers": [],
+          "sha": "5d7ea1757209327bfe5afc71748a40369ff2e76b",
+          "should_remove_source_branch": null,
+          "source_branch": "bb-p-stack-2",
+          "source_project_id": 1,
+          "squash": false,
+          "squash_commit_sha": null,
+          "squash_on_merge": false,
+          "state": "opened",
+          "target_branch": "bb-p-stack-1",
+          "target_project_id": 1,
+          "task_completion_status": {
+            "completed_count": 0,
+            "count": 0
+          },
+          "time_stats": {
+            "human_time_estimate": null,
+            "human_total_time_spent": null,
+            "time_estimate": 0,
+            "total_time_spent": 0
+          },
+          "title": "Second of a stack",
+          "updated_at": "2026-10-12T23:37:45.360Z",
+          "upvotes": 0,
+          "user_notes_count": 0,
+          "web_url": "http://127.0.0.1:8929/bb-p-group/bb-p-project/-/merge_requests/5",
+          "work_in_progress": false
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path_and_query": "/api/graphql",
+      "request_body": {
+        "query": "query($path: ID!, $iids: [String!]) { project(fullPath: $path) { mergeRequests(iids: $iids, first: 100) { nodes { iid sourceProject { fullPath } headPipeline { status } reviewers { nodes { username mergeRequestInteraction { reviewState approved } } } approvedBy { nodes { username } } } } } }",
+        "variables": {
+          "iids": [
+            "5"
+          ],
+          "path": "bb-p-group/bb-p-project"
+        }
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 23:42:57 GMT",
+        "etag": "W/\"02f5fb7c4e220cd6ef854a2a883b7a0b\""
+      },
+      "body": {
+        "data": {
+          "project": {
+            "mergeRequests": {
+              "nodes": [
+                {
+                  "approvedBy": {
+                    "nodes": []
+                  },
+                  "headPipeline": null,
+                  "iid": "5",
+                  "reviewers": {
+                    "nodes": []
+                  },
+                  "sourceProject": {
+                    "fullPath": "bb-p-group/bb-p-project"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ]
+}
