@@ -2,7 +2,9 @@ name: pages
 
 # The website (`site/`), assembled by `site/build.sh` and published on
 # GitHub Pages. Its source in the repository's settings must be "GitHub
-# Actions"; the custom domain is set there too.
+# Actions", and its `github-pages` environment must let the tags `v*`
+# deploy besides `main`, since a published release runs on its tag; the
+# custom domain is set there too.
 #
 # It runs in the project's own repository only, never in a fork.
 #

@@ -388,7 +388,7 @@ jobs:
             echo "|---|---|"
             echo "| Linux, any distribution | \`bitbraid-$VERSION-x86_64.AppImage\` |"
             echo "| Debian, Ubuntu | \`bitbraid_${VERSION}_amd64.deb\` |"
-            echo "| Fedora, openSUSE | \`bitbraid-$VERSION-1.x86_64.rpm\` |"
+            echo "| Fedora | \`bitbraid-$VERSION-1.x86_64.rpm\` |"
             echo "| Linux, unpacked anywhere | \`bitbraid-$VERSION-x86_64-linux.tar.gz\` |"
             echo "| macOS 11 or later | \`bitbraid-$VERSION-universal.dmg\` |"
             echo "| Windows 10 or later | \`bitbraid-$VERSION-x86_64.msi\`, or \`bitbraid-$VERSION-x86_64-windows.zip\` to run from a folder |"
