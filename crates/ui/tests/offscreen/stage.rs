@@ -428,6 +428,24 @@ impl Stage {
         self.frame();
     }
 
+    /// Rest the pointer on the control of this id.
+    pub fn hover(&mut self, id: impl Into<ElementId>) {
+        self.window(|window, cx| window.hover(id, cx));
+        self.frame();
+    }
+
+    /// Whether a toast is on show.
+    pub fn shows_toast(&mut self) -> bool {
+        self.shows("notification")
+    }
+
+    /// Put the toast away with its cross, which shows under the pointer.
+    pub fn close_toast(&mut self) {
+        self.hover("notification");
+        self.window(|window, cx| window.within("notification").click("close", cx));
+        self.frame();
+    }
+
     /// Move the pointer off the window: nothing is under it any more, so
     /// what the next pictures show does not hang on where a click left it.
     pub fn pointer_away(&mut self) {

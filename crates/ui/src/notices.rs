@@ -437,10 +437,11 @@ pub fn push(window: &mut Window, cx: &mut App, notice: Notice) {
         cx.global_mut::<Notices>()
             .keep(kind, text.clone(), crate::views::now(), actions.clone());
     }
-    // The toast is drawn here, all of it: a band in the colour of its kind
+    // What the toast holds is drawn here: a band in the colour of its kind
     // with the kind's mark, a title, what is said (much of it git's, to be
-    // read letter by letter: `crate::literal`), what can be done about it,
-    // and a cross that puts it away.
+    // read letter by letter: `crate::literal`) and what can be done about
+    // it. The cross that puts it away is the toolkit's, on show while the
+    // pointer is over the toast.
     let offers: Vec<NoticeAction> = actions.into_iter().take(MOST_ON_TOAST).collect();
     let mut toast = Notification::new().p_0().content(move |_, _, cx| {
         let theme = cx.theme();
@@ -460,7 +461,6 @@ pub fn push(window: &mut Window, cx: &mut App, notice: Notice) {
         };
         let (radius, muted) = (theme.radius_lg, theme.muted_foreground);
         let toast = cx.entity().downgrade();
-        let close = toast.clone();
         let buttons = (!offers.is_empty()).then(|| {
             h_flex()
                 .mt_3()
@@ -485,7 +485,6 @@ pub fn push(window: &mut Window, cx: &mut App, notice: Notice) {
         });
         h_flex()
             .id("notice")
-            .relative()
             .w_full()
             .items_stretch()
             .child(
@@ -515,18 +514,6 @@ pub fn push(window: &mut Window, cx: &mut App, notice: Notice) {
                             .child(crate::literal::said(text.clone(), cx)),
                     )
                     .children(buttons),
-            )
-            .child(
-                div().absolute().top_2().right_2().child(
-                    Button::new("notice-close")
-                        .accessibility_label(say!("notices-close"))
-                        .ghost()
-                        .small()
-                        .icon(IconName::Close)
-                        .on_click(move |_, window, cx| {
-                            let _ = close.update(cx, |toast, cx| toast.dismiss(window, cx));
-                        }),
-                ),
             )
             .into_any_element()
     });

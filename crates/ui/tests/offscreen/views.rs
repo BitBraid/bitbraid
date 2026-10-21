@@ -319,14 +319,16 @@ fn window(shots: &mut Shots) {
     std::fs::create_dir_all(&nothing).unwrap();
     let mut stage = Stage::open(Start::with(&nothing).pictures());
     assert_eq!(stage.notices().len(), 1, "{:?}", stage.notices());
+    // Under the pointer, with its cross.
+    stage.hover("notification");
     shots.take(&mut stage, "notification", Themes::Two);
     // Something to know stays until it is put away; what was said is
     // kept.
     stage.pass(Duration::from_secs(30));
-    assert!(stage.shows("notice-close"), "it stays");
-    stage.click("notice-close");
+    assert!(stage.shows_toast(), "it stays");
+    stage.close_toast();
     stage.pass(Duration::from_secs(1));
-    assert!(!stage.shows("notice-close"));
+    assert!(!stage.shows_toast());
     // Where that button was depends on how many lines the notice took.
     stage.pointer_away();
 
@@ -993,7 +995,7 @@ fn hooks(shots: &mut Shots) {
     stage.act(keymap::SkipPushHook);
     assert_eq!(stage.notices().len(), 1, "{:?}", stage.notices());
     // A warning stays until it is put away.
-    stage.click("notice-close");
+    stage.close_toast();
     stage.pass(Duration::from_secs(1));
     assert!(!stage.shows("push-more"), "nothing stands beside Push");
     stage.right_click("push");

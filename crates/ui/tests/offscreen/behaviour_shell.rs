@@ -460,17 +460,17 @@ fn a_toast_stands_at_the_bottom_left_and_only_a_success_goes_by_itself() {
     );
     assert!((width - 352.0).abs() < 1.0, "{width}");
     stage.pass(Duration::from_secs(8));
-    assert!(!stage.shows("notice-close"), "a success goes by itself");
+    assert!(!stage.shows_toast(), "a success goes by itself");
 
     stage.with_shell(|_, window, cx| {
         bitbraid_ui::notices::push(window, cx, bitbraid_ui::notices::Notice::error("It broke"))
     });
     stage.frame();
     stage.pass(Duration::from_secs(30));
-    assert!(stage.shows("notice-close"), "a failure stays");
-    stage.click("notice-close");
+    assert!(stage.shows_toast(), "a failure stays");
+    stage.close_toast();
     stage.pass(Duration::from_secs(1));
-    assert!(!stage.shows("notice-close"), "the cross puts it away");
+    assert!(!stage.shows_toast(), "the cross puts it away");
 
     // A fetch that goes well says nothing.
     let said = stage.notices().len();
