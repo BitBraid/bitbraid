@@ -737,7 +737,7 @@ checksum = "1e4b40c7323adcfc0a41c4b88143ed58346ff65a288fc144329c5c45e05d70c6"
 
 [[package]]
 name = "bitbraid"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "bitbraid-ui",
  "resvg 0.46.0",
@@ -745,7 +745,7 @@ dependencies = [
 
 [[package]]
 name = "bitbraid-cli"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "bitbraid-core",
@@ -765,11 +765,11 @@ dependencies = [
 
 [[package]]
 name = "bitbraid-core"
-version = "0.1.0"
+version = "0.1.1"
 
 [[package]]
 name = "bitbraid-engine"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "base64 0.22.1",
  "bitbraid-core",
@@ -786,7 +786,7 @@ dependencies = [
 
 [[package]]
 name = "bitbraid-git"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "bitbraid-core",
  "bitbraid-strings",
@@ -804,7 +804,7 @@ dependencies = [
 
 [[package]]
 name = "bitbraid-integrations"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "async-io",
  "base64 0.22.1",
@@ -833,7 +833,7 @@ dependencies = [
 
 [[package]]
 name = "bitbraid-strings"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "fluent-bundle",
  "fluent-syntax",
@@ -842,7 +842,7 @@ dependencies = [
 
 [[package]]
 name = "bitbraid-terminal"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "alacritty_terminal",
  "bitbraid-core",
@@ -853,7 +853,7 @@ dependencies = [
 
 [[package]]
 name = "bitbraid-testkit"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "base64 0.22.1",
@@ -868,7 +868,7 @@ dependencies = [
 
 [[package]]
 name = "bitbraid-ui"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "base64 0.22.1",
  "bitbraid-core",
@@ -10702,7 +10702,7 @@ checksum = "ec7a2a501ed189703dba8b08142f057e887dfc4b2cc4db2d343ac6376ba3e0b9"
 
 [[package]]
 name = "xtask"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "bitbraid-testkit",
