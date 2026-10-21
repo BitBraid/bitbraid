@@ -103,9 +103,10 @@ or transports.
 - **Signatures**: BitBraid shows git's and gpgsm's verdict and never
   checks certificates itself.
 - **Nothing that needs a vendor's proprietary cloud** is in scope.
-- **Nothing has been released**, so there is no compatibility code for the
-  files or settings of earlier builds and no migration of them: a renamed
-  file or key is simply no longer read.
+- **What a released version wrote stays readable.** 0.1.0 has been
+  released, so a later build reads the files and settings a released one
+  left: a renamed file or key is migrated or still read. What changed
+  only between two releases needs no such care.
 
 ## 3. Working on the interface
 
