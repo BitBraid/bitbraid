@@ -83,6 +83,14 @@ pub struct WorkspaceProbe {
     pub worktree_looks: Vec<WorktreeLook>,
     /// How many of those began while another was under way.
     pub worktree_look_overlaps: u64,
+    /// What the status bar says is running, and whether it offers to stop
+    /// it.
+    pub operation: Option<(String, bool)>,
+    /// The command that changes the repository on the session thread, by
+    /// its label, whether the status bar shows it yet or not.
+    pub busy: Option<String>,
+    /// The worktrees being removed, by path.
+    pub removing: Vec<String>,
 }
 
 /// One look at other worktrees, as the probes tell of it.
@@ -187,6 +195,11 @@ impl Workspace {
                 .global::<crate::prefs::Prefs>()
                 .right_panel_shown(Some(&self.session.path))
                 && self.something_selected(cx),
+            operation: self
+                .operation_text()
+                .map(|text| (text, self.operation_stoppable())),
+            busy: self.busy_label().map(str::to_owned),
+            removing: self.removing.iter().cloned().collect(),
         }
     }
 

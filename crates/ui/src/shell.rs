@@ -3639,16 +3639,17 @@ impl Shell {
 
     fn render_status_bar(&self, cx: &mut Context<Self>) -> impl IntoElement {
         let has_repo = self.active_workspace().is_some();
-        let (left, count, operation) = match self.active_workspace() {
+        let (left, count, operation, stoppable) = match self.active_workspace() {
             Some(workspace) => {
                 let workspace = workspace.read(cx);
                 (
                     workspace.status_line(),
                     workspace.commit_count(),
                     workspace.operation_text(),
+                    workspace.operation_stoppable(),
                 )
             }
-            None => (say!("shell-no-repository").to_owned(), None, None),
+            None => (say!("shell-no-repository").to_owned(), None, None, false),
         };
         let zoom = (cx.global::<Prefs>().preferences.zoom * 100.0).round();
         // Which git is run; in the colour of trouble when there is none or
@@ -3707,7 +3708,7 @@ impl Shell {
                 )
             })
             .when_some(operation, |this, operation| {
-                // What is running, and a way to stop it.
+                // What is running, and a way to stop it when it can be.
                 this.child(
                     h_flex()
                         .gap_2()
@@ -3715,17 +3716,19 @@ impl Shell {
                         .text_color(cx.theme().foreground)
                         .child(Spinner::new().xsmall())
                         .child(operation)
-                        .child(
-                            Button::new("cancel-operation")
-                                .ghost()
-                                .xsmall()
-                                .label(say!("shell-stop"))
-                                .on_click(cx.listener(|this, _, _, cx| {
-                                    if let Some(workspace) = this.active_workspace().cloned() {
-                                        workspace.update(cx, |w, cx| w.cancel_operation(cx));
-                                    }
-                                })),
-                        ),
+                        .when(stoppable, |row| {
+                            row.child(
+                                Button::new("cancel-operation")
+                                    .ghost()
+                                    .xsmall()
+                                    .label(say!("shell-stop"))
+                                    .on_click(cx.listener(|this, _, _, cx| {
+                                        if let Some(workspace) = this.active_workspace().cloned() {
+                                            workspace.update(cx, |w, cx| w.cancel_operation(cx));
+                                        }
+                                    })),
+                            )
+                        }),
                 )
             })
             .when_some(count, |this, count| this.child(commits_said(count)))

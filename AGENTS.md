@@ -132,7 +132,9 @@ or transports.
   clock held at 2020-01-03 12:00 UTC (`BITBRAID_NOW`); its scratch
   directories are at `/tmp/bitbraid-offscreen`, because paths are drawn,
   and a lock lets one run at a time use it. The git it runs is the real
-  one behind a script that answers `--version` with 2.99.0.
+  one behind a script that answers `--version` with 2.99.0, and that a
+  test can hold up (`Stage::hold_git`) to look at the window while
+  something takes a while.
 - It runs the scheduler until no request to a session thread is
   unanswered (`session::unanswered`) and nothing is left to run: no
   sleeps. Timers run on the test platform's clock, which stands still

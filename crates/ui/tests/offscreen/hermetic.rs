@@ -23,6 +23,14 @@ use std::{
 /// Set in the second process: the root of its scratch directories.
 const INSIDE: &str = "BITBRAID_OFFSCREEN_ROOT";
 
+/// Where the files are that hold git up (`hold_git`), under the root.
+const HOLDS: &str = "holds";
+
+/// How many times a git that is held up looks again, a twentieth of a
+/// second apart: a minute, so that a test that fails with a hold in place
+/// leaves no git waiting for longer.
+const HELD_LOOKS: u32 = 1200;
+
 /// Where everything of a run lives. Fixed, so that a path that is drawn
 /// is the same on every machine and in every checkout. On macOS `/tmp` is
 /// a link to `/private/tmp`, and the application takes paths as the
@@ -49,6 +57,32 @@ pub const GIT_VERSION: &str = "2.99.0";
 /// The root of the scratch directories, when this is the second process.
 pub fn inside() -> Option<PathBuf> {
     std::env::var_os(INSIDE).map(PathBuf::from)
+}
+
+/// git held up: while it is there, every git that is run with `word`
+/// among its arguments waits before it begins (at most a minute). Gone
+/// when dropped. For what the window shows while something it asked for
+/// takes a while (`Stage::hold_git`).
+pub struct Held(PathBuf);
+
+/// Whether git can be held up here: on Windows git runs without the
+/// wrapper (`git_wrapper`).
+pub fn holds_git() -> bool {
+    !cfg!(windows)
+}
+
+/// Hold up every git run with `word` among its arguments (`Held`).
+pub fn hold_git(word: &str) -> Held {
+    let root = inside().expect("a hold is for the second process");
+    let file = root.join(HOLDS).join(format!("hold-{word}"));
+    fs::write(&file, "").expect("the hold is written");
+    Held(file)
+}
+
+impl Drop for Held {
+    fn drop(&mut self) {
+        let _ = fs::remove_file(&self.0);
+    }
 }
 
 /// Variables the second process keeps: what finds programs and libraries,
@@ -122,6 +156,7 @@ fn prepare(root: &Path, real_git: &str) -> std::io::Result<()> {
     make_dir(&root.join("run"), true)?;
     make_dir(&root.join("work"), false)?;
     make_dir(&root.join("bin"), false)?;
+    make_dir(&root.join(HOLDS), false)?;
     fs::write(
         root.join("gitconfig"),
         concat!(
@@ -136,14 +171,20 @@ fn prepare(root: &Path, real_git: &str) -> std::io::Result<()> {
         ),
     )?;
     // The git that is run: the real one, under a version that is the same
-    // everywhere. Written and closed before anything is started, so that
-    // no child holds it open while it is run.
+    // everywhere, which waits while a test holds it up (`hold_git`).
+    // Written and closed before anything is started, so that no child
+    // holds it open while it is run.
     let wrapper = root.join("bin/git");
+    let holds = root.join(HOLDS).to_string_lossy().replace('\'', "'\\''");
     let mut file = fs::File::create(&wrapper)?;
     writeln!(file, "#!/bin/sh")?;
     writeln!(
         file,
         "if [ \"$1\" = \"--version\" ]; then echo \"git version {GIT_VERSION}\"; exit 0; fi"
+    )?;
+    writeln!(
+        file,
+        "for word; do n=0; while [ -f '{holds}/hold-'\"$word\" ] && [ $n -lt {HELD_LOOKS} ]; do sleep 0.05; n=$((n + 1)); done; done"
     )?;
     writeln!(file, "exec '{}' \"$@\"", real_git.replace('\'', "'\\''"))?;
     file.sync_all()?;

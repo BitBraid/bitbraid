@@ -78,6 +78,7 @@ mod past;
 mod patches;
 mod platform;
 mod pulling;
+mod running;
 mod signers;
 mod stashing;
 mod sync;
@@ -453,10 +454,14 @@ pub struct Workspace {
     /// Keeps the reads of where the submodules stand apart while files
     /// change in them.
     submodule_reads: crate::views::submodules::Paced,
-    /// The operation on the session's operations thread, if any, and how
-    /// many more are waiting behind it.
+    /// The operation on the session's operations thread, if any, and those
+    /// waiting behind it.
     operation: Option<Operation>,
-    operations_waiting: usize,
+    operations_waiting: std::collections::VecDeque<Operation>,
+    /// The command that changes the repository on the session thread.
+    busy: running::Busy,
+    /// The worktrees being removed, by path.
+    removing: std::collections::BTreeSet<String>,
     right: RightPane,
     /// The last status held as many paths as are taken and there are more.
     status_cut: bool,
@@ -1290,7 +1295,9 @@ impl Workspace {
             places_loaded: None,
             submodule_reads: crate::views::submodules::Paced::new(SUBMODULE_GAP),
             operation: None,
-            operations_waiting: 0,
+            operations_waiting: std::collections::VecDeque::new(),
+            busy: running::Busy::default(),
+            removing: std::collections::BTreeSet::new(),
             right: RightPane::Commit,
             status_cut: false,
             large_hidden: false,
@@ -2058,15 +2065,14 @@ impl Workspace {
     /// An operation was handed to the operations thread: it is the one
     /// running, or one more waiting behind it.
     fn operation_began(&mut self, label: &str, command: Option<&str>) {
+        let operation = Operation {
+            label: label.to_owned(),
+            command: command.map(str::to_owned),
+            stage: None,
+        };
         match &self.operation {
-            Some(_) => self.operations_waiting = self.operations_waiting.saturating_add(1),
-            None => {
-                self.operation = Some(Operation {
-                    label: label.to_owned(),
-                    command: command.map(str::to_owned),
-                    stage: None,
-                })
-            }
+            Some(_) => self.operations_waiting.push_back(operation),
+            None => self.operation = Some(operation),
         }
     }
 
@@ -2089,18 +2095,10 @@ impl Workspace {
     }
 
     /// An operation ended: the next one in the queue is running now, if
-    /// there is one.
+    /// there is one. The thread takes them in the order they were handed
+    /// to it.
     fn operation_ended(&mut self) {
-        if self.operations_waiting > 0 {
-            self.operations_waiting = self.operations_waiting.saturating_sub(1);
-            self.operation = Some(Operation {
-                label: say!("workspace-working").to_owned(),
-                command: None,
-                stage: None,
-            });
-        } else {
-            self.operation = None;
-        }
+        self.operation = self.operations_waiting.pop_front();
     }
 
     /// Run any engine command with parameters that were put together
@@ -2718,21 +2716,24 @@ impl Workspace {
         self.settings_shown = shown;
     }
 
-    /// What the status bar says about the running operation.
+    /// What the status bar says about the running operation, or about a
+    /// command that changes the repository and has run for a moment.
     pub fn operation_text(&self) -> Option<String> {
-        let operation = self.operation.as_ref()?;
+        let Some(operation) = self.operation.as_ref() else {
+            return self.busy_text();
+        };
         let mut text = operation.label.clone();
         match &operation.stage {
             Some((stage, Some(percent))) => text.push_str(&format!(": {stage} {percent} %")),
             Some((stage, None)) => text.push_str(&format!(": {stage}")),
             None => text.push('…'),
         }
-        if self.operations_waiting > 0 {
+        if !self.operations_waiting.is_empty() {
             text.push_str(&format!(
                 "  {}",
                 say!(
                     "workspace-operations-waiting",
-                    count = self.operations_waiting
+                    count = self.operations_waiting.len()
                 )
             ));
         }
@@ -3358,7 +3359,9 @@ impl Workspace {
         }
     }
 
-    /// Remove a worktree; one with changes is asked about once more.
+    /// Remove a worktree; one with changes is asked about once more. An
+    /// operation, since deleting a large one's files takes a while: in the
+    /// status bar, and marked in its rows, until it is done.
     fn remove_worktree(
         &mut self,
         path: String,
@@ -3367,20 +3370,26 @@ impl Workspace {
         window: &mut Window,
         cx: &mut Context<Self>,
     ) {
-        let reply = self.session.send(Request::Command {
+        let name = worktrees::folder_name(&path);
+        let reply = self.session.send(Request::Operation {
             id: "worktree.remove".to_owned(),
             params: json!({ "path": path, "force": force, "delete_branch": with_branch }),
         });
+        self.operation_began(
+            &say!("workspace-worktree-removing", name = name.as_str()),
+            Some("worktree.remove"),
+        );
+        self.set_removing(&path, true, cx);
         cx.spawn_in(window, async move |this, cx| {
-            let Ok(reply) = reply.await else {
-                return;
-            };
+            let reply = reply.await;
             let _ = this.update_in(cx, |this, window, cx| {
-                let name = worktrees::folder_name(&path);
+                this.operation_ended();
+                this.set_removing(&path, false, cx);
+                cx.notify();
                 match reply {
                     // Git, and the engine before it, refuse one with work
                     // in it.
-                    Reply::Error(err) if !force && err.contains("they would be lost") => {
+                    Ok(Reply::Error(err)) if !force && err.contains("they would be lost") => {
                         this.ask_in_bar(
                             say!(
                                 "workspace-worktree-remove-anyway-question",
@@ -3396,10 +3405,10 @@ impl Workspace {
                         );
                         return;
                     }
-                    Reply::Error(err) => {
+                    Ok(Reply::Error(err)) => {
                         crate::notices::push(window, cx, Notice::error(sentence(&err)))
                     }
-                    Reply::Command(value) => {
+                    Ok(Reply::Command(value)) => {
                         // The folder is gone; the branch may have stayed.
                         match value.get("branch_kept").and_then(|kept| kept.as_str()) {
                             Some(why) => crate::notices::push(
@@ -5173,6 +5182,7 @@ impl Workspace {
                     cx.notify();
                 }
             }
+            Event::Busy(label) => self.on_busy(label, cx),
             Event::Graph(graph) => self.on_graph_piece(graph, cx),
             Event::GraphFailed { generation, error } => {
                 if self

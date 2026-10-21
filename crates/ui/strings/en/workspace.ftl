@@ -78,7 +78,6 @@ workspace-no-editor = No editor is named in the preferences (External tools), so
 ## An operation, which shows in the status bar while it runs; label is
 ## what the status bar said ("Fetching").
 
-workspace-working = Working
 workspace-operation-stopped = { $label }: stopped
 workspace-operation-not-answered = { $label }: git asked and got no answer, so it gave up
 workspace-operation-stopped-half-way = { $label }: stopped half-way; see the banner
@@ -182,6 +181,9 @@ workspace-links-registered = Links that begin with bitbraid:// open here now
 
 # After what runs now: how many more wait behind it.
 workspace-operations-waiting = (+{ $count } waiting)
+# A command that changes the repository and has run for a moment; command
+# is its name ("Check out").
+workspace-command-running = Running “{ $command }”
 
 ## Remotes.
 
@@ -233,6 +235,7 @@ workspace-worktree-move-title = Move the worktree { $name }
 workspace-worktree-move = Move
 workspace-worktree-move-to = the folder it moves to, which is not there yet
 workspace-worktree-moving = Moving a worktree
+workspace-worktree-removing = Removing the worktree { $name }
 workspace-worktree-moved = Moved the worktree { $name } to { $to }
 workspace-worktree-unlocked = Unlocked the worktree { $name }
 workspace-worktree-remove-with-branch-question = Remove the worktree { $name } and its branch? Undo brings the branch back.

@@ -314,6 +314,10 @@ pub enum Event {
         /// How far along, when known.
         percent: Option<u8>,
     },
+    /// The session thread began a command that changes the repository,
+    /// by its label, or answered it (none). Everything asked of the thread
+    /// after it waits meanwhile.
+    Busy(Option<String>),
 }
 
 /// A request on its way to a session thread, and where its reply goes.
@@ -948,6 +952,12 @@ fn session_main(
         // In flight until it has answered: a quit waits a moment for it,
         // so that what it did is in the activity log.
         let busy = RUNNING.begin();
+        // A change to the repository holds up what is asked after it: the
+        // window says so when it takes a while.
+        let changing = changing(&state.registry, &request);
+        if changing.is_some() {
+            let _ = events_tx.unbounded_send(Event::Busy(changing.clone()));
+        }
         let reply = {
             // What nobody asked for and only reads stays on this machine.
             let _here =
@@ -967,6 +977,9 @@ fn session_main(
             }
         };
         drop(busy);
+        if changing.is_some() {
+            let _ = events_tx.unbounded_send(Event::Busy(None));
+        }
         debug(|| {
             format!(
                 "handled {name} -> {} in {:?}",
@@ -1153,6 +1166,17 @@ fn stays_here(registry: &Registry, request: &Request, asked: bool) -> bool {
         Request::Operation { .. } | Request::CancelOperation => false,
         Request::Command { id, params } => reads_only(registry, id, params),
         _ => true,
+    }
+}
+
+/// The label of a command that changes the repository with these
+/// parameters. One that is not known fails at once.
+fn changing(registry: &Registry, request: &Request) -> Option<String> {
+    match request {
+        Request::Command { id, params } if !reads_only(registry, id, params) => {
+            registry.get(id).map(|spec| spec.label.to_owned())
+        }
+        _ => None,
     }
 }
 

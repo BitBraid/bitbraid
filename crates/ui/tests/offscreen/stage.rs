@@ -222,6 +222,8 @@ pub struct Stage {
     window: AnyWindowHandle,
     shell: Option<Entity<Shell>>,
     pictures: bool,
+    /// git held up ([`Self::hold_git`]).
+    held: Vec<crate::hermetic::Held>,
 }
 
 impl Stage {
@@ -304,6 +306,7 @@ impl Stage {
             window,
             shell: None,
             pictures: start.pictures,
+            held: Vec::new(),
         };
         stage.frame();
         (stage, view)
@@ -346,6 +349,11 @@ impl Stage {
     /// that it is walked in pieces (the fixtures are not). A test that is
     /// about either waits for what it expects with [`Self::until`].
     pub fn settle(&mut self) {
+        // What is asked of git is not answered while it is held up.
+        if !self.held.is_empty() {
+            self.cx().run_until_parked();
+            return;
+        }
         let started = Instant::now();
         loop {
             self.cx().run_until_parked();
@@ -786,6 +794,21 @@ impl Stage {
     pub fn pass(&mut self, time: Duration) {
         self.cx().advance_clock(time);
         self.frame();
+    }
+
+    /// Hold up every git run with `word` among its arguments
+    /// (`hermetic::hold_git`) until [`Self::release_git`]: for what the
+    /// window shows while something takes a while. Meanwhile
+    /// [`Self::settle`] runs what is due on the main thread and does not
+    /// wait for the session threads, which wait for git.
+    pub fn hold_git(&mut self, word: &str) {
+        self.held.push(crate::hermetic::hold_git(word));
+    }
+
+    /// Let git go on, and wait until the window is at rest.
+    pub fn release_git(&mut self) {
+        self.held.clear();
+        self.settle();
     }
 
     /// Draw frames until `met` holds, for what follows a change on disk:

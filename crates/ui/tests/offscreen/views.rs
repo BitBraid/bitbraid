@@ -13,11 +13,12 @@ use bitbraid_ui::{
         flow::FlowRequest,
         rewrite::{Rewrite, RunRewrite},
         tags::{RunTag, TagRequest},
+        worktrees::{RunWorktree, WorktreeRequest},
     },
 };
 
 use crate::{
-    repos,
+    hermetic, repos,
     runner::{Shots, Themes, Views},
     stage::{Stage, Start},
 };
@@ -621,6 +622,34 @@ fn references(shots: &mut Shots) {
     stage.act(keymap::FilterReferences);
     stage.type_text("lex");
     shots.take(&mut stage, "references_filtered", Themes::Two);
+    stage.keys("escape");
+    stage.click("refs-undo-narrowing");
+
+    // A worktree being removed while git deletes its files: its row
+    // greyed and saying so, the status bar saying what is removed.
+    if hermetic::holds_git() {
+        let hotfix = repo
+            .parent()
+            .expect("the project is in a folder")
+            .join("project-hotfix")
+            .to_string_lossy()
+            .into_owned();
+        stage.hold_git("remove");
+        stage.act(keymap::FocusReferences);
+        stage.act(RunWorktree {
+            request: WorktreeRequest::Remove {
+                path: hotfix.clone(),
+                with_branch: false,
+            },
+        });
+        stage.click(("ask-choice", 0usize));
+        assert_eq!(stage.workspace().removing, vec![hotfix]);
+        shots.take(&mut stage, "references_worktree_removing", Themes::Two);
+        stage.release_git();
+        // The removal would be in the activity log of a later picture.
+        stage.act(keymap::ShowActivity);
+        stage.click("activity-clear");
+    }
 }
 
 /// What is asked and said over a repository: a prompt, the files found

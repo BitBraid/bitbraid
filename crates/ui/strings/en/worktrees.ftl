@@ -24,6 +24,8 @@ worktrees-move = Move…
 # $why is one of the reasons below.
 worktrees-move-not = Move ({ $why })
 worktrees-prune = Forget worktrees that are gone
+# All the menu of a worktree whose folder is being deleted says.
+worktrees-being-removed = Being removed…
 
 ## Why a worktree cannot be removed or moved.
 

@@ -75,6 +75,8 @@ graph-wip-summary = Summary
 # $name is the worktree's folder, $branch what it has checked out.
 graph-worktree-changes-on = Changes in { $name } (on { $branch })
 graph-worktree-changes = Changes in { $name }
+# The same row while the worktree's folder is being deleted.
+graph-worktree-removing = Removing { $name }…
 
 ## The field a new branch or tag is named in, on a commit's row.
 

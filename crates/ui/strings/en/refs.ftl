@@ -68,6 +68,8 @@ refs-row-menu = Menu of { $name }
 refs-stash-on = on: { $branch }
 # Beside a worktree that is locked.
 refs-worktree-locked = locked
+# Beside a worktree whose folder is being deleted.
+refs-worktree-removing = removing…
 # Beside a branch whose upstream is gone.
 refs-branch-gone = gone
 # Beside a branch whose last commit is older than the preferences allow.

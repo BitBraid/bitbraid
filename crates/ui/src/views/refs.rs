@@ -1181,6 +1181,8 @@ pub struct RefsView {
     tracking: HashMap<String, (u32, u32)>,
     /// How many files are changed in each worktree, by its path.
     worktree_changes: HashMap<String, usize>,
+    /// The worktrees being removed, by path.
+    removing: BTreeSet<String>,
     /// Whether anything is changed in the worktree this tab shows.
     here_changed: bool,
     /// Where each submodule stands, by its path: the state, and whether
@@ -1468,6 +1470,7 @@ impl RefsView {
             head_bounds: Rc::default(),
             tracking: HashMap::new(),
             worktree_changes: HashMap::new(),
+            removing: BTreeSet::new(),
             here_changed: false,
             submodule_states: HashMap::new(),
             flow: None,
@@ -1548,6 +1551,15 @@ impl RefsView {
     ) {
         if self.worktree_changes != changes {
             self.worktree_changes = changes;
+            cx.notify();
+        }
+    }
+
+    /// The worktrees being removed, by path: their rows are greyed and say
+    /// so, and offer nothing.
+    pub fn set_removing(&mut self, removing: BTreeSet<String>, cx: &mut Context<Self>) {
+        if self.removing != removing {
+            self.removing = removing;
             cx.notify();
         }
     }
@@ -2110,6 +2122,17 @@ impl RefsView {
             .copied()
     }
 
+    /// For the off-screen tests: what the row of the worktree at `path`
+    /// says at its right, and whether it opens; none while it has no row.
+    pub fn worktree_said(&self, path: &str) -> Option<(Option<String>, bool)> {
+        let item = self
+            .sections
+            .iter()
+            .flat_map(|section| section.items.iter())
+            .find(|item| matches!(&item.place, Place::Worktree { path: at, .. } if at == path))?;
+        Some((self.aside(item), self.opens(item).is_some()))
+    }
+
     /// For the off-screen tests: the sections on show, top to bottom, each
     /// with where the middle of its heading was drawn last (in the window,
     /// for a click) and how high its list is (none while it is closed).
@@ -2171,7 +2194,7 @@ impl RefsView {
     /// the worktree or the submodule, when there is one to open.
     fn opens(&self, item: &Item) -> Option<RefsEvent> {
         match &item.place {
-            Place::Worktree { path, row } if !row.current => {
+            Place::Worktree { path, row } if !row.current && !self.removing.contains(path) => {
                 Some(RefsEvent::Worktree(WorktreeRequest::Open(path.clone())))
             }
             Place::Submodule { path }
@@ -2530,6 +2553,9 @@ impl RefsView {
                 // A closed folder says how much it holds.
                 (Some(folder), _) if !folder.open => Some(format!("{}", folder.held)),
                 (Some(_), _) => None,
+                (None, Place::Worktree { path, .. }) if self.removing.contains(path) => {
+                    Some(say!("refs-worktree-removing").to_owned())
+                }
                 // Of the one this tab shows, how far its branch is ahead
                 // and behind, and a dot when something is changed there;
                 // and that it is locked. Its folder is in its tooltip.
@@ -2808,6 +2834,9 @@ impl RefsView {
             return self.folder_menu(&folder.key, repo_state);
         }
         match &item.place {
+            Place::Worktree { path, .. } if self.removing.contains(path) => {
+                return Some(Rc::new(|menu, _, _| worktrees::removing_menu(menu)));
+            }
             Place::Worktree { path, row: about } => {
                 let (path, about) = (path.clone(), *about);
                 return Some(Rc::new(move |menu, _, _| {
@@ -3116,7 +3145,9 @@ impl RefsView {
         let hidden = is_named(&repo_state.hidden);
         let soloing = !repo_state.only.is_empty() && seen_name.is_some();
         let soloed = is_named(&repo_state.only);
-        let greyed = hidden || (soloing && !soloed);
+        let removing =
+            matches!(&item.place, Place::Worktree { path, .. } if self.removing.contains(path));
+        let greyed = hidden || (soloing && !soloed) || removing;
         let checkout_target = kind.target().map(str::to_owned);
         // A plain click leaves no mark on its row: the rows picked with
         // the toggle or range key do.

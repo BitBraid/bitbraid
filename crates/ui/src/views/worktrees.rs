@@ -85,6 +85,12 @@ pub fn open_worktree_entry(menu: PopupMenu, path: &str) -> PopupMenu {
     )
 }
 
+/// The menu of a worktree that is being removed: nothing can be done
+/// with it, and it says why.
+pub fn removing_menu(menu: PopupMenu) -> PopupMenu {
+    menu.label(say!("worktrees-being-removed"))
+}
+
 /// What can be done with one worktree, and why not when it cannot.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct WorktreeRow {

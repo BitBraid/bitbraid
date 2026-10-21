@@ -65,6 +65,9 @@ mod behaviour_settings;
 #[path = "offscreen/behaviour_shell.rs"]
 mod behaviour_shell;
 #[cfg(any(target_os = "linux", target_os = "macos", windows))]
+#[path = "offscreen/behaviour_slow.rs"]
+mod behaviour_slow;
+#[cfg(any(target_os = "linux", target_os = "macos", windows))]
 #[path = "offscreen/behaviour_terminal.rs"]
 mod behaviour_terminal;
 #[cfg(any(target_os = "linux", target_os = "macos", windows))]
@@ -192,6 +195,7 @@ fn main() -> std::process::ExitCode {
                 inbox::TESTS,
                 behaviour_access::TESTS,
                 behaviour_busy::TESTS,
+                behaviour_slow::TESTS,
                 updates::TESTS,
             ]
             .concat();

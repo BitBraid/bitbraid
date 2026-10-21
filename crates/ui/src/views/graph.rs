@@ -2422,6 +2422,8 @@ pub struct GraphView {
     /// What is uncommitted in each of the other worktrees, by path, as
     /// last looked at.
     worktree_changes: HashMap<String, WipCounts>,
+    /// The worktrees being removed, by path.
+    removing: BTreeSet<String>,
     /// The commits that carry a signature, among those asked about.
     signatures: HashMap<Oid, Signed>,
     signed_asked: HashSet<Oid>,
@@ -2876,6 +2878,7 @@ impl GraphView {
             scroll_x: 0.0,
             current_branch: None,
             worktree_changes: HashMap::new(),
+            removing: BTreeSet::new(),
             signatures: HashMap::new(),
             signed_asked: HashSet::new(),
             verify_queue: Vec::new(),
@@ -3574,6 +3577,15 @@ impl GraphView {
     ) {
         if self.worktree_changes != changes {
             self.worktree_changes = changes;
+            cx.notify();
+        }
+    }
+
+    /// The worktrees being removed, by path: their rows are greyed and say
+    /// so, and offer nothing.
+    pub fn set_removing(&mut self, removing: BTreeSet<String>, cx: &mut Context<Self>) {
+        if self.removing != removing {
+            self.removing = removing;
             cx.notify();
         }
     }
@@ -4747,7 +4759,8 @@ impl GraphView {
     /// the commit that worktree has checked out, with a dashed node like
     /// the row of the open worktree, a label that names the worktree and
     /// the counts of what is changed there. One click selects it, two open
-    /// the worktree, where its changes are staged.
+    /// the worktree, where its changes are staged. While the worktree is
+    /// being removed the row says so, faded, and offers nothing.
     fn render_worktree_row(
         &self,
         list_ix: usize,
@@ -4785,7 +4798,14 @@ impl GraphView {
             .as_ref()
             .and_then(|data| data.index.get(&mark.head).copied())
             .unwrap_or(ix);
+        let removing = self.removing.contains(&mark.path);
+        let shade = if removing {
+            Some(FADED)
+        } else {
+            self.shade(on_row)
+        };
         let said = match &mark.branch {
+            _ if removing => say!("graph-worktree-removing", name = label.name.as_str()),
             Some(branch) => say!(
                 "graph-worktree-changes-on",
                 name = label.name.as_str(),
@@ -4800,7 +4820,7 @@ impl GraphView {
             .w_full()
             .children(selected.then(|| self.selected_fill(cx)))
             .on_click(cx.listener(move |this, event: &ClickEvent, window, cx| {
-                if event.click_count() >= 2 {
+                if event.click_count() >= 2 && !removing {
                     cx.emit(GraphEvent::Worktree(WorktreeRequest::Open(
                         open_path.clone(),
                     )));
@@ -4811,7 +4831,10 @@ impl GraphView {
             .on_hover(cx.listener(move |this, hovering: &bool, _, cx| {
                 this.set_hover(if *hovering { Some(list_ix) } else { None }, cx)
             }))
-            .context_menu(move |menu, _, _| worktrees::open_worktree_entry(menu, &menu_path))
+            .context_menu(move |menu, _, _| match removing {
+                true => worktrees::removing_menu(menu),
+                false => worktrees::open_worktree_entry(menu, &menu_path),
+            })
             .child(self.render_lanes(Some(ix), Node::Wip, LabelLine::Thin, selected, cx))
             .child(
                 h_flex()
@@ -4840,7 +4863,7 @@ impl GraphView {
                         h_flex()
                             // Lit with the commit it stands on: its work
                             // belongs to that branch's line.
-                            .when_some(self.shade(on_row), |d, shade| d.opacity(shade))
+                            .when_some(shade, |d, shade| d.opacity(shade))
                             .flex_1()
                             .min_w_0()
                             .px_1()
